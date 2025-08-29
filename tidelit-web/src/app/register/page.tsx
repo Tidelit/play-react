@@ -82,8 +82,8 @@ export default function Register() {
 
   return (
     <>
-      <div className="w-full h-screen bg-gradient-to-b from-white to-blue-100 flex flex-col items-center justify-center">
-            <div className='w-full max-w-2xl h-[650px] bg-white rounded-lg shadow-lg flex flex-col items-center justify-between   p-10'>
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://www.tidelit.co/wp-content/uploads/2025/08/tidelit-fondo-medidas.png")' }}>
+        <div className='w-full max-w-2xl h-[650px] bg-white rounded-lg shadow-2xl shadow-white flex flex-col items-center justify-between   p-10'>
                 {/* Regresar */}
                 <div className='w-full max-w-md flex flex-row items-center justify-center '>
                     <Link href='/login' className='w-10 h-10 flex items-center justify-center cursor-pointer'>
@@ -325,7 +325,7 @@ export default function Register() {
                         </button>
                     </div>
                 </div>
-            </div>
+        </div>
       </div>
 
       {/* Modal genérico */}

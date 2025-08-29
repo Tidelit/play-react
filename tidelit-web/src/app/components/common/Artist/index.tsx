@@ -16,11 +16,11 @@ interface ArtistCardProps {
 
 const ArtistCard: React.FC<ArtistCardProps> = ({ artist, isSelected, onSelect }) => {
   return (
-    <div className='flex flex-col gap-4 justify-center items-center'>
+    <div className='flex flex-col gap-2 justify-center items-center'>
       <div className="relative">
         <button 
           onClick={() => onSelect(artist)}
-          className="w-32 h-32 rounded-full cursor-pointer shadow-md relative"
+          className="w-24 h-24 rounded-full cursor-pointer shadow-md relative"
         >
           <Image 
             src={artist.image} 

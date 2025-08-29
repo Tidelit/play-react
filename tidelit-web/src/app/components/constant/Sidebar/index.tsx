@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className={`${isOpen ? 'w-[400px]' : 'w-24'} h-full flex flex-col p-4 gap-2  border-r-2 border-gray-200 transition-all duration-500 ease-in-out overflow-hidden`}>
+      <div className={`${isOpen ? 'w-[400px]' : 'w-28'} h-full flex flex-col p-4 gap-2  border-r-2 border-gray-200 transition-all duration-500 ease-in-out overflow-hidden`}>
         {/* Header */}
         <div className="w-full h-auto flex flex-row gap-2">
           {/* Botono de usuario e imagen de usuario */}

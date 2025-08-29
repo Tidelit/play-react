@@ -8,8 +8,8 @@ import { FaFacebook } from 'react-icons/fa';
 export default function Login() {
   return (
     <>
-      <div className="w-full h-screen bg-gradient-to-b from-white to-blue-100 flex flex-col items-center justify-center">
-        <div className="w-full max-w-2xl h-[650px] bg-white rounded-lg shadow-lg flex flex-col items-center justify-between gap-4 p-10">
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://www.tidelit.co/wp-content/uploads/2025/08/tidelit-fondo-medidas.png")' }}>
+        <div className="w-full max-w-2xl h-[650px] bg-white rounded-lg shadow-2xl shadow-white flex flex-col items-center justify-between gap-4 p-10">
             {/* Logo */}
             <Link href='/' className='w-auto h-auto flex flex-row justify-center items-center'>
                 <Image src={'/logo/Tidelit.png'} alt='Tidelit Logo' width={250} height={150} priority />

@@ -16,7 +16,7 @@ interface GenresCardProps {
 
 const GenresCard: React.FC<GenresCardProps> = ({ artist, isSelected, onSelect }) => {
   return (
-    <div className='flex flex-col gap-4 justify-center items-center'>
+    <div className='flex flex-col gap-2 justify-center items-center'>
       <div className="relative">
         <button 
           onClick={() => onSelect(artist)}
