@@ -2,8 +2,8 @@
 
 import { FiChevronLeft } from "react-icons/fi";
 import { useState } from "react";
-import ArtistCard from "../../Artist";
-import GenresCard from "../../Genres";
+import ArtistCard from "../../TutorialCard/Artist";
+import GenresCard from "../../TutorialCard/Genres";
 
 // Sample artist data
 const artistsData = [

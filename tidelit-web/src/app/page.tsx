@@ -100,7 +100,7 @@ export default function Home() {
       <div className="w-full h-screen flex flex-row">
         <Sidebar />
 
-        <div className="w-full h-screen flex flex-col bg-gradient-to-b from-gray-400 to-white p-4">
+        <div className="w-full h-screen flex flex-col bg-gradient-to-b from-[#E302E6]/50 via-[#2D49D3]/20 to-[#06D4C9]/20  p-4">
           {/* Navbar con tabs */}
           <div className="w-full bg-white  p-4">
             {/* Barra superior con iconos */}
