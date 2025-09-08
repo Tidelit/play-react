@@ -7,9 +7,10 @@ import { Fullplayer } from '../../Modal/Music/Fullplayer';
 interface SongProps {
     image: string;
     songName: string;
+    onSelect?: (songData: { image: string; songName: string; artist?: string }) => void;
 }
 
-export const Song = ({ image, songName }: SongProps) => {
+export const Song = ({ image, songName, onSelect }: SongProps) => {
     const [isFullplayerOpen, setIsFullplayerOpen] = useState(false);
 
     const openFullplayer = () => {
@@ -23,9 +24,14 @@ export const Song = ({ image, songName }: SongProps) => {
     return (
         <>
         <div className="w-62 h-62 flex flex-col gap-2 items-center justify-center">
-            <div className="relative w-62 h-62 group cursor-pointer" onClick={openFullplayer}>
+            <div 
+                className="relative w-62 h-62 group cursor-pointer" 
+                onClick={() => {
+                    openFullplayer();
+                    onSelect?.({ image, songName, artist: "Artist Name" });
+                }}>
                 {/* Background Image with Blur Effect */}
-                <div className="absolute inset-0 rounded-lg overflow-hidden">
+                <div className="absolute inset-0 rounded-2xl overflow-hidden">
                     <Image 
                         src={image} 
                         alt={`${songName} Cover`} 
@@ -38,7 +44,7 @@ export const Song = ({ image, songName }: SongProps) => {
                 </div>
                 
                 {/* Play Button - Hidden by default, visible on hover */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-[#E302E6]/50 via-[#2D49D3]/50 to-[#06D4C9]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
+                <div className="absolute inset-0 flex items-center justify-center  opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl">
                     <button className="w-16 h-16  rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-500">
                         <FiPlay className="w-8 h-8 text-white ml-1" />
                     </button>

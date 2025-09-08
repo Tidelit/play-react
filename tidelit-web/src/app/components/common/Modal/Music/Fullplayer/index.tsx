@@ -18,6 +18,7 @@ type ViewMode = 'player' | 'credits';
 export const Fullplayer = ({ isOpen, onClose, songData }: FullplayerProps) => {
     const [showOptions, setShowOptions] = useState(false);
     const [currentView, setCurrentView] = useState<ViewMode>('player');
+    const [isFavorite, setIsFavorite] = useState(false);
 
     // Reset states when modal closes
     useEffect(() => {
@@ -66,9 +67,12 @@ export const Fullplayer = ({ isOpen, onClose, songData }: FullplayerProps) => {
                             {/* Dropdown Menu */}
                             {showOptions && (
                                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-50">
-                                    <button className="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center gap-3">
-                                        <FiHeart className="w-5 h-5 text-gray-600" />
-                                        <span>Agregar a favoritos</span>
+                                    <button 
+                                        className="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center gap-3"
+                                        onClick={() => setIsFavorite(!isFavorite)}
+                                    >
+                                        <FiHeart className={`w-5 h-5 ${isFavorite ? 'text-red-500' : 'text-gray-600'}`} />
+                                        <span>{isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}</span>
                                     </button>
                                     <button className="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center gap-3 text-pink-500">
                                         <FiPlus className="w-5 h-5" />
@@ -140,8 +144,8 @@ export const Fullplayer = ({ isOpen, onClose, songData }: FullplayerProps) => {
                         <button>
                         <FiShare2 className='w-4 h-4' />
                         </button>
-                        <button>
-                        <FiHeart className='w-4 h-4' />
+                        <button onClick={() => setIsFavorite(!isFavorite)}>
+                        <FiHeart className={`w-4 h-4 ${isFavorite ? 'text-red-500' : ''}`} />
                         </button>
                         <button>
                         <FiMusic className='w-4 h-4' />
