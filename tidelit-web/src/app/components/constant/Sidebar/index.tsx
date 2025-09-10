@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FiArchive, FiHome, FiLogOut, FiMenu, FiMonitor, FiMusic, FiSettings, FiUser, FiX } from 'react-icons/fi';
+import { FiArchive, FiHome, FiLogOut, FiMenu, FiMonitor, FiMoon, FiMusic, FiSettings, FiUser, FiX } from 'react-icons/fi';
 import Link from 'next/link';
 
 const Sidebar = () => {
@@ -14,21 +14,23 @@ const Sidebar = () => {
   // Elementos del menú principal
   const menuItems = [
     { icon: FiHome, text: 'Inicio' },
-    { icon: FiArchive, text: 'Biblioteca' },
+    { icon: FiArchive, text: 'Biblioteca', href: '/library' },
     { icon: FiMonitor, text: 'Tu Network' },
     { icon: FiUser, text: 'Hazte premium' },
     { icon: FiMusic, text: 'Hazte creador' },
+    { icon: FiMoon, text: 'Modo oscuro' },
   ];
 
   // Elementos del menú inferior
   const bottomItems = [
-    { icon: FiSettings, text: 'Opciones' },
+    { icon: FiSettings, text: 'Opciones', href: '/options' },
     { icon: FiLogOut, text: 'Cerrar sesion', href: '/login' },
   ];
 
   return (
     <>
-      <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-24'} h-full min-h-xl flex flex-col transition-all duration-500 ease-in-out overflow-hidden bg-white/80 backdrop-blur-2xl rounded-2xl shadow-2xl py-4`}>
+      <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-20'} h-full min-h-xl flex flex-col items-center justify-start transition-all duration-500 ease-in-out overflow-hidden bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200 py-4`}>
+        
         {/* Header */}
         <div className="w-full h-auto flex flex-row ">
           <div className='w-20 h-20 flex flex-row justify-center items-center'>
@@ -52,7 +54,8 @@ const Sidebar = () => {
             {menuItems.map((item, index) => {
               const Icon = item.icon;
               return (
-                <button
+                <Link
+                  href={item.href || '/'}
                   key={index}
                   className={`w-full h-12 flex flex-row items-center  text-xs  uppercase cursor-pointer   hover:text-blue-500 rounded-2xl transition-all duration-500 ease-in-out ${isOpen ? 'p-4 hover:border-blue-500' : 'p-0'}`}
                 >
@@ -60,7 +63,7 @@ const Sidebar = () => {
                   <span className={`whitespace-nowrap ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'} transition-all duration-500 ease-in-out`}>
                     {item.text}
                   </span>
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -99,6 +102,7 @@ const Sidebar = () => {
             })}
           </div>
         </div>
+
       </div>
     </>
   );

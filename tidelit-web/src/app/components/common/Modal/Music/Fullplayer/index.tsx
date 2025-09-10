@@ -30,10 +30,10 @@ export const Fullplayer = ({ isOpen, onClose, songData }: FullplayerProps) => {
     return (
         <>
             {/* Modal Overlay */}
-            <div className={`fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 transition-all duration-150 ${
+            <div className={`fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50 transition-all  duration-500 ${
                 isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}>
-                <div className={`w-full max-w-2xl h-[650px] bg-white/80 rounded-2xl p-6 relative transition-all duration-150 transform ${
+                <div className={`w-full max-w-2xl h-[650px] bg-white shadow-2xl shadow-white backdrop-blur-2xl rounded-2xl p-6 relative transition-all duration-500 transform ${
                     isOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
                 }`}>
                     {/* Top Bar */}
@@ -107,13 +107,13 @@ export const Fullplayer = ({ isOpen, onClose, songData }: FullplayerProps) => {
                             {/* Album Art with Background Pattern */}
                     <div className="relative mb-4">
                         {/* Background Pattern */}
-                        <div className="w-full h-full absolute inset-0 rounded-full overflow-hidden flex items-center justify-center">
+                        <div className="w-full h-full absolute inset-0 rounded-full overflow-hidden flex items-center justify-center animate-ping -z-10">
                             <Image 
                                 src="/imagenes/Song/Effect.png" 
                                 alt="Background Effect" 
                                 width={400} 
                                 height={400}
-                                className="w-92 h-92 animate-pulse"
+                                className="w-80 h-80 animate-pulse "
                             />
                         </div>
                         
