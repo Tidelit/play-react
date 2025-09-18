@@ -68,7 +68,7 @@ export const Miniplayer = () => {
 
     return (
       <>
-        <div className=" w-full h-auto flex flex-col gap-4 px-10">
+        <div className=" w-full h-auto flex flex-col gap-4 p-10">
            <div 
              className='w-full flex flex-row relative cursor-pointer group' 
              ref={progressBarRef} 
@@ -103,13 +103,13 @@ export const Miniplayer = () => {
                    src={currentSong.image}
                    alt='Song Image' 
                    className="w-full h-full object-cover"
-                   width={96}
-                   height={96}
+                   width={100}
+                   height={100}
                  />
                </div>
-               <p className="flex flex-col">
-                 <span className="text-sm font-bold uppercase">{currentSong.title}</span>
-                 <span className="text-xs text-gray-500 ">{currentSong.artist}</span>
+               <p className="flex flex-col p-4">
+                 <span className="min-[320px]:text-[10px] xl:text-sm font-bold uppercase">{currentSong.title}</span>
+                 <span className="min-[320px]:hidden xl:flex text-gray-500 ">{currentSong.artist}</span>
                </p>
              </div>
 

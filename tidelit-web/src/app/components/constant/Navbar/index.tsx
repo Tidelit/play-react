@@ -1,19 +1,37 @@
+import Link from "next/link";
 import { FiBell, FiDownload, FiSearch } from "react-icons/fi";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+    const pathname = usePathname();
     return (
         <div className="w-full h-14  flex flex-row justify-start items-center gap-2 p-10 ">
             {/* Input de busqueda */}
             <div className="w-full  flex flex-row items-start justify-start gap-2">
-                <button className="w-22 h-8 bg-blue-500 border text-white rounded-full text-xs font-bold">
+                <Link 
+                    href="/" 
+                    className={`w-22 h-8 border rounded-full text-xs font-bold flex justify-center items-center transition-colors duration-300 ${
+                        pathname === '/' ? 'bg-blue-500 text-white' : 'hover:bg-blue-50'
+                    }`}
+                >
                     <p>Todos</p>
-                </button>
-                <button className="w-22 h-8 border rounded-full text-xs font-bold">
+                </Link>
+                <Link 
+                    href="/tidelit" 
+                    className={`w-22 h-8 border rounded-full text-xs font-bold flex justify-center items-center transition-colors duration-300 ${
+                        pathname === '/tidelit' ? 'bg-blue-500 text-white' : 'hover:bg-blue-50'
+                    }`}
+                >
                     <p>Tidelit</p>
-                </button>
-                <button className="w-22 h-8 border rounded-full text-xs font-bold">
+                </Link>
+                <Link 
+                    href="/mixRadio" 
+                    className={`w-22 h-8 border rounded-full text-xs font-bold flex justify-center items-center transition-colors duration-300 ${
+                        pathname === '/mixRadio' ? 'bg-blue-500 text-white' : 'hover:bg-blue-50'
+                    }`}
+                >
                     <p>Mix Radio</p>
-                </button>
+                </Link>
                 <button className="w-10 h-8 border rounded-full text-xs font-bold flex justify-center items-center">
                     <FiSearch className="w-4 h-4"/>
                 </button>

@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-20'} h-full min-h-xl flex flex-col items-center justify-start transition-all duration-500 ease-in-out overflow-hidden bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200 py-4`}>
+      <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-20'} h-full min-h-xl min-[320px]:hidden xl:flex flex-col items-center justify-start transition-all duration-500 ease-in-out overflow-hidden bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200 py-4`}>
         
         {/* Header */}
         <div className="w-full h-auto flex flex-row ">

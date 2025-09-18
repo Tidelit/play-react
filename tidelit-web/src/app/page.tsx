@@ -12,21 +12,21 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white  p-4 gap-2">
+      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-4">
         <Sidebar />
-        
+
         {/* Contenido */}
-        <div className="w-full h-full flex flex-col justify-center items-center">
-          <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50  rounded-2xl">
+        <div className="w-full h-full flex flex-col justify-center items-center ">
+          <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50  rounded-2xl border border-gray-200">
             <Navbar />
     
             {/* Artistas */}
-            <div className="w-full h-full  hidden flex-row gap-4 justify-start  items-start p-10">
+            <div className="w-full h-full  flex flex-row gap-4 justify-start  items-start p-10">
                 <ArtistCard />
             </div>
             
             {/* Canciones Recomendadas para Hoy */}
-            <div className="w-full h-screen hidden flex-col justify-start items-start p-10">
+            <div className="w-full h-screen flex flex-col justify-start items-start p-10">
             {/* Texto de la seccion */}
             <div className="w-full h-auto flex flex-row  justify-between  items-center mb-4">
                 <div className="flex flex-col ">

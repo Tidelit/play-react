@@ -222,12 +222,12 @@ export default function Options() {
     };
 
     return (
-        <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-2">
+        <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-4">
             <Sidebar />
             
             {/* Contenido principal */}
             <div className="w-full h-full flex flex-col justify-center items-center">
-                <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl gap-2">
+                <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl gap-2 border border-gray-200">
                     
                     {/* Barra superior con botón de volver y iconos */}
                     <div className="w-full h-14 flex flex-row justify-start items-center gap-2 p-10">
