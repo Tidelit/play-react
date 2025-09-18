@@ -16,6 +16,10 @@ module.exports = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        spinSlow: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
         overlayShow: {
           '0%': { opacity: '0' },
           '100%': { opacity: '0.5' },
@@ -35,6 +39,7 @@ module.exports = {
         fadeIn: 'fadeIn 0.3s ease-out',
         overlayShow: 'overlayShow 0.3s ease-out forwards',
         modalShow: 'modalShow 0.3s ease-out forwards',
+        'spin-slow': 'spinSlow 20s linear infinite',
       },
     },
   },
