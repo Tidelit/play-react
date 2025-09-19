@@ -29,7 +29,7 @@ interface MusicStore {
   currentSong: Song;
   isPlaying: boolean;
   progress: number;
-  volume: number;
+  volume: number; 
   duration: number;
   currentTime: number;
   songList: Song[];

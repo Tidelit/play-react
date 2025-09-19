@@ -7,7 +7,7 @@ export default function Tidelit() {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-4">
+      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2">
         <Sidebar />
 
         {/* Contenido */}
@@ -17,7 +17,7 @@ export default function Tidelit() {
     
          
 
-            <Miniplayer />
+            <Miniplayer />  
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Miniplayer } from "./components/common/Modal/Music/Miniplayer";
 import { Welcome } from "./components/common/Modal/Welcome";
 import Navbar from "./components/constant/Navbar";
 import Sidebar from "./components/constant/Sidebar";
@@ -12,7 +11,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-4">
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2">
         <Sidebar />
 
         {/* Contenido */}
@@ -38,11 +38,9 @@ export default function Home() {
                 
             <div className="w-full  flex flex-row gap-4 justify-start  items-center">
                 <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" />
-                <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" />
             </div>
             </div>
 
-            <Miniplayer />
           </div>
         </div>
 
@@ -52,6 +50,8 @@ export default function Home() {
         />
         
       </div>  
+    </div>
+
     </>
   );
 }

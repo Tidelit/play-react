@@ -101,6 +101,9 @@ const Sidebar = () => {
               );
             })}
           </div>
+
+          <div className='w-full h-4 flex flex-row justify-center items-center'>
+          </div>
         </div>
 
       </div>
