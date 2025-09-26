@@ -68,7 +68,7 @@ export const Miniplayer = () => {
 
     return (
       <>
-        <div className=" w-full h-auto flex flex-col justify-center items-center gap-4 px-10 shadow-2xl shadow-black">
+        <div className=" w-full h-auto flex flex-col justify-center items-center gap-4 px-10 border border-gray-300 shadow-2xl shadow-gray-300 bg-white">
            <div 
              className='w-full flex flex-row relative cursor-pointer group' 
              ref={progressBarRef} 
@@ -98,14 +98,34 @@ export const Miniplayer = () => {
            <div className="w-full h-24 flex justify-center items-center rounded-b-2xl">
              {/* Contenido de la cancion */}
              <div className="w-full h-full flex flex-row gap-2 justify-start items-center">
-               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-300 animate-spin p-1">
-                 <Image 
-                   src={currentSong.image}
-                   alt='Song Image' 
-                   className="w-full h-full object-cover rounded-full"
-                   width={100}
-                   height={100}
-                 />
+                <div className="relative w-16 h-16 flex justify-center items-center">
+                  {/* Efecto de fondo */}
+                  <div className={`absolute w-24 h-24 flex justify-center items-center z-10 transition-opacity duration-500 ${
+                    isPlaying ? 'opacity-100' : 'opacity-0'
+                  } ${isPlaying ? 'animate-pulse' : ''}`}>
+                    <Image 
+                      src="/imagenes/Song/Effect.png"
+                      alt="Background Effect"
+                      width={64}
+                      height={64}
+                      className={`w-full h-full drop-shadow-2xl drop-shadow-[#D80DE5] ${
+                        isPlaying ? 'animate-ping' : ''
+                      }`}
+                    />
+                  </div>
+                  
+                  {/* Imagen principal */}
+                  <div className={`absolute w-full h-full rounded-full overflow-hidden border-4 border-white p-1 z-30 ${
+                    isPlaying ? 'animate-spin' : ''
+                  }`}>
+                    <Image 
+                      src={currentSong.image}
+                      alt='Song Image' 
+                      className="w-full h-full object-cover rounded-full"
+                      width={100}
+                      height={100}
+                    />
+                 </div>
                </div>
                
                <p className="flex flex-col justify-center items-start">

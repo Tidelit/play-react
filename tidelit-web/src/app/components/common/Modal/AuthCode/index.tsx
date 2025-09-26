@@ -7,8 +7,8 @@ import { FiCheck } from "react-icons/fi";
 export default function Modal() {
 
     return (
-        <div className="fixed inset-0  flex items-center justify-center z-50">
-            <div className="relative w-full max-w-2xl h-[650px] bg-white rounded-2xl  flex flex-col items-center justify-between gap-4 p-10">
+    <div className="fixed inset-0  flex items-center justify-center z-50 bg-black/50 backdrop-blur-xs">
+        <div className="relative w-full max-w-4xl h-[650px] bg-white shadow-2xl shadow-white backdrop-blur-2xl rounded-2xl flex flex-col items-center justify-between gap-4 p-10">
 
             {/* Logo */}
             <Link href='/' className='w-auto h-auto flex flex-row justify-center items-center'>
@@ -19,8 +19,8 @@ export default function Modal() {
                 <p className="text-sm text-gray-500">Ingresa el código enviado a tu celular / correo</p>
             </div>
 
-                {/* Inputs */}
-                <div className="w-full max-w-sm flex justify-center gap-2">
+            {/* Inputs */}
+            <div className="w-full max-w-sm flex justify-center gap-2">
                             <input 
                                 type="text"
                                 maxLength={1}
@@ -41,9 +41,9 @@ export default function Modal() {
                                 maxLength={1}
                                 className="w-full h-16 text-2xl text-center border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                             />
-                </div>
+            </div>
 
-                <div className="w-full h-auto flex flex-col justify-center items-center gap-2">
+            <div className="w-full h-auto flex flex-col justify-center items-center gap-2">
                     {/* Botón de verificar */}
                     <Link href='/' className="w-full max-w-sm h-14 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
                         Validar
@@ -61,9 +61,8 @@ export default function Modal() {
                                     <span className="text-sm">Reenviar código</span>
                                 </button>
                     </div>
-                </div>
-
             </div>
         </div>
+    </div>
     );
 }

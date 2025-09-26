@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Welcome } from "./components/common/Modal/Welcome";
 import Navbar from "./components/constant/Navbar";
-import Sidebar from "./components/constant/Sidebar";
 import { Song } from "./components/common/Music/Song";
 import ArtistCard from "./components/common/TutorialCard/Artist";
 
@@ -12,12 +11,9 @@ export default function Home() {
   return (
     <>
     <div className="w-full flex flex-col justify-center items-center">
-      <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2">
-        <Sidebar />
 
-        {/* Contenido */}
-        <div className="w-full h-full flex flex-col justify-center items-center ">
-          <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50  rounded-2xl border border-gray-200">
+      {/* Contenido */}
+      <div className="w-full h-full flex flex-col justify-between items-center">
             <Navbar />
     
             {/* Artistas */}
@@ -36,20 +32,18 @@ export default function Home() {
                 <p className="text-xs cursor-pointer hover:text-blue-500 transition-all duration-500">Mostrar mas</p>
             </div>
                 
-            <div className="w-full  flex flex-row gap-4 justify-start  items-center">
-                <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" />
-            </div>
+              <div className="w-full  flex flex-row gap-4 justify-start  items-center">
+                  <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" />
+              </div>
             </div>
 
-          </div>
-        </div>
+      </div>
 
-        <Welcome 
-          isOpen={isWelcomeOpen}
-          onClose={() => setIsWelcomeOpen(false)}
+      <Welcome 
+        isOpen={isWelcomeOpen}
+        onClose={() => setIsWelcomeOpen(false)}
         />
         
-      </div>  
     </div>
 
     </>
