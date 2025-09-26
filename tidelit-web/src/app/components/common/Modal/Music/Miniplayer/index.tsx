@@ -1,16 +1,17 @@
-import { FiMaximize, FiMusic, FiPlusSquare, FiShare2 } from "react-icons/fi"
+import { FiMaximize, FiMusic, FiPlusSquare, FiShare2, FiEye, FiEyeOff } from "react-icons/fi"
 import { FiHeart } from "react-icons/fi"
 import { FiShuffle } from "react-icons/fi"
 import { FiSkipBack } from "react-icons/fi"
 import { FiSkipForward } from "react-icons/fi"
 import { FiRepeat } from "react-icons/fi"
 import { FiPlay, FiPause } from "react-icons/fi"
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useMusicStore } from '@/app/store/useMusicStore'
 import Link from "next/link"
 
 export const Miniplayer = () => {
+    const [isVisible, setIsVisible] = useState(true)
     const { 
       currentSong,
       isPlaying,
@@ -68,7 +69,7 @@ export const Miniplayer = () => {
 
     return (
       <>
-        <div className=" w-full h-auto flex flex-col justify-center items-center gap-4 px-10 border border-gray-300 shadow-2xl shadow-gray-300 bg-white">
+        <div className={`w-full h-auto flex flex-col justify-center items-center gap-4 px-10 border border-gray-300 shadow-2xl shadow-gray-300 bg-white transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-30 hover:opacity-50'}`}>
            <div 
              className='w-full flex flex-row relative cursor-pointer group' 
              ref={progressBarRef} 
@@ -209,11 +210,17 @@ export const Miniplayer = () => {
                           </div>
 
                         {/* boton de maximizar */}
+                        <button 
+                          className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
+                          onClick={() => setIsVisible(!isVisible)}
+                        >
+                          {isVisible ? <FiEyeOff className="w-4 h-4" /> : <FiEye className="w-4 h-4" />}
+                        </button>
+
                         <Link href='/fullplayer' 
                             className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
-                          >
+                        >
                             <FiMaximize className="w-4 h-4" />
-                            
                         </Link>
             </div>
 
