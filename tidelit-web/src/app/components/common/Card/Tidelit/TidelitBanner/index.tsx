@@ -7,7 +7,7 @@ export const TidelitBanner = ({ oyentes, fecha }: TidelitBannerProps) => {
     return (
         <>
            {/* Banner Tidelit */}
-           <div className="w-full h-96 flex flex-col justify-between items-start p-10  bg-gradient-to-b from-purple-500 to-black">
+           <div className="w-full h-96 flex flex-col justify-between items-start p-10  bg-purple-500/50">
                   {/* Texto */}
                   <div className="w-auto h-auto bg-[#E302E6] uppercase font-black text-xl text-white p-2 border-4 border-white">
                     <p>Live</p>

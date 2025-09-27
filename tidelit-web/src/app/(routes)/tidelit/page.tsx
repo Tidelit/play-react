@@ -1,5 +1,4 @@
 "use client";
-import { Song } from "@/app/components/common/Music/Song";
 import Navbar from "../../components/constant/Navbar";
 import {
   Carousel,
@@ -8,9 +7,8 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel"
 import { useEffect, useState } from "react";
-import { TidelitBanner } from "@/app/components/common/Card/TidelitBanner";
-import Image from "next/image";
-import { TidelitCard } from "@/app/components/common/Card/TidelitCard";
+import { TidelitBanner } from "@/app/components/common/Card/Tidelit/TidelitBanner";
+import { TidelitCard } from "@/app/components/common/Card/Tidelit/TidelitCard";
 
 
 export default function Tidelit() {
@@ -64,11 +62,6 @@ export default function Tidelit() {
                   {/* Banner sin importancia, agregado solo por decoracion, se espera agregar una imagen aca o alguna informacion extra a futuro. */}
                   <div className="w-full h-96 bg-black/50 backdrop-blur-sm flex flex-col justify-center items-start p-4">
                      <div className="w-full h-full border-4 border-white flex flex-row justify-start items-center gap-2 p-10">
-                         <>
-                          <div className="w-40 h-40 flex justify-center items-center">
-                            <Image src="/Logo/Logo.png" width={160} height={160} alt="Logo" />
-                          </div>
-                         </>
                   
                      </div>
                   </div>

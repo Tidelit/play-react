@@ -8,7 +8,7 @@ import { FaFacebook } from 'react-icons/fa';
 export default function Login() {
   return (
     <>
-      <div className="w-full h-full max-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat rounded-2xl" >
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat rounded-2xl" >
         <div className="w-full max-w-2xl h-[650px]  flex flex-col items-center justify-center gap-4 p-10">
             {/* Logo */}
             <Link href='/' className='w-auto h-auto flex flex-row justify-center items-center'>

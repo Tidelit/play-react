@@ -82,7 +82,7 @@ export default function Register() {
 
   return (
     <>      
-      <div className="w-full h-full flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat rounded-2xl" >
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat rounded-2xl" >
         <div className='w-full max-w-2xl h-[650px]  flex flex-col items-center justify-between   p-10'>
                 {/* Regresar */}
                 <div className='w-full max-w-md flex flex-row items-center justify-center '>
