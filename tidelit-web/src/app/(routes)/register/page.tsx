@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { FiChevronDown, FiChevronLeft } from "react-icons/fi";
-import Modal from "../components/common/Modal/AuthCode";
+import Modal from "../../components/common/Modal/AuthCode";
 import Link from 'next/link';
 
 // Musical genres data
@@ -81,9 +81,9 @@ export default function Register() {
   }, []);
 
   return (
-    <>
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/background/fondo.png")' }}>
-        <div className='w-full max-w-2xl h-[650px] bg-white rounded-lg shadow-2xl shadow-white flex flex-col items-center justify-between   p-10'>
+    <>      
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat rounded-2xl" >
+        <div className='w-full max-w-2xl h-[650px]  flex flex-col items-center justify-between   p-10'>
                 {/* Regresar */}
                 <div className='w-full max-w-md flex flex-row items-center justify-center '>
                     <Link href='/login' className='w-10 h-10 flex items-center justify-center cursor-pointer'>
@@ -99,7 +99,7 @@ export default function Register() {
                     className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-500 border border-blue-500 ${
                         userType === 'usuarios'
                         ? 'bg-blue-500 text-white'
-                        : 'bg-white text-blue-500 hover:bg-blue-100'
+                        : 'bg-transparent text-blue-500 hover:bg-blue-100'
                     }`}
                     >
                     USUARIOS
@@ -109,7 +109,7 @@ export default function Register() {
                     className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition-colors duration-500 border border-blue-500 ${
                         userType === 'creadores'
                         ? 'bg-blue-500 text-white'
-                        : 'bg-white text-blue-500 hover:bg-blue-100'
+                        : 'bg-transparent text-blue-500 hover:bg-blue-100'
                     }`}
                     >
                     CREADORES

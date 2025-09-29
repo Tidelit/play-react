@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { FiChevronLeft} from "react-icons/fi";
 import Link from "next/link";
-import Sidebar from "../components/constant/Sidebar";
 
 
 // Componente para el contenido de Membresía
@@ -87,12 +86,9 @@ export default function Library() {
     };
 
     return (
-        <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-4">
-            <Sidebar />
-            
+        <div className="w-full h-screen flex flex-row ">
             {/* Contenido principal */}
-            <div className="w-full h-full flex flex-col justify-center items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200">
-                <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl gap-2">
+            <div className="w-full h-full flex flex-col justify-between items-center">
                     
                     {/* Barra superior con botón de volver y iconos */}
                     <div className="w-full h-14 flex flex-row justify-start items-center gap-2 p-10">
@@ -113,7 +109,6 @@ export default function Library() {
                         {getTabContent()}
                     </div>
 
-                </div>
             </div>
         </div>
     );

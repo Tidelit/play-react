@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { FiChevronLeft, FiRadio, FiUser, FiSettings, FiCreditCard, FiGlobe, FiVolume2, FiInfo, FiChevronDown, FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
-import Sidebar from "../components/constant/Sidebar";
 
 // Componente separado para los acordeones
 function AccordionItem({ title }: { title: string }) {
@@ -222,12 +221,11 @@ export default function Options() {
     };
 
     return (
-        <div className="w-full h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-4 gap-4">
-            <Sidebar />
+        <div className="w-full h-screen flex flex-row">
             
             {/* Contenido principal */}
             <div className="w-full h-full flex flex-col justify-center items-center">
-                <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl gap-2 border border-gray-200">
+                <div className="w-full h-full flex flex-col justify-between items-center">
                     
                     {/* Barra superior con botón de volver y iconos */}
                     <div className="w-full h-14 flex flex-row justify-start items-center gap-2 p-10">

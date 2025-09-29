@@ -32,7 +32,7 @@ const Sidebar = () => {
       <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-20'} h-full min-h-xl min-[320px]:hidden xl:flex flex-col items-center justify-start transition-all duration-500 ease-in-out overflow-hidden bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200 py-4`}>
         
         {/* Header */}
-        <div className="w-full h-auto flex flex-row ">
+        <div className="w-full h-full flex flex-row ">
           <div className='w-20 h-20 flex flex-row justify-center items-center'>
             <button 
               onClick={toggleSidebar}
@@ -48,9 +48,9 @@ const Sidebar = () => {
         </div>
 
         {/* Contenido */}
-        <div className='w-full h-full flex flex-col justify-between p-4'>
+        <div className='w-full h-full  flex flex-col justify-between items-center p-4'>
           {/* Menú principal */}
-          <div className='w-full h-auto flex flex-col'>
+          <div className='w-full h-full flex flex-col items-center justify-center'>
             {menuItems.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -59,7 +59,7 @@ const Sidebar = () => {
                   key={index}
                   className={`w-full h-12 flex flex-row items-center  text-xs  uppercase cursor-pointer   hover:text-blue-500 rounded-2xl transition-all duration-500 ease-in-out ${isOpen ? 'p-4 hover:border-blue-500' : 'p-0'}`}
                 >
-                  <Icon className='w-6 h-6 min-w-[42px]' />
+                  <Icon className='w-5 h-5 min-w-[32px]' />
                   <span className={`whitespace-nowrap ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'} transition-all duration-500 ease-in-out`}>
                     {item.text}
                   </span>
@@ -69,7 +69,7 @@ const Sidebar = () => {
           </div>
           
           {/* Menú inferior */}
-          <div className='w-full h-auto flex flex-col'>
+          <div className='w-full h-auto flex flex-col items-center justify-center'>
             {bottomItems.map((item, index) => {
               const Icon = item.icon;
               
@@ -80,7 +80,7 @@ const Sidebar = () => {
                     href={item.href}
                   className={`w-full h-12 flex flex-row items-center  text-xs  uppercase cursor-pointer hover:text-blue-500 rounded-2xl transition-all duration-500 ease-in-out ${isOpen ? 'p-4 hover:border-blue-500' : 'p-0'}`}
                   >
-                    <Icon className='w-6 h-6 min-w-[42px]' />
+                    <Icon className='w-5 h-5 min-w-[32px]' />
                     <span className={`whitespace-nowrap ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'} transition-all duration-500 ease-in-out`}>
                       {item.text}
                     </span>
@@ -101,6 +101,8 @@ const Sidebar = () => {
               );
             })}
           </div>
+
+        
         </div>
 
       </div>

@@ -29,11 +29,12 @@ interface MusicStore {
   currentSong: Song;
   isPlaying: boolean;
   progress: number;
-  volume: number;
+  volume: number; 
   duration: number;
   currentTime: number;
   songList: Song[];
   audioElement: HTMLAudioElement | null;
+  isPlayerVisible: boolean;
   setCurrentSong: (song: Song) => void;
   setIsPlaying: (isPlaying: boolean) => void;
   setProgress: (progress: number) => void;
@@ -41,6 +42,7 @@ interface MusicStore {
   setDuration: (duration: number) => void;
   setCurrentTime: (time: number) => void;
   setAudioElement: (audio: HTMLAudioElement) => void;
+  setPlayerVisible: (visible: boolean) => void;
   handleNext: () => void;
   handlePrevious: () => void;
   togglePlay: () => void;
@@ -56,6 +58,7 @@ export const useMusicStore = create<MusicStore>((set, get) => ({
   currentTime: 0,
   songList: songList,
   audioElement: null,
+  isPlayerVisible: false,
   
   setCurrentSong: (song) => set({ currentSong: song }),
   setIsPlaying: (isPlaying) => set({ isPlaying }),
@@ -76,6 +79,8 @@ export const useMusicStore = create<MusicStore>((set, get) => ({
     }
     set({ audioElement });
   },
+
+  setPlayerVisible: (visible) => set({ isPlayerVisible: visible }),
   
   handleNext: () => {
     const { currentSong, songList, audioElement } = get();

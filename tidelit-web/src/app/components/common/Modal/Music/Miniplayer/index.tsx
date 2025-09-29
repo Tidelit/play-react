@@ -1,16 +1,17 @@
-import { FiMaximize, FiMusic, FiPlusSquare, FiShare2 } from "react-icons/fi"
+import { FiMaximize, FiMusic, FiPlusSquare, FiShare2, FiEye, FiEyeOff } from "react-icons/fi"
 import { FiHeart } from "react-icons/fi"
 import { FiShuffle } from "react-icons/fi"
 import { FiSkipBack } from "react-icons/fi"
 import { FiSkipForward } from "react-icons/fi"
 import { FiRepeat } from "react-icons/fi"
 import { FiPlay, FiPause } from "react-icons/fi"
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useMusicStore } from '@/app/store/useMusicStore'
 import Link from "next/link"
 
 export const Miniplayer = () => {
+    const [isVisible, setIsVisible] = useState(true)
     const { 
       currentSong,
       isPlaying,
@@ -68,7 +69,7 @@ export const Miniplayer = () => {
 
     return (
       <>
-        <div className=" w-full h-auto flex flex-col gap-4 p-10">
+        <div className={`w-full h-auto flex flex-col justify-center items-center gap-4 px-10 border border-gray-300 shadow-2xl shadow-gray-300 bg-white transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-30 hover:opacity-50'}`}>
            <div 
              className='w-full flex flex-row relative cursor-pointer group' 
              ref={progressBarRef} 
@@ -98,105 +99,132 @@ export const Miniplayer = () => {
            <div className="w-full h-24 flex justify-center items-center rounded-b-2xl">
              {/* Contenido de la cancion */}
              <div className="w-full h-full flex flex-row gap-2 justify-start items-center">
-               <div className="w-14 h-14 rounded-lg overflow-hidden">
-                 <Image 
-                   src={currentSong.image}
-                   alt='Song Image' 
-                   className="w-full h-full object-cover"
-                   width={100}
-                   height={100}
-                 />
+                <div className="relative w-16 h-16 flex justify-center items-center">
+                  {/* Efecto de fondo */}
+                  <div className={`absolute w-24 h-24 flex justify-center items-center z-10 transition-opacity duration-500 ${
+                    isPlaying ? 'opacity-100' : 'opacity-0'
+                  } ${isPlaying ? 'animate-pulse' : ''}`}>
+                    <Image 
+                      src="/imagenes/Song/Effect.png"
+                      alt="Background Effect"
+                      width={64}
+                      height={64}
+                      className={`w-full h-full drop-shadow-2xl drop-shadow-[#D80DE5] ${
+                        isPlaying ? 'animate-ping' : ''
+                      }`}
+                    />
+                  </div>
+                  
+                  {/* Imagen principal */}
+                  <div className={`absolute w-full h-full rounded-full overflow-hidden border-4 border-white p-1 z-30 ${
+                    isPlaying ? 'animate-spin' : ''
+                  }`}>
+                    <Image 
+                      src={currentSong.image}
+                      alt='Song Image' 
+                      className="w-full h-full object-cover rounded-full"
+                      width={100}
+                      height={100}
+                    />
+                 </div>
                </div>
-               <p className="flex flex-col p-4">
-                 <span className="min-[320px]:text-[10px] xl:text-sm font-bold uppercase">{currentSong.title}</span>
-                 <span className="min-[320px]:hidden xl:flex text-gray-500 ">{currentSong.artist}</span>
+               
+               <p className="flex flex-col justify-center items-start">
+                 <span className="min-[320px]:text-[10px] xl:text-sm font-bold">{currentSong.title}</span>
+                 <span className="text-xs min-[320px]:hidden xl:flex text-gray-500 ">{currentSong.artist}</span>
                </p>
              </div>
 
              {/* Boton de shuffle, skip back, play, skip forward, repeat */}
              <div className='w-full h-auto flex flex-row items-center justify-center gap-2'>
                <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
-                 <FiShuffle className='w-5 h-5' />
+                 <FiShuffle className='w-4 h-4' />
                </button>
                <button 
                  className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
                  onClick={handlePrevious}
                >
-                 <FiSkipBack className='w-5 h-5' />
+                 <FiSkipBack className='w-4 h-4' />
                </button>
                <button 
-                 className='w-14 h-14 transition-colors duration-500 cursor-pointer bg-gradient-to-b from-[#E302E6] via-[#2D49D3] to-[#06D4C9] flex justify-center items-center rounded-full text-white border-2 border-white hover:bg-bg-gradient-to-b hover:from-[#E302E6]/50 hover:via-[#2D49D3]/20 hover:to-[#06D4C9]/20'
+                 className='w-12 h-12 transition-colors duration-500 cursor-pointer bg-gradient-to-b from-[#E302E6] via-[#2D49D3] to-[#06D4C9] flex justify-center items-center rounded-full text-white border-2 border-white hover:bg-bg-gradient-to-b hover:from-[#E302E6]/50 hover:via-[#2D49D3]/20 hover:to-[#06D4C9]/20'
                  onClick={togglePlay}
                >
-                 {isPlaying ? <FiPause className='w-6 h-6' /> : <FiPlay className='w-6 h-6' />}
+                 {isPlaying ? <FiPause className='w-4 h-4' /> : <FiPlay className='w-4 h-4' />}
                </button>
                <button 
                  className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
                  onClick={handleNext}
                >
-                 <FiSkipForward className='w-5 h-5' />
+                 <FiSkipForward className='w-4 h-4' />
                </button>
                <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
-                 <FiRepeat className='w-5 h-5' />
+                 <FiRepeat className='w-4 h-4' />
                </button>
              </div>
 
-          {/* controles de la cancion con botones de play, pause, next, previous */}
-          <div className='w-full h-auto flex flex-row gap-2 items-center justify-end'>
-                      <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
-                      <FiShare2 className='w-4 h-4' />
-                      </button>
-                      <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
-                      <FiHeart className='w-4 h-4' />
-                      </button>
-                      <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
-                      <FiPlusSquare className='w-4 h-4' />
-                      </button>
-                        <div className="w-24 h-auto flex flex-row items-center justify-center gap-2">
-                            <button 
-                              className={`transition-colors duration-500 cursor-pointer ${
-                                volume === 0 
-                                  ? 'text-red-500 hover:text-red-600' 
-                                  : 'hover:text-blue-500'
-                              }`}
-                              onClick={() => setVolume(volume === 0 ? 50 : 0)}
-                            >
-                              <FiMusic className='w-4 h-4' />
-                            </button>
-                            <div 
-                              className="w-20 h-6 flex items-center cursor-pointer group relative"
-                              ref={volumeBarRef}
-                              onClick={(e) => {
-                                if (!volumeBarRef.current) return;
-                                const rect = volumeBarRef.current.getBoundingClientRect();
-                                const x = e.clientX - rect.left;
-                                const width = rect.width;
-                                const percentage = Math.min(Math.max((x / width) * 100, 0), 100);
-                                setVolume(Math.round(percentage));
-                              }}
-                            >
-                              <div className="absolute w-full h-1 bg-white/20 border border-gray-300 rounded-2xl" />
+            {/* controles de la cancion con botones de play, pause, next, previous */}
+            <div className='w-full h-auto flex flex-row gap-2 items-center justify-end'>
+                        <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
+                        <FiShare2 className='w-4 h-4' />
+                        </button>
+                        <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
+                        <FiHeart className='w-4 h-4' />
+                        </button>
+                        <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
+                        <FiPlusSquare className='w-4 h-4' />
+                        </button>
+                          <div className="w-24 h-auto flex flex-row items-center justify-center gap-2">
+                              <button 
+                                className={`transition-colors duration-500 cursor-pointer ${
+                                  volume === 0 
+                                    ? 'text-red-500 hover:text-red-600' 
+                                    : 'hover:text-blue-500'
+                                }`}
+                                onClick={() => setVolume(volume === 0 ? 50 : 0)}
+                              >
+                                <FiMusic className='w-4 h-4' />
+                              </button>
                               <div 
-                                className="absolute h-1 bg-blue-500 rounded-full transition-all"
-                                style={{ width: `${volume}%` }}
-                              />
-                              <div 
-                                className="absolute h-3 w-3 bg-blue-500 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                                style={{ left: `calc(${volume}% - 6px)` }}
-                              />
-                            </div>
-                        </div>
+                                className="w-20 h-6 flex items-center cursor-pointer group relative"
+                                ref={volumeBarRef}
+                                onClick={(e) => {
+                                  if (!volumeBarRef.current) return;
+                                  const rect = volumeBarRef.current.getBoundingClientRect();
+                                  const x = e.clientX - rect.left;
+                                  const width = rect.width;
+                                  const percentage = Math.min(Math.max((x / width) * 100, 0), 100);
+                                  setVolume(Math.round(percentage));
+                                }}
+                              >
+                                <div className="absolute w-full h-1 bg-white/20 border border-gray-300 rounded-2xl" />
+                                <div 
+                                  className="absolute h-1 bg-blue-500 rounded-full transition-all"
+                                  style={{ width: `${volume}%` }}
+                                />
+                                <div 
+                                  className="absolute h-3 w-3 bg-blue-500 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                                  style={{ left: `calc(${volume}% - 6px)` }}
+                                />
+                              </div>
+                          </div>
 
-                       {/* boton de maximizar */}
-                       <Link href='/fullplayer' 
+                        {/* boton de maximizar */}
+                        <button 
                           className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
+                          onClick={() => setIsVisible(!isVisible)}
                         >
-                          <FiMaximize className="w-4 h-4" />
-                          
-                       </Link>
-          </div>
+                          {isVisible ? <FiEyeOff className="w-4 h-4" /> : <FiEye className="w-4 h-4" />}
+                        </button>
 
-          </div>
+                        <Link href='/fullplayer' 
+                            className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
+                        >
+                            <FiMaximize className="w-4 h-4" />
+                        </Link>
+            </div>
+
+           </div>
         </div>
       </>
     )
