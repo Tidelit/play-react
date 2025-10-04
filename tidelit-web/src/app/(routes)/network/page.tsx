@@ -2,66 +2,77 @@
 import { useState } from "react";
 import { FiChevronLeft } from "react-icons/fi";
 import Link from "next/link";
-import PlayListView from "@/app/components/common/Card/Library/PlayListView";
-import CompartidosView from "@/app/components/common/Card/Library/CompartidosView";
-import PodcastView from "@/app/components/common/Card/Library/PodcastView";
-import AlbumesView from "@/app/components/common/Card/Library/AlbumesView";
+import BalanceView from "@/app/components/common/Card/Network/BalanceView";
+import TusmetasView from "@/app/components/common/Card/Network/TusmetasView";
+import TusventasView from "@/app/components/common/Card/Network/TusventasView";
+import LigasView from "@/app/components/common/Card/Network/LigasView";
+import TuslogrosView from "@/app/components/common/Card/Network/TuslogrosView";
 
-function PlaylistContent() {
+
+function BalanceContent() {
     return (
      <>
-        <PlayListView />
+        <BalanceView />
      </>
     );
 }
 
-function CompartidosContent() {
+function TusMetasContent() {
 
     return (
     <>
-        <CompartidosView />
+        <TusmetasView />
     </>
     );
 }
 
-function PodcastContent() {
+function TusVentasContent() {
     return (
     <>
-        <PodcastView />
+        <TusventasView />
     </>
     );
 }
 
-function AlbumesContent() {
+function TusLogrosContent() {
     return (
       <>
-        <AlbumesView />
+        <TuslogrosView />
+      </>
+    );
+}
+
+function LigasContent() {
+    return (
+      <>
+        <LigasView />
       </>
     );
 }
 
 
 
-
 // Componente principal
-export default function Library() {
+export default function Network() {
     const [activeTab, setActiveTab] = useState(0);
     
     // Configuración de las pestañas
     const tabs = [
-        { id: 0, title: "Playlist"},
-        { id: 1, title: "Compartidos" },
-        { id: 2, title: "Podcast"},
-        { id: 3, title: "Albumes"   },
+        { id: 0, title: "Balance"},
+        { id: 1, title: "Tus Metas" },
+        { id: 2, title: "Tus Ventas"},
+        { id: 3, title: "Tus Logros" },
+        { id: 4, title: "Ligas" },
     ];
 
     // Función que determina qué contenido mostrar según la pestaña activa
     const getTabContent = () => {
         switch(activeTab) {
-             case 0: return <PlaylistContent />;
-             case 1: return <CompartidosContent />;
-             case 2: return <PodcastContent />;
-             case 3: return <AlbumesContent />;
+             case 0: return <BalanceContent />;
+             case 1: return <TusMetasContent />;
+             case 2: return <TusVentasContent />;
+             case 3: return <TusLogrosContent />;
+             case 4: return <LigasContent />;
              default: return <div>Selecciona una pestaña</div>;
         }
     };

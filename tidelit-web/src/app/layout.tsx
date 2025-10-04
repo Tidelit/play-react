@@ -30,8 +30,10 @@ export default function RootLayout({
         
         <main className="w-full min-h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/background/fondo.png")' }}>
           
-          {/* Sidebar */}
-          <Sidebar />
+          {/* Sidebar fijo */}
+          <div className="sticky top-0 self-start">
+            <Sidebar />
+          </div>
 
           {/* Contenido */}
           <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200" >

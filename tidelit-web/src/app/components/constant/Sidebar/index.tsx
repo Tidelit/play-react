@@ -15,7 +15,7 @@ const Sidebar = () => {
   const menuItems = [
     { icon: FiHome, text: 'Inicio' },
     { icon: FiArchive, text: 'Biblioteca', href: '/library' },
-    { icon: FiMonitor, text: 'Tu Network' },
+    { icon: FiMonitor, text: 'Tu Network', href: '/network' },
     { icon: FiUser, text: 'Hazte premium' },
     { icon: FiMusic, text: 'Hazte creador' },
     { icon: FiMoon, text: 'Modo oscuro' },
@@ -29,11 +29,11 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-20'} h-full min-h-xl min-[320px]:hidden xl:flex flex-col items-center justify-start transition-all duration-500 ease-in-out overflow-hidden bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200 py-4`}>
+      <div className={`${isOpen ? 'w-80 xl:w-[250px]' : 'w-20'} h-full min-[320px]:hidden xl:flex flex-col items-center transition-all duration-500 ease-in-out overflow-hidden`}>
         
         {/* Header */}
-        <div className="w-full h-full flex flex-row ">
-          <div className='w-20 h-20 flex flex-row justify-center items-center'>
+        <div className="w-full h-auto flex flex-row justify-center items-center p-4">
+          <div className='w-full h-full flex flex-row '>
             <button 
               onClick={toggleSidebar}
               className="w-14 h-14 rounded-full  transition-all duration-500 cursor-pointer flex justify-center items-center"
@@ -48,7 +48,7 @@ const Sidebar = () => {
         </div>
 
         {/* Contenido */}
-        <div className='w-full h-full  flex flex-col justify-between items-center p-4'>
+        <div className='w-full h-full  flex flex-col justify-center items-center p-5'>
           {/* Menú principal */}
           <div className='w-full h-full flex flex-col items-center justify-center'>
             {menuItems.map((item, index) => {
