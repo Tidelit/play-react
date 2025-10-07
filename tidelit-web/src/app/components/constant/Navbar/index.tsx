@@ -102,8 +102,8 @@ const Navbar = () => {
                 <button className="w-auto h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer hover:text-blue-500 transition-colors duration-500">
                     <FiBell className="w-4 h-4"/>
                 </button>
-                <button className="w-12 h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer border rounded-full hover:text-blue-500 transition-colors duration-500">
-                </button>
+                <Link href='/profile' className="w-12 h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer border rounded-full hover:text-blue-500 transition-colors duration-500">
+                </Link>
             </div>
         </div>
 
