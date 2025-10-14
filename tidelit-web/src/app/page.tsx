@@ -47,11 +47,11 @@ export default function Home() {
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
                 {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump"/>
+                    {/* <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump"/>
                     <Song image="/imagenes/Song/Song2.jpg" songName="Mala" artist="Anuel AA - 6ix9nie"/>
                     <Song image="/imagenes/Song/Song1.jpg" songName="Hurt" artist="Oliver Tree"/>
                     <Song image="/imagenes/Song/Song3.jpg" songName="Test 1" artist="Miguel Angel" />
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel"/>
+                    <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel"/> */}
                 </CarouselItem>
               </>
             </CarouselContent>
