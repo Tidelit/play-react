@@ -27,12 +27,12 @@ export default function Login() {
                     <input 
                         type="email"
                         placeholder="Correo electrónico"
-                        className='w-full h-12 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                        className='w-full h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                     />
                     <input 
                         type="password"
                         placeholder="Contraseña"
-                        className='w-full h-12 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                        className='w-full h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                     />
                 </div>
 

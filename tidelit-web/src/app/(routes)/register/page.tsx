@@ -124,14 +124,14 @@ export default function Register() {
                             <input 
                                 type="text"
                                 placeholder={userType === 'creadores' ? "Nombre artístico/seudónimo/comercial" : "Nombres y apellidos"}
-                                className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                                className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                             />
 
                             {userType === 'creadores' && (
                                 <input 
                                     type="text"
                                     placeholder="Nombre de pila"
-                                    className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                                    className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                                 />
                             )}
                         </div>
@@ -139,7 +139,7 @@ export default function Register() {
                         <input 
                             type="email"
                             placeholder="Correo electrónico"
-                            className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                            className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                         />
 
                         <div className="w-full flex flex-row gap-2">
@@ -147,7 +147,7 @@ export default function Register() {
                                 <button
                                     type="button"
                                     onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                                    className='w-20 h-10 px-2 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 flex items-center justify-between'
+                                    className='w-20 h-10 px-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 flex items-center justify-between'
                                 >
                                     <span className="truncate">{selectedCountry.name}</span>
                                     <FiChevronDown className={`transition-transform ${isCountryDropdownOpen ? 'rotate-180' : ''}`} />
@@ -158,7 +158,7 @@ export default function Register() {
                                         {countries.map((country) => (
                                             <button
                                                 key={country.code}
-                                                className="w-full px-4 py-2 text-[10px] text-left hover:bg-gray-100 focus:outline-none"
+                                                className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:outline-none"
                                                 onClick={() => {
                                                     setSelectedCountry(country);
                                                     setIsCountryDropdownOpen(false);
@@ -176,7 +176,7 @@ export default function Register() {
                                     <button
                                         type="button"
                                         onClick={() => setIsCodeDropdownOpen(!isCodeDropdownOpen)}
-                                        className="w-20 h-10 flex items-center justify-between px-2 border border-gray-300 rounded-lg text-[10px] text-gray-600"
+                                        className="w-20 h-10 flex items-center justify-between px-2 border border-gray-300 rounded-lg text-gray-600"
                                     >
                                         <span>{selectedCountry.code}</span>
                                         <FiChevronDown className={`transition-transform ${isCodeDropdownOpen ? 'rotate-180' : ''}`} />
@@ -187,7 +187,7 @@ export default function Register() {
                                             {countries.map((country) => (
                                                 <button
                                                     key={country.code}
-                                                    className="w-full px-4 py-2 text-[10px] text-left hover:bg-gray-100 focus:outline-none"
+                                                    className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:outline-none"
                                                     onClick={() => {
                                                         setSelectedCountry(country);
                                                         setIsCodeDropdownOpen(false);
@@ -202,7 +202,7 @@ export default function Register() {
                                 <input 
                                     type="number"
                                     placeholder="Número de celular"
-                                    className='flex-1 h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                                    className='flex-1 h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                                 />
                             </div>
                         </div>
@@ -212,7 +212,7 @@ export default function Register() {
                                 <button
                                     type="button"
                                     onClick={() => setIsGenderDropdownOpen(!isGenderDropdownOpen)}
-                                    className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 flex items-center justify-between'
+                                    className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 flex items-center justify-between'
                                 >
                                     <span className={selectedGender ? 'text-black' : 'text-gray-400'}>
                                         {selectedGender || 'Género'}
@@ -225,7 +225,7 @@ export default function Register() {
                                         {['Masculino', 'Femenino', 'Otro'].map((gender) => (
                                             <button
                                                 key={gender}
-                                                className="w-full px-4 py-2 text-[10px] text-left hover:bg-gray-100 focus:outline-none"
+                                                className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:outline-none"
                                                 onClick={() => {
                                                     setSelectedGender(gender);
                                                     setIsGenderDropdownOpen(false);
@@ -240,7 +240,7 @@ export default function Register() {
                             <input 
                                 type="number"
                                 placeholder="Edad"
-                                className='flex-1 h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                                className='flex-1 h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                             />
                         </div>
 
@@ -250,7 +250,7 @@ export default function Register() {
                                     <button
                                         type="button"
                                         onClick={() => setIsMusicalGenreDropdownOpen(!isMusicalGenreDropdownOpen)}
-                                        className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 flex items-center justify-between'
+                                        className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 flex items-center justify-between'
                                     >
                                         <span className={selectedMusicalGenre ? 'text-black' : 'text-gray-400'}>
                                             {selectedMusicalGenre || 'Género musical'}
@@ -263,7 +263,7 @@ export default function Register() {
                                             {musicalGenres.map((genre) => (
                                                 <button
                                                     key={genre}
-                                                    className="w-full px-4 py-2 text-[10px] text-left hover:bg-gray-100 focus:outline-none"
+                                                    className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:outline-none"
                                                     onClick={() => {
                                                         setSelectedMusicalGenre(genre);
                                                         setIsMusicalGenreDropdownOpen(false);
@@ -278,7 +278,7 @@ export default function Register() {
                                 <input 
                                     type="text"
                                     placeholder="Subgénero musical"
-                                    className='flex-1 h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                                    className='flex-1 h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                                 />
                             </div>
                         )}
@@ -286,12 +286,12 @@ export default function Register() {
                         <input 
                             type="password"
                             placeholder="Contraseña"
-                            className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                            className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                         />
                         <input 
                             type="password"
                             placeholder="Confirma tu contraseña"
-                            className='w-full h-10 px-4 text-[10px] border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                            className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                         />
                     </div>
 
