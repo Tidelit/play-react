@@ -6,7 +6,7 @@ import axios, {
 
 // configuracion de la API - basado en la app
 const settings = {
-  API_URL: process.env.NEXT_PUBLIC_API_URL || 'https://api.tidelit.co',
+  API_URL: 'https://api.tidelit.co',
 }
 
 const BASIC_AUTH_USERNAME = process.env.NEXT_PUBLIC_BASIC_USERNAME
@@ -73,3 +73,7 @@ const setupAxiosInterceptors = (logout: () => void) => {
 }
 
 export { axiosClient, setupAxiosInterceptors }
+
+// prueba para llamar axios en auth
+export const AXIOS_CLIENT_ID = 'AXIOS_CLIENT_V1';
+console.debug('[AXIOS_CLIENT_LOADED]', AXIOS_CLIENT_ID);

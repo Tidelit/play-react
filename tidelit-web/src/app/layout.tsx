@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ClientMiniplayer } from "./components/common/Modal/Music/ClientMiniplayer";
 import Sidebar from "./components/constant/Sidebar";
 import "./globals.css";
+import ReactQueryProvider from "@/providers/ReactQueryProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,26 +28,25 @@ export default function RootLayout({
   return (
     <html lang="en">
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased `} >
-        
-        <main className="w-full min-h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/background/fondo.png")' }}>
+        <ReactQueryProvider>  
+          <main className="w-full min-h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/background/fondo.png")' }}>
+            
+            {/* Sidebar fijo */}
+            <div className="sticky top-0 self-start">
+              <Sidebar />
+            </div>
+
+            {/* Contenido */}
+            <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200" >
+              {children}
+            </div>
+          </main>
           
-          {/* Sidebar fijo */}
-          <div className="sticky top-0 self-start">
-            <Sidebar />
+          {/* Componente de miniplayer */}
+          <div className="fixed bottom-0 left-0 right-0 z-20 backdrop-blur-2xl  p-4">
+            <ClientMiniplayer />
           </div>
-
-          {/* Contenido */}
-          <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200" >
-            {children}
-          </div>
-        </main>
-        
-        {/* Componente de miniplayer */}
-        <div className="fixed bottom-0 left-0 right-0 z-20 backdrop-blur-2xl  p-4">
-          <ClientMiniplayer />
-        </div>
-
-        
+        </ReactQueryProvider>        
     </body>
     </html>
   );
