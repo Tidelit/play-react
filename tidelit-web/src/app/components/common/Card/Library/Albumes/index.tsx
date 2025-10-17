@@ -1,5 +1,4 @@
 import { FiEdit, FiUser, FiPlus, FiTrash2, FiShare2 } from "react-icons/fi";
-
 interface AlbumesProps {
     name: string;
     text: string;

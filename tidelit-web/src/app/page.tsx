@@ -47,11 +47,11 @@ export default function Home() {
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
                 {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                    {/* <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump"/>
-                    <Song image="/imagenes/Song/Song2.jpg" songName="Mala" artist="Anuel AA - 6ix9nie"/>
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Hurt" artist="Oliver Tree"/>
-                    <Song image="/imagenes/Song/Song3.jpg" songName="Test 1" artist="Miguel Angel" />
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel"/> */}
+                    <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump" songUrl="/Audio/song1.mp3" id={1}/>
+                    <Song image="/imagenes/Song/Song2.jpg" songName="Mala" artist="Anuel AA - 6ix9nie" songUrl="/Audio/song2.mp3" id={2}/>
+                    <Song image="/imagenes/Song/Song1.jpg" songName="Hurt" artist="Oliver Tree" songUrl="/Audio/song1.mp3" id={3}/>
+                    <Song image="/imagenes/Song/Song3.jpg" songName="Test 1" artist="Miguel Angel" songUrl="/Audio/song1.mp3" id={4} />
+                    <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel" songUrl="/Audio/song2.mp3" id={5}/>
                 </CarouselItem>
               </>
             </CarouselContent>
@@ -68,28 +68,28 @@ export default function Home() {
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
                 {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
+                  <TidelitCard image="/imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
+                  <TidelitCard image="/imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
                 </CarouselItem>
               </>
               <>
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
+                  <TidelitCard image="/imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
                 </CarouselItem>
               </>
               <>
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
+                  <TidelitCard image="/imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
+                  <TidelitCard image="/imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
                 </CarouselItem>
               </>
               <>
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
                 </CarouselItem>
               </>
         
@@ -119,28 +119,28 @@ export default function Home() {
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
                 {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
+                  <TidelitCard image="/imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
+                  <TidelitCard image="/imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
                 </CarouselItem>
               </>
               <>
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
+                  <TidelitCard image="/imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
                 </CarouselItem>
               </>
               <>
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
+                  <TidelitCard image="/imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
+                  <TidelitCard image="/imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
                 </CarouselItem>
               </>
               <>
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
+                  <TidelitCard image="/imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
                 </CarouselItem>
               </>
         

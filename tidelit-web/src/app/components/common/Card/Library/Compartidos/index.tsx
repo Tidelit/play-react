@@ -15,7 +15,7 @@ export default function Compartidos({ name, user }: CompartidosProps) {
                     </button>
                     <div className="h-full p-4">
                         <h1 className="text-lg font-semibold">{name}</h1>
-                        <p className="text-xs text-gray-600">Compartido por: {user}</p>
+                        <p className="text-xs text-gray-600">{user}</p>
                     </div>
                 </div>
 
