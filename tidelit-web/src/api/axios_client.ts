@@ -74,6 +74,6 @@ const setupAxiosInterceptors = (logout: () => void) => {
 
 export { axiosClient, setupAxiosInterceptors }
 
-// prueba para llamar axios en auth
+// prueba para llamar axios en auth - se borra despues
 export const AXIOS_CLIENT_ID = 'AXIOS_CLIENT_V1';
 console.debug('[AXIOS_CLIENT_LOADED]', AXIOS_CLIENT_ID);
