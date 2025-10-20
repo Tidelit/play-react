@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { FiChevronDown, FiChevronLeft } from "react-icons/fi";
 import Modal from "../../components/common/Modal/AuthCode";
 import Link from 'next/link';
+import { useRegisterUserMutation, useCreateUserMutation } from '@/services/v1/auth';
+import { CreateUserData, CreateUserCompleteData } from '@/schemes';
 
 // Musical genres data
 const musicalGenres = [
@@ -53,10 +55,33 @@ export default function Register() {
   const [selectedMusicalGenre, setSelectedMusicalGenre] = useState('');
   const [isMusicalGenreDropdownOpen, setIsMusicalGenreDropdownOpen] = useState(false);
   
+  // para forms
+  const [nombres, setNombres] = useState('')
+  const [nombreArtistico, setNombreArtistico] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefono, setTelefono] = useState('')
+  const [edad, setEdad] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [region, setRegion] = useState(selectedCountry.name)
+  const [perfil, setPerfil] = useState<number>(1); // ejemplo: 1 = usuario normal, 2 = creador
+  const [referido, setReferido] = useState<string | undefined>(undefined)
+  const [subgenero, setSubgenero] = useState('')
+  const [generoMusical, setGeneroMusical] = useState('')
+  
+  // Estados para manejo de errores
+  const [validationErrors, setValidationErrors] = useState<string[]>([])
+  const [apiError, setApiError] = useState<string>('')
+  const [isSuccess, setIsSuccess] = useState(false)
+
   const countryDropdownRef = useRef<HTMLDivElement>(null);
   const codeDropdownRef = useRef<HTMLDivElement>(null);
   const genderDropdownRef = useRef<HTMLDivElement>(null);
   const musicalGenreDropdownRef = useRef<HTMLDivElement>(null);
+
+  const { mutate: register, isPending: registering, isError, error } = useRegisterUserMutation()
+  const { mutate: createUser, isPending: creatingUser } = useCreateUserMutation()
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -79,6 +104,116 @@ export default function Register() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Sincronizar region con selectedCountry
+  useEffect(() => {
+    setRegion(selectedCountry.name)
+  }, [selectedCountry])
+
+  const handleRegister = () => {
+    // Limpiar errores previos
+    setValidationErrors([])
+    setApiError('')
+    
+    // validaciones basicas
+    const errors: string[] = []
+    
+    if(!nombres.trim()) {
+        errors.push('El nombre es requerido')
+    }
+    if(!email.trim()) {
+        errors.push('El email es requerido')
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // <-- Expresión regular para validar que sea un email
+        errors.push('El email no es válido')
+    }
+    if(!username.trim()) {
+        errors.push('El username es requerido')
+    }
+    if(!password) {
+        errors.push('La contraseña es requerida')
+    } else if (password.length < 6) {
+        errors.push('La contraseña debe tener al menos 6 caracteres')
+    }
+    if(password !== confirmPassword) {
+        errors.push('Las contraseñas no coinciden')
+    }
+    if(!termsAccepted) {
+        errors.push('Debes aceptar términos y condiciones')
+    }
+
+    if(errors.length > 0) {
+        setValidationErrors(errors)
+        return
+    }
+
+    if (userType === 'usuarios') {
+      // Registro simple para usuarios
+      const payload: CreateUserData = {
+        email: email.trim(),
+        username: username.trim(),
+        password: password,
+        nombres: nombres.trim(),
+        region: region,
+        perfil: 1, // Usuario normal
+        referido: referido?.trim() || undefined,
+      }
+
+      register(payload, {
+        onSuccess: (data) => {
+          console.log('Usuario registrado:', data)
+          setIsSuccess(true)
+          setIsModalOpen(true)
+        },
+        onError: (err: any) => {
+          console.error('Error en register:', err)
+          
+          if (err?.response?.status === 400) {
+            const message = err?.response?.data?.message || 'Datos de entrada inválidos'
+            const errors = err?.response?.data?.errors || []
+            setApiError(message)
+            if (errors.length > 0) {
+              setValidationErrors(errors)
+            }
+          } else if (err?.response?.status === 409) {
+            setApiError(err?.response?.data?.message || 'El email o username ya está registrado')
+          } else if (err?.response?.status >= 500) {
+            setApiError('Error interno del servidor. Intenta nuevamente.')
+          } else {
+            setApiError('Error registrando usuario. Intenta nuevamente.')
+          }
+        }
+      })
+    } else {
+      // Registro completo para creadores
+      const payload: CreateUserCompleteData = {
+        perfil: 2, // Creador
+        nombres: nombres.trim(),
+        email: email.trim(),
+        password: password,
+        pais: region,
+        telefono: telefono.trim(),
+        generos: selectedGender,
+        edad: edad.trim(),
+        usuario: username.trim(),
+        nombre_artistico: nombreArtistico.trim(),
+        genero_musical: selectedMusicalGenre,
+        subgenero: subgenero.trim(),
+        patrocinador: referido?.trim() || undefined,
+      }
+
+      createUser(payload, {
+        onSuccess: (data) => {
+          console.log('Creador registrado:', data)
+          setIsSuccess(true)
+          setIsModalOpen(true)
+        },
+        onError: (err: any) => {
+          console.error('Error en createUser:', err)
+          setApiError('Error registrando creador. Intenta nuevamente.')
+        }
+      })
+    }
+  }
 
   return (
     <>      
@@ -122,6 +257,7 @@ export default function Register() {
                     <div className="w-full h-96 flex flex-col justify-start items-start gap-2">
                         <div className="w-full flex flex-row gap-2">
                             <input 
+                                onChange={(e) => userType === 'creadores' ? setNombreArtistico(e.target.value) : setNombres(e.target.value)}
                                 type="text"
                                 placeholder={userType === 'creadores' ? "Nombre artístico/seudónimo/comercial" : "Nombres y apellidos"}
                                 className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
@@ -129,6 +265,8 @@ export default function Register() {
 
                             {userType === 'creadores' && (
                                 <input 
+                                    value={nombres}
+                                    onChange={(e) => setNombres(e.target.value)}
                                     type="text"
                                     placeholder="Nombre de pila"
                                     className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
@@ -137,8 +275,18 @@ export default function Register() {
                         </div>
 
                         <input 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             type="email"
                             placeholder="Correo electrónico"
+                            className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
+                        />
+
+                        <input 
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            type="text"
+                            placeholder="Username"
                             className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                         />
 
@@ -200,6 +348,8 @@ export default function Register() {
                                     )}
                                 </div>
                                 <input 
+                                    value={telefono}
+                                    onChange={(e) => setTelefono(e.target.value)}
                                     type="number"
                                     placeholder="Número de celular"
                                     className='flex-1 h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
@@ -237,7 +387,9 @@ export default function Register() {
                                     </div>
                                 )}
                             </div>
-                            <input 
+                            <input
+                                value={edad}
+                                onChange={(e) => setEdad(e.target.value)}
                                 type="number"
                                 placeholder="Edad"
                                 className='flex-1 h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
@@ -276,6 +428,8 @@ export default function Register() {
                                     )}
                                 </div>
                                 <input 
+                                    value={subgenero}
+                                    onChange={(e) => setSubgenero(e.target.value)}
                                     type="text"
                                     placeholder="Subgénero musical"
                                     className='flex-1 h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
@@ -284,16 +438,48 @@ export default function Register() {
                         )}
 
                         <input 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             type="password"
                             placeholder="Contraseña"
                             className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                         />
                         <input 
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                             type="password"
                             placeholder="Confirma tu contraseña"
                             className='w-full h-10 px-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500'
                         />
                     </div>
+
+                    {/* Mostrar errores de validación */}
+                    {validationErrors.length > 0 && (
+                        <div className="w-full bg-red-50 border border-red-200 rounded-lg p-3">
+                            <div className="text-red-600 text-sm font-medium mb-1">
+                                Por favor corrige los siguientes errores:
+                            </div>
+                            <ul className="text-red-600 text-sm list-disc list-inside">
+                                {validationErrors.map((error, index) => (
+                                    <li key={index}>{error}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {/* Mostrar error de API */}
+                    {apiError && (
+                        <div className="w-full bg-red-50 border border-red-200 rounded-lg p-3">
+                            <div className="text-red-600 text-sm">{apiError}</div>
+                        </div>
+                    )}
+
+                    {/* Mostrar mensaje de éxito */}
+                    {isSuccess && (
+                        <div className="w-full bg-green-50 border border-green-200 rounded-lg p-3">
+                            <div className="text-green-600 text-sm">¡Usuario registrado exitosamente!</div>
+                        </div>
+                    )}
 
                     {/* Checkbox de términos y condiciones */}
                     <div className="w-full flex items-center ">
@@ -313,15 +499,15 @@ export default function Register() {
                     {/* Botones */}
                     <div className="w-full h-auto flex flex-col justify-center items-center">
                         <button
-                            onClick={() => termsAccepted && setIsModalOpen(true)}
-                            disabled={!termsAccepted}
+                            onClick={handleRegister }
+                            disabled={!termsAccepted || registering || creatingUser}
                             className={`w-full h-12 text-xs font-medium rounded-lg flex justify-center items-center transition-colors duration-300 ${
                                 termsAccepted 
                                 ? 'bg-blue-500 text-white hover:bg-blue-600' 
                                 : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                             }`}
                         >
-                            <span className="uppercase">Continuar</span>
+                            {(registering || creatingUser) ? 'Registrando...' : 'Continuar'}
                         </button>
                     </div>
                 </div>

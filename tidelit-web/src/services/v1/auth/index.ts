@@ -1,5 +1,5 @@
-import { axiosClient, AXIOS_CLIENT_ID } from "../../../api/axios_client";
-import { CreateUserData, LoginData } from "@/schemes";
+import { axiosClient } from "../../../api/axios_client";
+import { CreateUserData, CreateUserCompleteData, LoginData } from "@/schemes";
 import { useMutation } from "@tanstack/react-query";
 
 // login
@@ -14,9 +14,21 @@ const login = async (data: LoginData): Promise<any> => {
   return response.data
 }
 
-// Registro nuevo
+// Registro nuevo (endpoint simple como en React Native)
 const registerUser = async (data: CreateUserData): Promise<any> => {
   const response = await axiosClient.post("/api/register", data)
+  return response.data
+}
+
+// Registro completo (como en React Native para creadores)
+const createUser = async (data: CreateUserCompleteData): Promise<any> => {
+  const payload = {
+    action: 'crear_usuario',
+    ...data
+  }
+  const response = await axiosClient.post('', payload, {
+    headers: { 'Content-Type': 'application/json' }
+  })
   return response.data
 }
 
@@ -62,5 +74,15 @@ export const useRegisterUserMutation = () => {
   })
 }
 
-// prueba
-console.debug('Service using axios:', AXIOS_CLIENT_ID) // <-- verificar que llega el axios
+// mutation de createUser (para creadores)
+export const useCreateUserMutation = () => {
+  return useMutation({
+    mutationFn: createUser,
+    onSuccess: (data) => {
+      console.log("Usuario creado:", data)
+    },
+    onError: (error: any) => {
+      console.error("Error creando usuario:", error)
+    },
+  })
+}
