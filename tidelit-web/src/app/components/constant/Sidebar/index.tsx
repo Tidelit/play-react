@@ -16,7 +16,7 @@ const Sidebar = () => {
     { icon: FiHome, text: 'Inicio' },
     { icon: FiArchive, text: 'Biblioteca', href: '/library' },
     { icon: FiMonitor, text: 'Tu Network', href: '/network' },
-    { icon: FiUser, text: 'Hazte premium' },
+    { icon: FiUser, text: 'Hazte premium', href: '/options' },
     { icon: FiMusic, text: 'Hazte creador' },
     { icon: FiMoon, text: 'Modo oscuro' },
   ];

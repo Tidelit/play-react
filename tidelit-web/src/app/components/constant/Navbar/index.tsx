@@ -1,56 +1,76 @@
 "use client"
 import Link from "next/link";
 import { FiBell, FiDownload, FiSearch, FiX } from "react-icons/fi";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Navbar = () => {
     const pathname = usePathname();
+    const router = useRouter();
     const [isSearchExpanded, setIsSearchExpanded] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [showSearchModal, setShowSearchModal] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    // Función para manejar el cambio de tab con transición
+    const handleTabChange = (path: string) => {
+        if (pathname !== path) {
+            setIsTransitioning(true);
+            setTimeout(() => {
+                router.push(path);
+                setIsTransitioning(false);
+            }, 150);
+        }
+    };
+
+    // Función para renderizar un botón de tab
+    const renderTabButton = (path: string, title: string) => {
+        const isActive = pathname === path;
+        
+        return (
+            <button
+                key={path}
+                onClick={() => handleTabChange(path)}
+                className={`group relative px-6 py-3 flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-all duration-300 rounded-xl border-2 ${
+                    isActive 
+                        ? 'text-white bg-gradient-to-r from-blue-600 to-indigo-600 border-blue-600 shadow-lg shadow-blue-500/25 scale-105' 
+                        : 'text-gray-600 bg-white/70 border-gray-200 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 hover:shadow-md hover:scale-102'
+                }`}
+            >
+                <p className={`text-sm font-medium transition-colors duration-300 ${
+                    isActive ? 'text-white' : 'text-gray-700 group-hover:text-blue-600'
+                }`}>
+                    {title}
+                </p>
+                {isActive && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-white rounded-full animate-scaleIn"></div>
+                )}
+            </button>
+        );
+    };
     return (
         <>
         <div className="w-full h-14  flex flex-row justify-start items-center gap-2 p-10 ">
-            {/* Input de busqueda */}
-            <div className="w-full  flex flex-row items-start justify-start gap-2">
-                <Link 
-                    href="/" 
-                    className={`w-22 h-8 border rounded-full text-xs font-bold flex justify-center items-center transition-colors duration-300 ${
-                        pathname === '/' ? 'bg-blue-500 text-white' : 'hover:bg-blue-50'
-                    }`}
-                >
-                    <p>Todos</p>
-                </Link>
-                <Link 
-                    href="/tidelit" 
-                    className={`w-22 h-8 border rounded-full text-xs font-bold flex justify-center items-center transition-colors duration-300 ${
-                        pathname === '/tidelit' ? 'bg-blue-500 text-white' : 'hover:bg-blue-50'
-                    }`}
-                >
-                    <p>Tidelit</p>
-                </Link>
-                <Link 
-                    href="/mixRadio" 
-                    className={`w-22 h-8 border rounded-full text-xs font-bold flex justify-center items-center transition-colors duration-300 ${
-                        pathname === '/mixRadio' ? 'bg-blue-500 text-white' : 'hover:bg-blue-50'
-                    }`}
-                >
-                    <p>Mix Radio</p>
-                </Link>
+            {/* Tabs de navegación */}
+            <div className="w-full flex flex-row items-start justify-start gap-3">
+                {renderTabButton("/", "Todos")}
+                {renderTabButton("/tidelit", "Tidelit")}
+                {renderTabButton("/mixRadio", "Mix Radio")}
                 {/* Botón/Input de búsqueda expandible */}
-                <div className="relative overflow-hidden">
-                    <div className={`flex items-center gap-2 bg-white border rounded-full shadow-sm transition-all duration-300 ease-in-out ${
+                <div className="relative overflow-hidden ml-auto">
+                    <div className={`group flex items-center gap-2 border-2 rounded-xl shadow-sm transition-all duration-300 ease-in-out ${
                         isSearchExpanded 
-                            ? 'w-[300px] px-3 py-1 opacity-100' 
-                            : 'w-10 h-8 px-0 py-0 opacity-100'
+                            ? 'w-[300px] px-3 py-3 bg-white/70 border-gray-200 hover:bg-blue-50 hover:border-blue-300' 
+                            : 'w-12 h-12 px-0 py-0 bg-white/70 border-gray-200 hover:bg-blue-50 hover:border-blue-300 hover:shadow-md hover:scale-102'
                     }`}>
                         {!isSearchExpanded ? (
                             <button 
-                                className="w-full h-full flex justify-center items-center hover:bg-blue-50 transition-colors duration-300"
+                                className="w-full h-full flex justify-center items-center transition-colors duration-300"
                                 onClick={() => setIsSearchExpanded(true)}
                             >
-                                <FiSearch className="w-4 h-4"/>
+                                <FiSearch className={`w-5 h-5 transition-colors duration-300 ${
+                                    isSearchExpanded ? 'text-blue-600' : 'text-gray-600 group-hover:text-blue-600'
+                                }`}/>
                             </button>
                         ) : (
                             <>
@@ -68,7 +88,7 @@ const Navbar = () => {
                                         }
                                     }}
                                     placeholder="Buscar..."
-                                    className="text-sm outline-none bg-transparent flex-1 min-w-0 transition-all duration-300 animate-in fade-in-0 slide-in-from-left-2"
+                                    className="text-sm outline-none bg-transparent flex-1 min-w-0 transition-all duration-300 animate-in fade-in-0 slide-in-from-left-2 text-gray-700 placeholder-gray-400"
                                     autoFocus
                                     style={{
                                         animationDelay: isSearchExpanded ? '150ms' : '0ms'
@@ -79,7 +99,7 @@ const Navbar = () => {
                                         setIsSearchExpanded(false);
                                         setSearchQuery("");
                                     }}
-                                    className="hover:text-red-500 transition-colors duration-200 animate-in fade-in-0 slide-in-from-right-2"
+                                    className="hover:text-red-500 transition-colors duration-200 animate-in fade-in-0 slide-in-from-right-2 p-1 rounded-lg hover:bg-red-50"
                                     style={{
                                         animationDelay: isSearchExpanded ? '200ms' : '0ms'
                                     }}
@@ -90,7 +110,6 @@ const Navbar = () => {
                         )}
                     </div>
                 </div>
-
             </div>
 
             {/* Opciones de Notificaciones y usuario  */}
@@ -109,7 +128,7 @@ const Navbar = () => {
 
         {/* Modal de búsqueda */}
         {showSearchModal && (
-            <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50" onClick={() => setShowSearchModal(false)}>
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-20" onClick={() => setShowSearchModal(false)}>
                 <div 
                     className="bg-white  rounded-2xl shadow-2xl shadow-white w-full max-w-2xl mx-4 p-6 animate-in fade-in-0 zoom-in-95 duration-200"
                     onClick={(e) => e.stopPropagation()}

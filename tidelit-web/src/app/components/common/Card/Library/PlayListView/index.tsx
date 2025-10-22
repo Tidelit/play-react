@@ -34,7 +34,7 @@ export default function PlayListView() {
     };
     return (
         <>
-           <div className="w-full h-full flex flex-col p-10 gap-10">
+           <div className="w-full h-full flex flex-col p-20 gap-10">
             {/* Artistas :p */}
             <Carousel className="w-full h-full ">
                 <div className="w-full h-20 flex flex-col justify-center items-start">

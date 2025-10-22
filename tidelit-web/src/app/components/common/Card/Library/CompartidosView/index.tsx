@@ -7,10 +7,10 @@ export default function CompartidosView() {
 
     return (
         <>
-        <div className="w-full h-full flex flex-col p-10 gap-10">
+        <div className="w-full h-full flex flex-row p-10 gap-4">
             
             {/* Playlists por defecto de me gusta y favoritos */}
-            <div className="w-full h-full flex flex-col gap-10">
+            <div className="w-full h-full flex flex-col gap-10 p-20">
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">

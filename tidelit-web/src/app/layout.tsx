@@ -4,6 +4,7 @@ import { ClientMiniplayer } from "./components/common/Modal/Music/ClientMiniplay
 import Sidebar from "./components/constant/Sidebar";
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider"
+import { Premium } from "./components/common/Modal/Premium";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,9 @@ export default function RootLayout({
             <div className="sticky top-0 self-start">
               <Sidebar />
             </div>
+            
+            <Premium
+             />
 
             {/* Contenido */}
             <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200" >

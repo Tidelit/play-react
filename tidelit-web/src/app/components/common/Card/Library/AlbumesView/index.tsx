@@ -12,7 +12,7 @@ export default function AlbumesView() {
         <div className="w-full h-full flex flex-col p-10 gap-10">
             
             {/* Playlists por defecto de me gusta y favoritos */}
-            <div className="w-full h-full flex flex-col gap-10">
+            <div className="w-full h-full flex flex-col gap-10 p-20">
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
