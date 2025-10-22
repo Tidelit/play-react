@@ -4,6 +4,17 @@ export type LoginData = {
 }
 
 export type CreateUserData = {
+  email: string;
+  username: string;
+  password: string;
+  nombres: string;
+  region: string;
+  perfil: number;
+  referido?: string;
+}
+
+// Esquema para el registro completo
+export type CreateUserCompleteData = {
   perfil: number;
   nombres: string;
   email: string;
