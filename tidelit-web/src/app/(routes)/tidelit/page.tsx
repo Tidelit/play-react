@@ -39,44 +39,46 @@ export default function Tidelit() {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col">
+      <div className="w-full max-w-7xl h-full flex flex-col p-10">
         {/* Contenido */}
         <Navbar />
 
+        <div className="w-full h-auto p-10">
           <Carousel 
-            className="w-full h-full"
-            opts={{
-              loop: false,
-              align: "start",
-            }}
-            setApi={setApi}
-          >
-            <CarouselContent>
-              <>
-                <CarouselItem>
-                  <TidelitBanner oyentes={88.987} fecha="Abril 15, 2025" />
-                </CarouselItem>
-              </> 
-              <>
-                <CarouselItem>
-                  {/* Banner sin importancia, agregado solo por decoracion, se espera agregar una imagen aca o alguna informacion extra a futuro. */}
-                  <div className="w-full h-96 bg-black/50 backdrop-blur-sm flex flex-col justify-center items-start p-4">
-                     <div className="w-full h-full border-4 border-white flex flex-row justify-start items-center gap-2 p-10">
-                  
-                     </div>
-                  </div>
-                </CarouselItem>
-              </> 
-        
-            </CarouselContent>
+                    className="w-full h-full"
+                    opts={{
+                      loop: false,
+                      align: "start",
+                    }}
+                    setApi={setApi}
+                  >
+                    <CarouselContent>
+                      <>
+                        <CarouselItem>
+                          <TidelitBanner oyentes={88.987} fecha="Abril 15, 2025" />
+                        </CarouselItem>
+                      </> 
+                      <>
+                        <CarouselItem>
+                          {/* Banner sin importancia, agregado solo por decoracion, se espera agregar una imagen aca o alguna informacion extra a futuro. */}
+                          <div className="w-full h-96 bg-black/50 backdrop-blur-sm flex flex-col justify-center items-start p-4">
+                            <div className="w-full h-full border-4 border-white flex flex-row justify-start items-center gap-2 p-10">
+                          
+                            </div>
+                          </div>
+                        </CarouselItem>
+                      </> 
+                
+                    </CarouselContent>
           </Carousel>
+        </div>
      
         {/* Sección del Top 15 */}
         <div className="w-full h-auto flex flex-col justify-start items-start overflow-hidden p-10">
           {/* Texto */}
           <p className="uppercase font-bold text-2xl mb-6">Tidelit top 10</p>
           
-          <Carousel className="w-full h-[32vw] ">
+          <Carousel className="w-full h-auto">
             <CarouselContent>
               <>
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
@@ -85,32 +87,14 @@ export default function Tidelit() {
                   <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
                   <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
                   <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
                   <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
                 </CarouselItem>
               </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
-                </CarouselItem>
-              </>
-        
             </CarouselContent>
           </Carousel>
      
         </div>
+
       </div>  
     </>
   );

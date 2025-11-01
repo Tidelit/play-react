@@ -35,7 +35,7 @@ function AccordionItem({ title }: { title: string }) {
 // Componente para el contenido de Membresía
 function MembershipContent() {
     return (
-        <div className="w-full h-full flex flex-col p-10 gap-8">
+        <div className="w-full max-w-7xl h-full flex flex-col p-10 gap-8">
             {/* Información del usuario */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Historial de Compras y Pedidos</h1>

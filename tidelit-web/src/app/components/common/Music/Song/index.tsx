@@ -16,8 +16,9 @@ export const Song = ({ image, songName, songUrl, artist, id }: SongProps) => {
 
     return (
         <>
+        <div className='w-full flex flex-col'>
             <button 
-                className="relative w-full h-62 rounded-lg cursor-pointer overflow-hidden group"
+                className="relative w-full max-w-80 h-56 rounded-2xl cursor-pointer overflow-hidden group"
                 onClick={() => {
                     setCurrentSong({ id, title: songName, artist, url: songUrl, image });
                     setPlayerVisible(true);
@@ -44,14 +45,16 @@ export const Song = ({ image, songName, songUrl, artist, id }: SongProps) => {
                     </div>
                 </div>
                 
-                {/* Contenido */}
-                <div className="absolute inset-0 w-full h-full p-4 flex flex-col justify-end items-start text-white">
-                    <div className="flex flex-col justify-start items-start">
-                        <h1 className="text-sm font-semibold uppercase">{songName}</h1>
-                        <p className="text-xs text-gray-300">{artist}</p>
-                    </div>
-                </div>
             </button>
+
+            {/* Contenido */}
+            <div className="w-full h-full p-4 flex flex-col justify-end items-start ">
+                <div className="flex flex-col justify-start items-start">
+                    <h1 className="text-xs font-bold uppercase">{songName}</h1>
+                    <p className="text-xs">{artist}</p>
+                </div>
+            </div>
+        </div>
         </>
     )
 }

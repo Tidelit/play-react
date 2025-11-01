@@ -1,11 +1,12 @@
+
 import { FiEdit, FiUser, FiPlus, FiTrash2, FiShare2 } from "react-icons/fi";
 
-interface AlbumesProps {
+interface EmisoraProps {
     name: string;
     text: string;
 }
 
-export default function Albumes({ name, text }: AlbumesProps) {
+export default function Emisora({ name, text }: EmisoraProps) {
     return (
         <>
               <div className="w-full flex flex-row justify-between">
@@ -15,7 +16,7 @@ export default function Albumes({ name, text }: AlbumesProps) {
                     <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                         <div className="w-full h-auto">
                             <h1 className="text-xs font-semibold">{name}</h1>
-                            <p className="text-[10px] text-gray-600">Episodios: {text}</p>
+                            <p className="text-[10px] text-gray-600">Pais: {text}</p>
                         </div>
 
                         <div className="w-full flex flex-row gap-2 ">

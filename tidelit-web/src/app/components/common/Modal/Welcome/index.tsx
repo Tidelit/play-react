@@ -31,8 +31,8 @@ export const Welcome: React.FC<WelcomeProps> = ({ isOpen = true, onClose }) => {
         </button>
         <Image src="/logo/Logo.png" alt="Welcome" width={100} height={100} className="w-40 h-40 object-cover rounded-2xl" />          
         <div className="flex flex-col items-center justify-center">
-          <p className="text-sm">Da el primer paso hacia</p>
-          <p className="text-sm">una experiencia musical única</p>
+          <p className="text-2xl mt-2">Da el primer paso hacia</p>
+          <p className="text-2xl -mt-2">una experiencia musical única</p>
         </div>
         <h1 className="text-4xl font-bold">¡Tidelit te espera!</h1>
         <button className="w-full max-w-xs h-14 bg-gradient-to-r from-[#D80DE5] to-[#06D4C9] via-[#2D49D3] text-white rounded-full uppercase font-bold cursor-pointer hover:bg-blue-600 transition-colors">Empezar</button>

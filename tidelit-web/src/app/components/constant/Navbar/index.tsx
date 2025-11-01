@@ -50,7 +50,7 @@ const Navbar = () => {
     };
     return (
         <>
-        <div className="w-full h-14  flex flex-row justify-start items-center gap-2 p-10 ">
+        <div className="w-full max-w-7xl h-14  flex flex-row justify-start items-center ">
             {/* Tabs de navegación */}
             <div className="w-full flex flex-row items-start justify-start gap-3">
                 {renderTabButton("/", "Todos")}
@@ -114,13 +114,11 @@ const Navbar = () => {
 
             {/* Opciones de Notificaciones y usuario  */}
             <div className="w-auto flex flex-row justify-center items-center gap-2">
-                <button className="w-40 h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer hover:text-blue-500 transition-colors duration-500">
-                    <FiDownload className="w-4 h-4"/>
-                    <p>Descargar App</p>
-                </button>
-                <button className="w-auto h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer hover:text-blue-500 transition-colors duration-500">
+             
+                <button className="w-auto h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer hover:text-blue-500 transition-colors duration-500 p-4">
                     <FiBell className="w-4 h-4"/>
                 </button>
+
                 <Link href='/profile' className="w-12 h-12 text-xs font-medium uppercase flex justify-center items-center gap-2 cursor-pointer border rounded-full hover:text-blue-500 transition-colors duration-500">
                 </Link>
             </div>

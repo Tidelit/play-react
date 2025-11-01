@@ -89,7 +89,7 @@ export const Miniplayer = () => {
 
     return (
       <>
-        <div className={`w-full h-auto flex flex-col justify-center items-center gap-4 px-10 border border-gray-300 shadow-2xl shadow-gray-300 bg-white transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-30 hover:opacity-50'}`}>
+        <div className={`w-full h-auto flex flex-col justify-center items-center gap-4 px-10 rounded-2xl border border-gray-300 shadow-2xl shadow-gray-300 bg-white transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-30 hover:opacity-50'}`}>
            <div 
              className='w-full flex flex-row relative cursor-pointer group' 
              ref={progressBarRef} 

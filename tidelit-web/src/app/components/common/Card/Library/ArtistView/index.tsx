@@ -1,7 +1,5 @@
-
-import Podcast from "../Podcast";
-export default function PodcastView() {
-
+import Artistas from "../Artistas";
+export default function ArtistView() {
     return (
         <>
             <div className="w-full h-full flex flex-row ">
@@ -10,20 +8,15 @@ export default function PodcastView() {
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Historial de Podcast agregados</p>
-                    <h1 className="text-2xl font-bold uppercase">Tus Podcast</h1>
+                    <p className="text-xs">Historial de Artistas agregados</p>
+                    <h1 className="text-2xl font-bold uppercase">Tus Artistas</h1>
                 </div>
                 
                 {/* Grid  */}
                 <div className="w-full flex flex-row gap-2">
                     <div className="w-full h-full flex flex-col gap-2 justify-center items-center">
-                        <Podcast name="La cordada" text="36"/>
-                        <Podcast name="text" text="dad"/>
-                    </div>
-
-                    <div className="w-full h-full flex flex-col gap-2 justify-center items-center">
-                        <Podcast name="text" text="dad"/>
-                        <Podcast name="text" text="dad"/>
+                        <Artistas name="Miguel" text="Colombia"/>
+                        <Artistas name="Miguel" text="Colombia"/>
                     </div>
                 </div>
                 

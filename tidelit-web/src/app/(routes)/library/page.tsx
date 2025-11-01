@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { FiChevronLeft } from "react-icons/fi";
-import Link from "next/link";
 import PlayListView from "@/app/components/common/Card/Library/PlayListView";
 import CompartidosView from "@/app/components/common/Card/Library/CompartidosView";
 import PodcastView from "@/app/components/common/Card/Library/PodcastView";
 import AlbumesView from "@/app/components/common/Card/Library/AlbumesView";
+import EmisoraView from "@/app/components/common/Card/Library/EmisoraView";
+import ArtistView from "@/app/components/common/Card/Library/ArtistView";
 
 function PlaylistContent() {
     return (
@@ -39,6 +39,20 @@ function AlbumesContent() {
       </>
     );
 }
+function EmisoraContent() {
+    return (
+      <>
+        <EmisoraView />
+      </>
+    );
+}
+function ArtistaContent() {
+    return (
+      <>
+        <ArtistView />
+      </>
+    );
+}
 
 
 
@@ -54,6 +68,8 @@ export default function Library() {
         { id: 1, title: "Compartidos" },
         { id: 2, title: "Podcast"},
         { id: 3, title: "Albumes"   },
+        { id: 4, title: "Emisoras"   },
+        { id: 5, title: "Artistas"   },
     ];
 
     // Función que determina qué contenido mostrar según la pestaña activa
@@ -63,6 +79,8 @@ export default function Library() {
              case 1: return <CompartidosContent />;
              case 2: return <PodcastContent />;
              case 3: return <AlbumesContent />;
+             case 4: return <EmisoraContent />;
+             case 5: return <ArtistaContent />;
              default: return <div>Selecciona una pestaña</div>;
         }
     };
@@ -111,16 +129,8 @@ export default function Library() {
             {/* Contenido principal */}
             <div className="w-full h-full flex flex-col">
                     
-                    {/* Barra superior con botón de volver y iconos */}
-                    <div className="w-full h-16 flex flex-row justify-start items-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-sm shadow-sm border-b border-gray-100">
-                        <Link href="/" className="group flex flex-row items-center gap-3 px-4 py-2 rounded-xl hover:bg-blue-50 transition-all duration-300 cursor-pointer">
-                            <FiChevronLeft className='w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300' />
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors duration-300">Volver atrás</p>
-                        </Link>
-                    </div>
-
                     {/* Navegación de pestañas (con texto) */}
-                    <div className="w-full flex flex-row justify-start items-center gap-3 px-8 py-6 bg-white/60 backdrop-blur-sm">
+                    <div className="w-full flex flex-row justify-start items-center gap-2 p-10 bg-white/60 backdrop-blur-sm ">
                         {tabs.map(tab => renderTabButton(tab, true))}
                     </div>
 

@@ -9,7 +9,8 @@ interface TidelitCardProps {
 export const TidelitCard = ({ image, title, artist, position }: TidelitCardProps) => {
     return (
         <>
-           <button className="relative w-full h-62 rounded-lg cursor-pointer overflow-hidden group">
+        <div className="w-full flex flex-col">
+           <button className="relative w-full max-w-80 h-40 rounded-2xl cursor-pointer overflow-hidden group">
                 {/* Imagen de fondo */}
                 <div className="absolute inset-0 w-full h-full">
                     <Image 
@@ -23,15 +24,20 @@ export const TidelitCard = ({ image, title, artist, position }: TidelitCardProps
                 {/* Overlay gradiente */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50  to-transparent" />
                 
-                {/* Contenido */}
-                <div className="relative w-full h-full p-4 flex flex-row justify-between items-end text-white">
-                    <div className="flex flex-col justify-start items-start">
-                        <h1 className="text-sm font-semibold uppercase">{title}</h1>
-                        <p className="text-xs text-gray-300">{artist}</p>
-                    </div>
-                    <p className="text-4xl font-black text-center drop-shadow-md drop-shadow-black">{position}</p>
-                </div>
+            {/* Contenido */}
+            <div className="relative w-full h-full p-4 flex flex-row justify-between items-end text-white">
+                <p className="text-4xl font-black text-center drop-shadow-md drop-shadow-black">{position}</p>
+            </div>
            </button>
+
+            {/* Contenido */}
+            <div className="relative w-full h-full p-4 flex flex-row justify-between items-end ">
+                <div className="flex flex-col justify-start items-start">
+                    <h1 className="text-xs font-bold uppercase">{title}</h1>
+                    <p className="text-xs">{artist}</p>
+                </div>
+            </div>
+        </div>
         </>
     )
 }

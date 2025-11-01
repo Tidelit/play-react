@@ -4,7 +4,6 @@ import { ClientMiniplayer } from "./components/common/Modal/Music/ClientMiniplay
 import Sidebar from "./components/constant/Sidebar";
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider"
-import { Premium } from "./components/common/Modal/Premium";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,20 +27,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={`${geistSans.variable} ${geistMono.variable} antialiased `} >
+    <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center items-center`} >
         <ReactQueryProvider>  
-          <main className="w-full min-h-screen flex flex-row bg-gradient-to-b from-[#D80DE5] to-white p-2 gap-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("/background/fondo.png")' }}>
+          <main className="w-full  min-h-screen flex flex-row justify-center  bg-gradient-to-b from-[#D80DE5] to-white bg-no-repeat bg-cover bg-center p-10 gap-2" style={{ backgroundImage: 'url("/background/fondo.png")' }}>
             
             {/* Sidebar fijo */}
-            <div className="sticky top-0 self-start">
+            <div className="sticky top-0 self-start bg-white/50 rounded-2xl p-4 border border-gray-200">
               <Sidebar />
             </div>
+
+         
             
-            <Premium
-             />
 
             {/* Contenido */}
-            <div className="w-full h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200" >
+            <div className="w-full max-w-7xl h-full flex flex-col justify-between items-center bg-gradient-to-b from-white to-white/50 rounded-2xl border border-gray-200" >
               {children}
             </div>
           </main>
@@ -50,6 +49,8 @@ export default function RootLayout({
           <div className="fixed bottom-0 left-0 right-0 z-20 backdrop-blur-2xl  p-4">
             <ClientMiniplayer />
           </div>
+
+
         </ReactQueryProvider>        
     </body>
     </html>

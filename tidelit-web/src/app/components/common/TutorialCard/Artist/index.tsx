@@ -8,9 +8,7 @@ import React from 'react';
 const ArtistCard = () => {
   return (
     <div className='flex flex-col gap-2 justify-center items-center'>
-        <button 
-          className="w-32 h-32 rounded-full cursor-pointer border-2 border-white shadow-xl "
-        >
+        <button  className="w-24 h-24 rounded-full cursor-pointer border-2 border-white shadow-xl ">
           <Image 
             src="/imagenes/Artist/artis.jpg"
             alt="Artist" 

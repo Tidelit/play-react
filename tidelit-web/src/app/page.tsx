@@ -12,162 +12,108 @@ export default function Home() {
 
   return (
     <>
-    <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full max-w-7xl flex flex-col justify-center items-center">
 
-      <div className="w-full h-full flex flex-col justify-between items-center">
-          <Navbar />
-    
-          {/* Artistas :p */}
-          <Carousel className="w-full h-full ">
-            <CarouselContent>
-              <>
-                <CarouselItem>
-                    {/* Artistas */}
-                    <div className=" h-40  flex flex-row gap-4 justify-center  items-center">
-                        <ArtistCard />
-                        <ArtistCard />
-                        <ArtistCard />
-                        <ArtistCard />
-                        <ArtistCard />
-                        <ArtistCard />
-                    </div>
-                </CarouselItem>
-              </> 
-            </CarouselContent>
-          </Carousel>
-
-          {/* Musica  */}
-          <Carousel className="w-full  p-10 ">
-            <div className="w-full h-20 flex flex-col justify-center items-start">
-              <p className="text-xs">Lo nuevo en la actualidad</p>
-              <h1 className="text-2xl font-bold uppercase">Canciones</h1>
+        <div className="w-full max-w-7xl h-full flex flex-col justify-center items-center p-10">
+            <Navbar />
+      
+            <div className="w-full max-w-7xl h-60 flex justify-center items-center ">
+              {/* Artistas :p */}
+              <Carousel className="w-full max-w-7xl">
+                <CarouselContent>
+                  <>
+                    <CarouselItem>
+                        {/* Artistas */}
+                        <div className="w-full h-40 flex flex-row justify-start  items-center">
+                            <ArtistCard />
+                            <ArtistCard />
+                            <ArtistCard />
+                            <ArtistCard />
+                            <ArtistCard />
+                            <ArtistCard />
+                        </div>
+                    </CarouselItem>
+                  </> 
+                </CarouselContent>
+              </Carousel>
             </div>
-            <CarouselContent>
-              <>
-                {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
-                {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump"/>
-                    <Song image="/imagenes/Song/Song2.jpg" songName="Mala" artist="Anuel AA - 6ix9nie"/>
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Hurt" artist="Oliver Tree"/>
-                    <Song image="/imagenes/Song/Song3.jpg" songName="Test 1" artist="Miguel Angel" />
-                    <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel"/>
-                </CarouselItem>
-              </>
-            </CarouselContent>
-          </Carousel>
 
-          {/* Generos Musicales  */}
-          <Carousel className="w-full  p-10 ">
-            <div className="w-full h-20 flex flex-col justify-center items-start">
-              <p className="text-xs">Lo nuevo en la actualidad</p>
-              <h1 className="text-2xl font-bold uppercase">Generos musicales</h1>
+            <div className="w-full max-w-7xl h-full flex flex-col items-center gap-4">
+                
+                <span className="w-full h-24 flex flex-col justify-end  uppercase">
+                  <p className="text-md ">Escucha</p>
+                  <h1 className="text-xl ">Canciones</h1>
+                </span>
+
+                {/* Musica  */}
+                <Carousel className="w-full">
+                        <CarouselContent>
+                          <>
+                            {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
+                            {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
+                            <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
+                                <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump" songUrl="" id={1} />
+                                <Song image="/imagenes/Song/Song2.jpg" songName="Mala" artist="Anuel AA - 6ix9nie" songUrl="" id={2} />
+                                <Song image="/imagenes/Song/Song1.jpg" songName="Hurt" artist="Oliver Tree" songUrl="" id={3} />
+                                <Song image="/imagenes/Song/Song3.jpg" songName="Test 1" artist="Miguel Angel" songUrl="" id={4} />
+                                <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel" songUrl="" id={5} />
+                            </CarouselItem>
+                          </>
+                        </CarouselContent>
+                </Carousel>
+
+
+                <span className="w-full h-24 flex flex-col justify-end  uppercase">
+                  <p className="text-md">Selecciona tus </p>
+                  <h1 className="text-xl ">Generos musicales</h1>
+                </span>
+
+                {/* Generos musicales  */}
+                <Carousel className="w-full ">
+                        <CarouselContent>
+                          <>
+                            {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
+                            {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
+                            <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center ">
+                              <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
+                              <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
+                              <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
+                              <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
+                              <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={5} />
+                            </CarouselItem>
+                          </>
+                
+                    
+                        </CarouselContent>
+                </Carousel>
+
+                <span className="w-full h-24 flex flex-col justify-end  uppercase">
+                  <p className="text-md">Escucha</p>
+                  <h1 className="text-xl ">Top 10 Emisoras</h1>
+                </span>
+
+                {/* Emisoras  */}
+                <Carousel className="w-full">
+                        <CarouselContent>
+                          <>
+                            {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
+                            {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
+                            <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
+                                <Song image="/imagenes/Song/Song1.jpg" songName="Gucci Gang" artist="Lil Pump" songUrl="" id={1} />
+                                <Song image="/imagenes/Song/Song2.jpg" songName="Mala" artist="Anuel AA - 6ix9nie" songUrl="" id={2} />
+                                <Song image="/imagenes/Song/Song1.jpg" songName="Hurt" artist="Oliver Tree" songUrl="" id={3} />
+                                <Song image="/imagenes/Song/Song3.jpg" songName="Test 1" artist="Miguel Angel" songUrl="" id={4} />
+                                <Song image="/imagenes/Song/Song1.jpg" songName="Test 2" artist="Miguel Angel" songUrl="" id={5} />
+                            </CarouselItem>
+                          </>
+                        </CarouselContent>
+                </Carousel>
             </div>
-            <CarouselContent>
-              <>
-                {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
-                {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
-                </CarouselItem>
-              </>
-        
-            </CarouselContent>
-          </Carousel>
+        </div>
 
-          {/* Nota de Miguel - Banner decorativo, es un ejemplo aun no esta claro si dejarlo o volverlo un componente para reutilizarlo en otras secciones*/}
-          {/* Puedes ignorarlo por ahora  */}
-          <div className="w-full h-full p-10">
-            <div className="relative w-full h-96 flex flex-col justify-center items-center p-4">
-                  {/* Overlay con efecto */}
-                  <div className="absolute inset-0 bg-black/50 backdrop-blur-2xl" />
-                  <div className="relative w-full h-full border-4 border-white flex flex-row justify-between items-center p-20">
-
-                  </div>
-            </div>
-          </div>
-
-          {/* Emisoras  */}
-          <Carousel className="w-full  p-10 ">
-            <div className="w-full h-20 flex flex-col justify-center items-start">
-              <p className="text-xs">Lo nuevo en la actualidad</p>
-              <h1 className="text-2xl font-bold uppercase">TOP 10 EMISORAS RECOMENDADAS</h1>
-            </div>
-            <CarouselContent>
-              <>
-                {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
-                {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={5} />
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={6} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={7} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={8} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={9} />
-                </CarouselItem>
-              </>
-              <>
-                <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={10} />
-                </CarouselItem>
-              </>
-        
-            </CarouselContent>
-          </Carousel>
-
-          {/* Nota de Miguel - Banner decorativo, es un ejemplo aun no esta claro si dejarlo o volverlo un componente para reutilizarlo en otras secciones*/}
-          {/* Puedes ignorarlo por ahora  */}
-          <div className="w-full h-full p-10">
-            <div className="relative w-full h-96 flex flex-col justify-center items-center p-4">
-                  {/* Overlay con efecto */}
-                  <div className="absolute inset-0 bg-black/50 backdrop-blur-2xl" />
-                  <div className="relative w-full h-full border-4 border-white flex flex-row justify-between items-center p-20">
-
-                  </div>
-            </div>
-          </div>
-
+        <Welcome  isOpen={isWelcomeOpen} onClose={() => setIsWelcomeOpen(false)}/>
+          
       </div>
-
-      <Welcome 
-        isOpen={isWelcomeOpen}
-        onClose={() => setIsWelcomeOpen(false)}
-        />
-        
-    </div>
-
     </>
   );
 }

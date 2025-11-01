@@ -1,21 +1,21 @@
 import { FiEdit, FiUser, FiPlus, FiTrash2, FiShare2 } from "react-icons/fi";
 
-interface AlbumesProps {
+interface ArtistasProps {
     name: string;
     text: string;
 }
 
-export default function Albumes({ name, text }: AlbumesProps) {
+export default function Artistas({ name, text }: ArtistasProps) {
     return (
         <>
               <div className="w-full flex flex-row justify-between">
                 <div className="w-full flex flex-row bg-gray-100 p-10">
-                    <button className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-white text-4xl`}></button>
+                    <button className={`w-48 h-40 rounded-full bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-white text-4xl`}></button>
                     
                     <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                         <div className="w-full h-auto">
                             <h1 className="text-xs font-semibold">{name}</h1>
-                            <p className="text-[10px] text-gray-600">Episodios: {text}</p>
+                            <p className="text-[10px] text-gray-600">{text}</p>
                         </div>
 
                         <div className="w-full flex flex-row gap-2 ">
