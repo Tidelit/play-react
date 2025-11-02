@@ -1,9 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import ArtistCard from "../../../TutorialCard/Artist";
-import { FiHeart, FiPlus, FiX } from "react-icons/fi";
-import PlaylistView from "../Playlist";
+import { FiEdit, FiShare2, FiPlus, FiTrash2, FiX } from "react-icons/fi";
 
 interface Playlist {
     id: number;
@@ -34,73 +31,6 @@ export default function PlayListView() {
     };
     return (
         <>
-           <div className="w-full h-full flex flex-col p-20 gap-10">
-            {/* Artistas :p */}
-            <Carousel className="w-full h-full ">
-                <div className="w-full h-20 flex flex-col justify-center items-start">
-                    <p className="text-xs">Tus artistas favoritos</p>
-                    <h1 className="text-2xl font-bold uppercase">Tus Artistas</h1>
-                </div>
-                <CarouselContent>
-                <>
-                    <CarouselItem>
-                        {/* Artistas */}
-                        <div className=" h-full  flex flex-row gap-4 justify-start  items-center ">
-                            <ArtistCard />
-                            <ArtistCard />
-                            <ArtistCard />
-                        </div>
-                    </CarouselItem>
-                </> 
-                </CarouselContent>
-            </Carousel>
-            
-            {/* Playlists por defecto de me gusta y favoritos */}
-            <div className="w-full h-full flex flex-col gap-4">
-                
-                {/* Texto y titulo de las playlists */}
-                <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Tus playlists por defecto</p>
-                    <h1 className="text-2xl font-bold uppercase">Tus Playlists</h1>
-                </div>
-
-                {/* Playlist por default de me gusta y favoritos  */}
-                <div className="w-full flex flex-row gap-2">
-                    {/* Crear Playlist */}
-                    <>
-                        <button className="w-20 h-20 rounded-2xl bg-transparent border flex justify-center items-center text-4xl hover:bg-gray-50 transition-colors duration-200" onClick={() => setShowCreateModal(true)}>
-                            <FiPlus />
-                        </button>
-                    </>
-                    {/* Me gusta */}
-                    <>
-                        <button className="w-20 h-20 rounded-2xl border flex justify-center items-center text-4xl bg-purple-500 transition-colors duration-200 text-white">
-                            <FiHeart />
-                        </button>
-                    </>
-                    {/* Favoritos */}
-                    <>
-                        <button className="w-20 h-20 rounded-2xl border flex justify-center items-center text-4xl bg-blue-500 transition-colors duration-200 text-white">
-                            <FiHeart />
-                        </button>
-                    </>
-                </div>
-
-              
-                <div className="w-full h-full p-10 flex flex-col gap-2">
-                        {/* Renderizar playlists creadas dinámicamente */}
-                        {playlists.map((playlist) => (
-                            <PlaylistView 
-                                key={playlist.id}
-                                name={playlist.name}
-                                description={playlist.description}
-                                image={playlist.image}
-                                imageColor={playlist.imageColor}
-                            />
-                        ))}
-                </div>
-            </div>
-
             {/* Modal para crear playlist */}
             {showCreateModal && (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowCreateModal(false)}>
@@ -163,7 +93,106 @@ export default function PlayListView() {
                     </div>
                 </div>
             )}
-        </div>
+
+            
+            {/* Playlists por defecto de me gusta y favoritos */}
+            <div className="w-full h-full flex flex-col gap-10 px-20">
+                    
+                {/* Texto y titulo de las playlists */}
+                <div className="w-full h-auto  flex flex-col justify-center items-start">
+                        <p className="text-xs">Tus Playlist Favoritas y tus Me gustas</p>
+                        <h1 className="text-2xl font-bold uppercase">Tus Playlist</h1>
+                </div>
+                    
+                {/* Grid con máximo 2 columnas */}
+                <div className="w-full grid grid-cols-2 gap-2">
+                    {/* Favoritos  */}
+                    <div className="w-full flex flex-row bg-gray-100 p-10">
+                        <button className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`}>
+                        </button>
+                        <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
+                            <div className="w-full h-auto">
+                                <h1 className="text-xs font-semibold">Tus Favoritos</h1>
+                                <p className="text-[10px] text-gray-600">Playlist por Defecto</p>
+                            </div>
+
+                            <div className="w-full flex flex-row gap-2 ">
+                                <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <FiEdit />
+                                </button>
+                                <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <FiShare2 />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Me gustas  */}
+                    <div className="w-full flex flex-row bg-gray-100 p-10">
+                        <button className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`}>
+                        </button>
+                        <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
+                            <div className="w-full h-auto">
+                                <h1 className="text-xs font-semibold">Me gustas</h1>
+                                <p className="text-[10px] text-gray-600">Playlist por Defecto</p>
+                            </div>
+
+                            <div className="w-full flex flex-row gap-2 ">
+                                <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <FiEdit />
+                                </button>
+                                <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <FiShare2 />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    {/* Crear Playlist  */}
+                    <div className="w-full flex flex-row bg-gray-100 p-10">
+                        <button className={`w-62 h-40 rounded-2xl border border-blue-500 text-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`} onClick={() => setShowCreateModal(true)}>
+                            <FiPlus />
+                        </button>
+                        <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
+                            <div className="w-full h-auto">
+                                <h1 className="text-xs font-semibold">Playlist</h1>
+                                <p className="text-[10px] text-gray-600">Crea tu Playlist</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Playlists creadas dinámicamente */}
+                    {playlists.map((playlist) => (
+                        <div key={playlist.id} className="w-full flex flex-row bg-gray-100 p-10">
+                            <div className={`w-62 h-40 rounded-2xl ${playlist.imageColor || 'bg-gradient-to-t from-blue-400 to-purple-500'} flex justify-center items-center text-white text-2xl font-bold bg-blue-500`}>
+                                {playlist.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
+                                <div className="w-full h-auto">
+                                    <h1 className="text-xs font-semibold">{playlist.name}</h1>
+                                    <p className="text-[10px] text-gray-600">{playlist.description}</p>
+                                </div>
+
+                                <div className="w-full flex flex-row gap-2 ">
+                                    <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                        <FiEdit />
+                                    </button>
+                                    <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                        <FiShare2 />
+                                    </button>
+                                    <button 
+                                        className="h-full text-xs  hover:text-red-500 transition-colors duration-200 cursor-pointer"
+                                        onClick={() => setPlaylists(playlists.filter(p => p.id !== playlist.id))}
+                                    >
+                                        <FiTrash2 />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+         
         </>
     )
 }
