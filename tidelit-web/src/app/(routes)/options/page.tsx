@@ -347,10 +347,157 @@ function AudioContent() {
             </div>
             
             {/* Contenido completo en una sola vista */}
-            <div className="flex flex-col p-10 gap-20">
+            <div className="w-full h-full flex flex-col p-10 gap-20">
                 
+                {/* SECCIÓN: Audio */}
+                <div className="w-full flex flex-col gap-2">
+                    <span className="w-full flex flex-col">
+                        <h3 className="text-lg font-bold uppercase">Audios</h3>
+                        <h4 className="text-sm ">Calidad de audio</h4>
+                    </span>
+                    
+                    <div className="w-full flex flex-col p-4">
+                        {/* Calidad de audio */}
+                        <div className="flex flex-col gap-4">
+                            
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <span className={`text-xs ${settings.autoQuality ? 'text-blue-600' : 'text-gray-500'}`}>
+                                        Automática
+                                    </span>
+                                    <button
+                                        onClick={() => handleSettingChange('autoQuality', !settings.autoQuality)}
+                                        className={`w-12 h-6 rounded-full transition-colors ${
+                                            settings.autoQuality ? 'bg-blue-500' : 'bg-gray-300'
+                                        }`}
+                                    >
+                                        <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                                            settings.autoQuality ? 'translate-x-6' : 'translate-x-0.5'
+                                        }`} />
+                                    </button>
+                                </div>
+                                
+                                <div className="relative">
+                                    <select 
+                                        value={settings.audioQuality}
+                                        onChange={(e) => handleSettingChange('audioQuality', e.target.value)}
+                                        className="p-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 text-sm"
+                                    >
+                                        <option value="Alta">Alta</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Baja">Baja</option>
+                                    </select>
+                                    <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
+                                </div>
+                            </div>
+                            
+                            <p className="text-xs text-gray-500">
+                                Mejorará cuando estés conectado a una red Wi-Fi
+                            </p>
+                        </div>
+
+                        {/* Ecualizador */}
+                        <div className="flex flex-col gap-4">
+                            <h4 className="text-sm font-medium">Ecualizador</h4>
+                            
+                            {/* Barras del ecualizador */}
+                            <div className="flex items-end gap-2 h-16">
+                                <div className="flex flex-col items-center gap-1">
+                                    <div className="w-4 h-8 bg-gray-400 rounded"></div>
+                                    <span className="text-xs">Bass</span>
+                                </div>
+                                <div className="flex flex-col items-center gap-1">
+                                    <div className="w-4 h-12 bg-gray-400 rounded"></div>
+                                    <span className="text-xs">Mid</span>
+                                </div>
+                                <div className="flex flex-col items-center gap-1">
+                                    <div className="w-4 h-6 bg-gray-400 rounded"></div>
+                                    <span className="text-xs">High</span>
+                                </div>
+                            </div>
+                            
+                            {/* Opciones del ecualizador */}
+                            <div className="flex flex-col gap-3">
+                                {[
+                                    { key: 'defaultEQ', label: 'EQ por defecto' },
+                                    { key: 'explicitContent', label: 'Contenido explícito' },
+                                    { key: 'volumeStabilization', label: 'Estabilizar e igualar volumen de las canciones' }
+                                ].map((option) => (
+                                    <div key={option.key} className="flex items-center justify-between">
+                                        <span className="text-xs">{option.label}</span>
+                                        <button
+                                            onClick={() => handleSettingChange(option.key, !settings[option.key as keyof typeof settings])}
+                                            className={`w-12 h-6 rounded-full transition-colors ${
+                                                settings[option.key as keyof typeof settings] ? 'bg-blue-500' : 'bg-gray-300'
+                                            }`}
+                                        >
+                                            <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                                                settings[option.key as keyof typeof settings] ? 'translate-x-6' : 'translate-x-0.5'
+                                            }`} />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Crossfade */}
+                        <div className="flex flex-col gap-4">
+                            <h4 className="text-sm font-medium">Crossfade</h4>
+                            
+                            <div className="flex items-center justify-between">
+                                <span className={`text-xs ${settings.crossfadeEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
+                                    {settings.crossfadeEnabled ? 'Activo' : 'Inactivo'}
+                                </span>
+                                <button
+                                    onClick={() => handleSettingChange('crossfadeEnabled', !settings.crossfadeEnabled)}
+                                    className={`w-12 h-6 rounded-full transition-colors ${
+                                        settings.crossfadeEnabled ? 'bg-blue-500' : 'bg-gray-300'
+                                    }`}
+                                >
+                                    <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                                        settings.crossfadeEnabled ? 'translate-x-6' : 'translate-x-0.5'
+                                    }`} />
+                                </button>
+                            </div>
+                            
+                         {/* Slider de duración */}
+                         <div className="flex flex-col gap-2">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs text-gray-500">Duración</span>
+                                    <span className="text-xs font-medium text-blue-600">
+                                        {settings.crossfadeDuration === 0 ? 'Inactivo' : `${settings.crossfadeDuration} seg`}
+                                    </span>
+                                </div>
+                                <div className="relative pt-1">
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="10"
+                                        value={settings.crossfadeDuration}
+                                        onChange={(e) => handleSettingChange('crossfadeDuration', parseInt(e.target.value))}
+                                        disabled={!settings.crossfadeEnabled}
+                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                        style={{
+                                            background: settings.crossfadeEnabled 
+                                                ? `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${settings.crossfadeDuration * 10}%, #e5e7eb ${settings.crossfadeDuration * 10}%, #e5e7eb 100%)`
+                                                : '#e5e7eb'
+                                        }}
+                                    />
+                                    <div className="flex justify-between text-xs text-gray-400 mt-1">
+                                        <span>0</span>
+                                        <span>3</span>
+                                        <span>6</span>
+                                        <span>10</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
                 {/* SECCIÓN: Idioma y ubicación */}
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 p-4">
                     
                     {/* Elije tu idioma */}
                     <div className="flex flex-col gap-2">
@@ -394,39 +541,41 @@ function AudioContent() {
                         </p>
                     </div>
 
-                    {/* País */}
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium">País</label>
-                        <div className="relative">
-                            <select 
-                                value={settings.country}
-                                onChange={(e) => handleSettingChange('country', e.target.value)}
-                                className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
-                            >
-                                <option value="Colombia">Colombia</option>
-                                <option value="México">México</option>
-                                <option value="Perú">Perú</option>
-                                <option value="Venezuela">Venezuela</option>
-                            </select>
-                            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                    <div className="w-full flex flex-row justify-between gap-2">
+                        {/* País */}
+                        <div className="w-full flex flex-col gap-2">
+                            <label className="text-sm font-medium">País</label>
+                            <div className="relative">
+                                <select 
+                                    value={settings.country}
+                                    onChange={(e) => handleSettingChange('country', e.target.value)}
+                                    className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
+                                >
+                                    <option value="Colombia">Colombia</option>
+                                    <option value="México">México</option>
+                                    <option value="Perú">Perú</option>
+                                    <option value="Venezuela">Venezuela</option>
+                                </select>
+                                <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Ciudad */}
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium">Ciudad</label>
-                        <div className="relative">
-                            <select 
-                                value={settings.city}
-                                onChange={(e) => handleSettingChange('city', e.target.value)}
-                                className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
-                            >
-                                <option value="Bogotá">Bogotá</option>
-                                <option value="Medellín">Medellín</option>
-                                <option value="Cali">Cali</option>
-                                <option value="Barranquilla">Barranquilla</option>
-                            </select>
-                            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                        {/* Ciudad */}
+                        <div className="w-full flex flex-col gap-2">
+                            <label className="text-sm font-medium">Ciudad</label>
+                            <div className="relative">
+                                <select 
+                                    value={settings.city}
+                                    onChange={(e) => handleSettingChange('city', e.target.value)}
+                                    className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
+                                >
+                                    <option value="Bogotá">Bogotá</option>
+                                    <option value="Medellín">Medellín</option>
+                                    <option value="Cali">Cali</option>
+                                    <option value="Barranquilla">Barranquilla</option>
+                                </select>
+                                <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                            </div>
                         </div>
                     </div>
 
@@ -450,207 +599,74 @@ function AudioContent() {
                 </div>
 
                 {/* SECCIÓN: Dispositivos */}
-                <div className="flex flex-col gap-4">
-                    <h3 className="text-lg font-bold uppercase text-blue-500">Dispositivos</h3>
+                <div className=" w-full h-screen flex flex-col justify-center gap-4">
+                    <span className="w-full  flex flex-col">
+                        <h3 className="text-md font-bold uppercase">Dispositivos</h3>
+                        <h4 className="text-sm ">Dispositivos móviles sincronizados</h4>
+                    </span>
                     
-                    {/* Dispositivos móviles sincronizados */}
-                    <div className="flex flex-col gap-4">
-                        <h4 className="text-sm font-medium">Dispositivos móviles sincronizados</h4>
+                    <div className="w-full h-full flex flex-col gap-4 p-10">
                         
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                <span className={`text-xs ${settings.mobileSyncEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
-                                    Activo
-                                </span>
-                                <button
-                                    onClick={() => handleSettingChange('mobileSyncEnabled', !settings.mobileSyncEnabled)}
-                                    className={`w-12 h-6 rounded-full transition-colors ${
-                                        settings.mobileSyncEnabled ? 'bg-blue-500' : 'bg-gray-300'
-                                    }`}
-                                >
-                                    <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                        settings.mobileSyncEnabled ? 'translate-x-6' : 'translate-x-0.5'
-                                    }`} />
-                                </button>
-                            </div>
-                            
+                        {/* Dispositivos móviles sincronizados */}                            
+                        <div className="flex items-center justify-between">      
                             <div className="relative">
-                                <select 
-                                    value={settings.activeDevice}
-                                    onChange={(e) => handleSettingChange('activeDevice', e.target.value)}
-                                    className="p-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 text-sm"
-                                >
-                                    <option value="I Phone 13 Pro">I Phone 13 Pro</option>
-                                    <option value="Samsung Galaxy S21">Samsung Galaxy S21</option>
-                                    <option value="Google Pixel 6">Google Pixel 6</option>
-                                </select>
-                                <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
+                                    <select 
+                                        value={settings.activeDevice}
+                                        onChange={(e) => handleSettingChange('activeDevice', e.target.value)}
+                                        className="p-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 text-sm"
+                                    >
+                                        <option value="I Phone 13 Pro">I Phone 13 Pro</option>
+                                        <option value="Samsung Galaxy S21">Samsung Galaxy S21</option>
+                                        <option value="Google Pixel 6">Google Pixel 6</option>
+                                    </select>
+                                    <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
                             </div>
-                        </div>
-                        
-                        <p className="text-xs text-gray-500">
-                            Puedes activarlo o desactivarlo sin cerrar sesión
-                        </p>
-                    </div>
 
-                    {/* Conecta un dispositivo */}
-                    <div className="flex flex-col gap-4">
-                        <h4 className="text-sm font-medium">Conecta un dispositivo</h4>
-                        
-                        {/* Gráfico circular */}
-                        <div className="flex justify-center">
-                            <div className="relative w-32 h-32">
-                                {/* Círculos concéntricos */}
-                                <div className="absolute inset-0 rounded-full border-4 border-teal-200"></div>
-                                <div className="absolute inset-2 rounded-full border-4 border-teal-300"></div>
-                                <div className="absolute inset-4 rounded-full border-4 border-teal-400"></div>
-                                <div className="absolute inset-6 rounded-full border-4 border-teal-500"></div>
-                                
-                                {/* Centro con waveform */}
-                                <div className="absolute inset-8 bg-white rounded-full flex items-center justify-center">
-                                    <div className="flex items-center gap-1">
-                                        <div className="w-1 h-3 bg-purple-500"></div>
-                                        <div className="w-1 h-5 bg-blue-500"></div>
-                                        <div className="w-1 h-4 bg-teal-500"></div>
-                                        <div className="w-1 h-6 bg-purple-500"></div>
-                                        <div className="w-1 h-3 bg-blue-500"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="text-center">
-                            <h4 className="font-bold text-sm">¡Enlaza un nuevo dispositivo!</h4>
-                            <p className="text-xs text-gray-500 mt-2">
-                                Sincroniza tu dispositivo con otros dispositivos y reproduce tu música con todos al mismo tiempo creando un efecto envolvente (surround)
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* SECCIÓN: Audio */}
-                <div className="flex flex-col gap-4">
-                    <h3 className="text-lg font-bold uppercase text-blue-500">Audios</h3>
-                    
-                    {/* Calidad de audio */}
-                    <div className="flex flex-col gap-4">
-                        <h4 className="text-sm font-medium">Calidad de audio</h4>
-                        
-                        <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                <span className={`text-xs ${settings.autoQuality ? 'text-blue-600' : 'text-gray-500'}`}>
-                                    Automática
-                                </span>
-                                <button
-                                    onClick={() => handleSettingChange('autoQuality', !settings.autoQuality)}
-                                    className={`w-12 h-6 rounded-full transition-colors ${
-                                        settings.autoQuality ? 'bg-blue-500' : 'bg-gray-300'
-                                    }`}
-                                >
-                                    <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                        settings.autoQuality ? 'translate-x-6' : 'translate-x-0.5'
-                                    }`} />
-                                </button>
-                            </div>
-                            
-                            <div className="relative">
-                                <select 
-                                    value={settings.audioQuality}
-                                    onChange={(e) => handleSettingChange('audioQuality', e.target.value)}
-                                    className="p-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 text-sm"
-                                >
-                                    <option value="Alta">Alta</option>
-                                    <option value="Media">Media</option>
-                                    <option value="Baja">Baja</option>
-                                </select>
-                                <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
-                            </div>
-                        </div>
-                        
-                        <p className="text-xs text-gray-500">
-                            Mejorará cuando estés conectado a una red Wi-Fi
-                        </p>
-                    </div>
-
-                    {/* Ecualizador */}
-                    <div className="flex flex-col gap-4">
-                        <h4 className="text-sm font-medium">Ecualizador</h4>
-                        
-                        {/* Barras del ecualizador */}
-                        <div className="flex items-end gap-2 h-16">
-                            <div className="flex flex-col items-center gap-1">
-                                <div className="w-4 h-8 bg-gray-400 rounded"></div>
-                                <span className="text-xs">Bass</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-1">
-                                <div className="w-4 h-12 bg-gray-400 rounded"></div>
-                                <span className="text-xs">Mid</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-1">
-                                <div className="w-4 h-6 bg-gray-400 rounded"></div>
-                                <span className="text-xs">High</span>
-                            </div>
-                        </div>
-                        
-                        {/* Opciones del ecualizador */}
-                        <div className="flex flex-col gap-3">
-                            {[
-                                { key: 'defaultEQ', label: 'EQ por defecto' },
-                                { key: 'explicitContent', label: 'Contenido explícito' },
-                                { key: 'volumeStabilization', label: 'Estabilizar e igualar volumen de las canciones' }
-                            ].map((option) => (
-                                <div key={option.key} className="flex items-center justify-between">
-                                    <span className="text-xs">{option.label}</span>
+                                    <span className={`text-xs ${settings.mobileSyncEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
+                                        Activo
+                                    </span>
                                     <button
-                                        onClick={() => handleSettingChange(option.key, !settings[option.key as keyof typeof settings])}
+                                        onClick={() => handleSettingChange('mobileSyncEnabled', !settings.mobileSyncEnabled)}
                                         className={`w-12 h-6 rounded-full transition-colors ${
-                                            settings[option.key as keyof typeof settings] ? 'bg-blue-500' : 'bg-gray-300'
+                                            settings.mobileSyncEnabled ? 'bg-blue-500' : 'bg-gray-300'
                                         }`}
                                     >
                                         <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                            settings[option.key as keyof typeof settings] ? 'translate-x-6' : 'translate-x-0.5'
+                                            settings.mobileSyncEnabled ? 'translate-x-6' : 'translate-x-0.5'
                                         }`} />
                                     </button>
-                                </div>
-                            ))}
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Crossfade */}
-                    <div className="flex flex-col gap-4">
-                        <h4 className="text-sm font-medium">Crossfade</h4>
-                        
-                        <div className="flex items-center justify-between">
-                            <span className={`text-xs ${settings.crossfadeEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
-                                {settings.crossfadeEnabled ? 'Activo' : 'Inactivo'}
-                            </span>
-                            <button
-                                onClick={() => handleSettingChange('crossfadeEnabled', !settings.crossfadeEnabled)}
-                                className={`w-12 h-6 rounded-full transition-colors ${
-                                    settings.crossfadeEnabled ? 'bg-blue-500' : 'bg-gray-300'
-                                }`}
-                            >
-                                <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                    settings.crossfadeEnabled ? 'translate-x-6' : 'translate-x-0.5'
-                                }`} />
-                            </button>
-                        </div>
-                        
-                        {/* Slider de duración */}
-                        <div className="flex items-center gap-4">
-                            <span className="text-xs text-gray-500">Inactivo</span>
-                            <div className="flex-1 relative">
-                                <input
-                                    type="range"
-                                    min="0"
-                                    max="10"
-                                    value={settings.crossfadeDuration}
-                                    onChange={(e) => handleSettingChange('crossfadeDuration', parseInt(e.target.value))}
-                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none slider"
-                                />
-                                <div className="flex justify-between text-xs text-gray-500 mt-1">
-                                    <span>3 Seg</span>
-                                    <span>10 Seg</span>
+                            
+                        {/* Conecta un dispositivo */}
+                        <div className="h-full  flex flex-col">
+                            <div className="w-full flex flex-col">
+                                <h4 className="text-sm font-medium">Conecta un dispositivo</h4>
+                                <p className="text-xs text-gray-500">
+                                    Sincroniza tu dispositivo con otros dispositivos y reproduce tu música con todos al mismo tiempo creando un efecto envolvente (surround)
+                                </p>
+                            </div>
+                            
+                            {/* Gráfico circular */}
+                            <div className="w-full h-80 flex justify-center items-center">
+                                <div className="relative w-32 h-32">
+                                    {/* Círculos concéntricos */}
+                                    <div className="absolute inset-0 rounded-full border-4 border-teal-200 animate-pulse"></div>
+                                    <div className="absolute inset-2 rounded-full border-4 border-teal-300 animate-pulse"></div>
+                                    <div className="absolute inset-4 rounded-full border-4 border-teal-400 animate-pulse"></div>
+                                    <div className="absolute inset-6 rounded-full border-4 border-teal-500 animate-pulse"></div>
+                                    
+                                    {/* Centro con waveform */}
+                                    <div className="absolute inset-8 bg-white rounded-full flex items-center justify-center">
+                                        <div className="flex items-center gap-1">
+                                            <div className="w-1 h-3 bg-purple-500"></div>
+                                            <div className="w-1 h-5 bg-blue-500"></div>
+                                            <div className="w-1 h-4 bg-teal-500 animate-pulse"></div>
+                                            <div className="w-1 h-6 bg-purple-500"></div>
+                                            <div className="w-1 h-3 bg-blue-500"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
