@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FiEdit, FiShare2, FiPlus, FiTrash2, FiX } from "react-icons/fi";
+import { FiEdit, FiShare2, FiPlus, FiTrash2 } from "react-icons/fi";
 
 interface Playlist {
     id: number;
@@ -33,25 +33,16 @@ export default function PlayListView() {
         <>
             {/* Modal para crear playlist */}
             {showCreateModal && (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" onClick={() => setShowCreateModal(false)}>
+                <div className="fixed inset-0 flex  z-50" onClick={() => setShowCreateModal(false)}>
                     <div 
-                        className="bg-white rounded-2xl w-full max-w-2xl h-[600px] mx-4 p-6 animate-in fade-in-0 zoom-in-95 duration-200 shadow-2xl shadow-white"
+                        className="bg-white rounded-2xl w-full h-full p-20 animate-in fade-in-0 zoom-in-95 duration-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-xl font-bold text-gray-800">Crear nueva playlist</h2>
-                            <button 
-                                onClick={() => setShowCreateModal(false)}
-                                className="hover:text-red-500 transition-colors duration-200"
-                            >
-                                <FiX className="w-6 h-6"/>
-                            </button>
+                            <h2 className="text-xl font-bold uppercase">Crear nueva playlist</h2>
                         </div>
                         
                         <div className="mb-6">
-                            <label htmlFor="playlist-name" className="block text-sm font-medium text-gray-700 mb-2">
-                                Nombre de la playlist
-                            </label>
                             <input
                                 id="playlist-name"
                                 type="text"
@@ -164,9 +155,10 @@ export default function PlayListView() {
                     {/* Playlists creadas dinámicamente */}
                     {playlists.map((playlist) => (
                         <div key={playlist.id} className="w-full flex flex-row bg-gray-100 p-10">
-                            <div className={`w-62 h-40 rounded-2xl ${playlist.imageColor || 'bg-gradient-to-t from-blue-400 to-purple-500'} flex justify-center items-center text-white text-2xl font-bold bg-blue-500`}>
-                                {playlist.name.charAt(0).toUpperCase()}
-                            </div>
+                                <button className={`w-62 h-40 rounded-2xl ${playlist.imageColor} bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl text-white`}>
+                                    {playlist.name.charAt(0).toUpperCase()}
+                                </button>
+                            
                             <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                                 <div className="w-full h-auto">
                                     <h1 className="text-xs font-semibold">{playlist.name}</h1>

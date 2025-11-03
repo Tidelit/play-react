@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FiChevronLeft, FiUser, FiSettings, FiCreditCard, FiVolume2, FiInfo, FiChevronDown, FiShoppingCart } from "react-icons/fi";
+import { FiChevronLeft, FiUser, FiSettings, FiCreditCard, FiVolume2, FiInfo, FiChevronDown, FiShoppingCart, FiUserPlus } from "react-icons/fi";
 import Link from "next/link";
 
 // Componente separado para los acordeones
@@ -35,7 +35,7 @@ function AccordionItem({ title }: { title: string }) {
 // Componente para el contenido de Membresía
 function MembershipContent() {
     return (
-        <div className="w-full max-w-7xl h-full flex flex-col p-10 gap-8">
+        <div className="w-full max-w-7xl h-full flex flex-col p-20 gap-8">
             {/* Información del usuario */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Historial de Compras y Pedidos</h1>
@@ -68,6 +68,140 @@ function MembershipContent() {
     );
 }
 
+// Componente para el contenido de Hazte Creador
+function CreatorContent() {
+    const [formData, setFormData] = useState({
+        artisticName: "",
+        firstName: "",
+        email: "",
+        musicGenre: "",
+        musicSubgenre: ""
+    });
+    const [acceptTerms, setAcceptTerms] = useState(false);
+
+    const handleInputChange = (key: string, value: string) => {
+        setFormData(prev => ({ ...prev, [key]: value }));
+    };
+
+    return (
+        <div className="w-full max-w-7xl h-full flex flex-col p-20 gap-8 overflow-y-auto">
+            {/* Configuración general */}
+            <div className="w-full flex flex-col">
+                <h1 className="text-xl">Hazte creador</h1>
+                <p className="text-sm">¿Quieres unirte y subir tus canciones y albumes a Tidelit? Unete como Creador</p>
+            </div>
+            
+            {/* Información adicional */}
+            <div className="w-full flex flex-col gap-4 p-6 bg-gray-50 rounded-2xl border-2 border-gray-200">
+                <div className="flex flex-col gap-3">
+                    <AccordionItem title="¿Cuánto puedo ganar como creador?" />
+                    <AccordionItem title="¿Cómo se calculan las regalías?" />
+                    <AccordionItem title="¿Cuándo recibo los pagos?" />
+                    <AccordionItem title="¿Puedo subir cualquier tipo de música?" />
+                </div>
+            </div>
+
+            {/* Configuración general */}
+            <div className="w-full flex flex-col">
+                <h1 className="text-xl">Hazte creador</h1>
+                <p className="text-sm">Llena el Formulario con tus datos de Artista.</p>
+            </div>
+
+            {/* Formulario */}
+            <div className="w-full flex flex-col gap-2 p-10">
+                {/* Nombre artístico/seudónimo/comercial */}
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium">Nombre artístico/seudónimo/comercial</label>
+                    <input
+                        type="text"
+                        value={formData.artisticName}
+                        onChange={(e) => handleInputChange('artisticName', e.target.value)}
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        placeholder="Nombre artístico/seudónimo/comercial"
+                    />
+                </div>
+
+                {/* Nombre de pila */}
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium">Nombre de pila</label>
+                    <input
+                        type="text"
+                        value={formData.firstName}
+                        onChange={(e) => handleInputChange('firstName', e.target.value)}
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        placeholder="Nombre de pila"
+                    />
+                </div>
+
+                {/* Correo electrónico */}
+                <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium">Correo electrónico</label>
+                    <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        placeholder="Correo electrónico"
+                    />
+                </div>
+
+                {/* Género musical y Subgénero musical (lado a lado) */}
+                <div className="flex flex-row gap-4">
+                    <div className="flex-1 flex flex-col gap-2">
+                        <label className="text-sm font-medium">Género musical</label>
+                        <input
+                            type="text"
+                            value={formData.musicGenre}
+                            onChange={(e) => handleInputChange('musicGenre', e.target.value)}
+                            className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Género musical"
+                        />
+                    </div>
+                    <div className="flex-1 flex flex-col gap-2">
+                        <label className="text-sm font-medium">Subgénero musical</label>
+                        <input
+                            type="text"
+                            value={formData.musicSubgenre}
+                            onChange={(e) => handleInputChange('musicSubgenre', e.target.value)}
+                            className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                            placeholder="Subgénero musical"
+                        />
+                    </div>
+                </div>
+
+                {/* Checkbox de términos y condiciones */}
+                <div className="flex items-center gap-2">
+                    <input 
+                        type="checkbox" 
+                        id="acceptTerms" 
+                        checked={acceptTerms}
+                        onChange={(e) => setAcceptTerms(e.target.checked)}
+                        className="w-4 h-4"
+                    />
+                    <label htmlFor="acceptTerms" className="text-sm text-gray-700 cursor-pointer">
+                        Acepto{" "}
+                        <Link href="/" className="underline text-blue-500 hover:text-blue-600">
+                            terminos y condiciones
+                        </Link>
+                    </label>
+                </div>
+
+                {/* Botón Continuar */}
+                <button 
+                    className={`w-full px-6 py-4 text-sm uppercase rounded-xl transition-colors font-medium ${
+                        acceptTerms 
+                            ? 'bg-gray-300 text-gray-700 hover:bg-gray-400' 
+                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                    disabled={!acceptTerms}
+                >
+                    Continuar
+                </button>
+            </div>
+        </div>
+    );
+}
+
 // Componente para el contenido de Información
 function InformationContent() {
     const legalDocuments = [
@@ -80,7 +214,7 @@ function InformationContent() {
     ];
 
     return (
-        <div className="w-full h-full flex flex-col p-10 gap-8">
+        <div className="w-full h-full flex flex-col p-20 gap-8">
             {/* Información de contratos */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Tus Contratos y acuerdos comerciales</h1>
@@ -110,7 +244,7 @@ function OptionsContent() {
     const [confirmPassword, setConfirmPassword] = useState("");
 
     return (
-        <div className="w-full h-full flex flex-col p-10 gap-8">
+        <div className="w-full h-full flex flex-col p-20 gap-8">
             {/* Configuración general */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Cambiar Contraseña</h1>
@@ -200,12 +334,12 @@ function AudioContent() {
         crossfadeDuration: 3
     });
 
-    const handleSettingChange = (key: string, value: any) => {
+    const handleSettingChange = (key: string, value: string | boolean | number) => {
         setSettings(prev => ({ ...prev, [key]: value }));
     };
 
     return (
-        <div className="w-full h-full flex flex-col overflow-y-auto p-10">
+        <div className="w-full h-full flex flex-col overflow-y-auto p-20">
             {/* Configuración general */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Opciones</h1>
@@ -556,7 +690,7 @@ function ProfileContent() {
     };
 
     return (
-        <div className="w-full h-full flex flex-col p-10 gap-8">
+        <div className="w-full h-full flex flex-col p-20 gap-8">
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Información de la cuenta</h1>
                 <p className="text-sm">Gestiona tu información personal</p>
@@ -731,6 +865,7 @@ export default function Options() {
         { id: 0, title: "Membresia", icon: FiCreditCard },
         { id: 1, title: "Información", icon: FiInfo },
         { id: 2, title: "Seguridad", icon: FiSettings },
+        { id: 3, title: "Hazte Creador", icon: FiUserPlus },
         { id: 5, title: "Audio", icon: FiVolume2 },
         { id: 6, title: "Perfil", icon: FiUser }
     ];
@@ -741,6 +876,7 @@ export default function Options() {
              case 0: return <MembershipContent />;
              case 1: return <InformationContent />;
              case 2: return <OptionsContent />;
+             case 3: return <CreatorContent />;
              case 5: return <AudioContent />;
              case 6: return <ProfileContent />;
              default: return <div>Selecciona una pestaña</div>;

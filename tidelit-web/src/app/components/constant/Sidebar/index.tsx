@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FiArchive, FiHome, FiLogOut, FiMenu, FiMonitor, FiMoon, FiMusic, FiSettings, FiUser, FiX } from 'react-icons/fi';
+import { FiArchive, FiHome, FiLogOut, FiMenu, FiMonitor, FiMoon, FiSettings, FiUser, FiX } from 'react-icons/fi';
 import Link from 'next/link';
 
 const Sidebar = () => {
@@ -16,8 +16,7 @@ const Sidebar = () => {
     { icon: FiHome, text: 'Inicio' },
     { icon: FiArchive, text: 'Biblioteca', href: '/library' },
     { icon: FiMonitor, text: 'Tu Network', href: '/network' },
-    { icon: FiUser, text: 'Hazte premium', href: '/options' },
-    { icon: FiMusic, text: 'Hazte creador' },
+    { icon: FiUser, text: 'Perfil', href: '/profile' },
     { icon: FiMoon, text: 'Modo oscuro' },
   ];
 
