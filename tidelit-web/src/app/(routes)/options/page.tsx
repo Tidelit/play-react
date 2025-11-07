@@ -61,7 +61,7 @@ function MembershipContent() {
                 <Link href="/" className="w-full max-w-md h-96 border-0 border-l-2 border-gray-200 bg-gray-50 hover:border-gray-400 transition-colors">
                     <div className="w-full h-full flex flex-col items-center justify-center p-10">
                         <FiShoppingCart className="w-20 h-20 text-gray-400" />               
-                        <p className="text-sm text-gray-600 mt-4">Ver historial</p>
+                        <p className="text-sm text-gray-600 mt-4">Tienda</p>
                     </div>
                 </Link>
             </div>
@@ -181,7 +181,7 @@ function CreatorContent() {
                     />
                     <label htmlFor="acceptTerms" className="text-sm text-gray-700 cursor-pointer font-normal">
                         Acepto{" "}
-                        <Link href="/" className="underline text-gray-900 hover:text-gray-700">
+                        <Link href="https://legal.tidelit.co/terms-conditions/" className="underline text-gray-900 hover:text-gray-700">
                             terminos y condiciones
                         </Link>
                     </label>

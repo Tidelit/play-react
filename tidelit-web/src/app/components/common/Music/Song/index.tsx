@@ -18,7 +18,7 @@ export const Song = ({ image, songName, songUrl, artist, id }: SongProps) => {
         <>
         <div className='w-full flex flex-col'>
             <button 
-                className="relative w-full max-w-80 h-56 rounded-2xl cursor-pointer overflow-hidden group"
+                className="relative w-full max-w-80 h-60 rounded-2xl cursor-pointer overflow-hidden group"
                 onClick={() => {
                     setCurrentSong({ id, title: songName, artist, url: songUrl, image });
                     setPlayerVisible(true);

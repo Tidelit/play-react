@@ -23,7 +23,7 @@ export const MixRadioBannerCountry = ({ country, image }: MixRadioBannerCountryP
                     </div>
                 )}
                 {/* Overlay con efecto */}
-                <div className="absolute inset-0 bg-purple-500/50 backdrop-blur-2xl" />
+                <div className="absolute inset-0 bg-blue-500/50 backdrop-blur-2xl" />
                 <div className="relative w-full h-full border-4 border-white flex flex-row justify-between items-center p-20">
                     {/* Texto */}
                     <div className="w-full h-full flex flex-col justify-center items-start text-white">

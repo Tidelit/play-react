@@ -100,8 +100,8 @@ export default function PlayListView() {
                 <div className="w-full grid grid-cols-2 gap-2">
                     {/* Favoritos  */}
                     <div className="w-full flex flex-row bg-gray-100 p-10">
-                        <button className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`}>
-                        </button>
+                        <Link href='/playlist' className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`}>
+                        </Link>
                         <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                             <div className="w-full h-auto">
                                 <h1 className="text-xs font-semibold">Tus Favoritos</h1>
@@ -121,8 +121,8 @@ export default function PlayListView() {
                     
                     {/* Me gustas  */}
                     <div className="w-full flex flex-row bg-gray-100 p-10">
-                        <button className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`}>
-                        </button>
+                    <Link href='/playlist' className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl`}>
+                    </Link>
                         <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                             <div className="w-full h-auto">
                                 <h1 className="text-xs font-semibold">Me gustas</h1>
@@ -156,9 +156,9 @@ export default function PlayListView() {
                     {/* Playlists creadas dinámicamente */}
                     {playlists.map((playlist) => (
                         <div key={playlist.id} className="w-full flex flex-row bg-gray-100 p-10">
-                                <button className={`w-62 h-40 rounded-2xl ${playlist.imageColor} bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl text-white`}>
+                                <Link href='/playlist' className={`w-62 h-40 rounded-2xl ${playlist.imageColor} bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-4xl text-white`}>
                                     {playlist.name.charAt(0).toUpperCase()}
-                                </button>
+                                </Link>
                             
                             <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                                 <div className="w-full h-auto">

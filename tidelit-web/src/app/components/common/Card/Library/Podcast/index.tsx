@@ -11,7 +11,7 @@ export default function Podcast({ name, text }: PodcastProps) {
         <>
              <div className="w-full flex flex-row justify-between">
                 <div className="w-full flex flex-row bg-gray-100 p-10">
-                    <button className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-white text-4xl`}></button>
+                    <Link href='/playlist' className={`w-62 h-40 rounded-2xl bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-white text-4xl`}></Link>
                     
                     <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                         <div className="w-full h-auto">

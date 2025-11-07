@@ -9,6 +9,8 @@ import {
 import { TidelitCard } from "@/app/components/common/Card/Tidelit/TidelitCard";
 import { MixRadioBannerCountry } from "@/app/components/common/Card/MixRadio/MixRadioBannerCountry";
 import { MixRadioCountry } from "@/app/components/common/Card/MixRadio/MixRadioCountry";
+import Link from "next/link";
+import { FiEye } from "react-icons/fi";
 
 interface CountryData {
   name: string;
@@ -28,11 +30,11 @@ export default function MixRadio() {
 
   return (
     <>
-      <div className="w-full max-w-7xl h-full flex flex-col p-10">
+      <div className="w-full max-w-7xl h-full flex flex-col p-10 gap-4">
         {/* Contenido */}
         <Navbar />
 
-        <div className="w-full max-w-7xl h-auto flex flex-col p-10">
+        <div className="w-full max-w-7xl h-auto flex flex-col">
           <Carousel className="w-full h-full">
                       <CarouselContent>
                         <>
@@ -59,14 +61,12 @@ export default function MixRadio() {
               
           <MixRadioBannerCountry  country={selectedCountry}  image={selectedCountryData?.image}/>
         </div>
-      
   
         {/* Sección del Top 15 */}
-        <div className="w-full max-w-7xl h-auto flex flex-col justify-start items-start overflow-hidden ">
+        <div className="w-full max-w-7xl h-auto flex flex-col justify-start items-start overflow-hidden p-10">
           {/* Texto */}
           <p className="uppercase font-bold text-2xl mb-6">Top 10 emisoras</p>
-          
-          <Carousel className="w-full h-[32vw] ">
+          <Carousel className="w-full h-auto ">
             <CarouselContent>
               <>
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
@@ -81,7 +81,55 @@ export default function MixRadio() {
         
             </CarouselContent>
           </Carousel>
-     
+        </div>
+
+        <div className="w-full flex flex-col gap-4 p-10">
+          {/* Texto */}
+          <div className="w-full h-auto  flex flex-col justify-center items-start">
+                        <p className="text-xs">Las emisoras mas escuchadas del pais</p>
+                        <h1 className="text-2xl font-bold uppercase">Emisoras mas Escuchadas</h1>
+          </div>
+          
+          <div className="w-full h-full flex flex-col items-center gap-2 p-10">
+                            {/* Playlist  */}
+                             <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>1</p>
+                                    <button className="w-20 h-20  bg-white"></button>
+                                    <p className="text-xs ">Playlist</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                                    <p className="text-xs">Visitar</p>
+                                    <FiEye />
+                                </Link>
+                            </div>
+                            {/* Playlist  */}
+                             <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>2</p>
+                                    <button className="w-20 h-20  bg-white"></button>
+                                    <p className="text-xs ">Playlist</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                                    <p className="text-xs">Visitar</p>
+                                    <FiEye />
+                                </Link>
+                            </div>
+                            {/* Playlist  */}
+                             <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>3</p>
+                                    <button className="w-20 h-20  bg-white"></button>
+                                    <p className="text-xs ">Playlist</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                                    <p className="text-xs">Visitar</p>
+                                    <FiEye />
+                                </Link>
+                            </div>
+
+
+          </div>
         </div>
 
 

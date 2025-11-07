@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { useState } from "react";
 
 interface PremiumProps {
@@ -128,9 +129,9 @@ export const Premium: React.FC<PremiumProps> = ({ isOpen = true, onClose }) => {
             />
             <label htmlFor="terms" className="text-gray-600 text-sm">
               Acepto{' '}
-              <span className="underline cursor-pointer hover:text-gray-800">
+              <Link href='https://legal.tidelit.co/terms-conditions/' className="underline cursor-pointer hover:text-gray-800">
                 terminos y condiciones
-              </span>
+              </Link>
             </label>
           </div>
           

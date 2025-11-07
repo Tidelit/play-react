@@ -66,24 +66,35 @@ export default function Profile() {
 
                         <div className="w-full h-full flex flex-col items-center gap-2 p-10">
                             {/* Artistas  */}
-                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4">
+                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
                                 <div className="flex flex-row items-center gap-4">
                                     <p>1</p>
-                                    <button className="w-20 h-20 border  rounded-full"></button>
-                                    <p className="text-xs">Artista</p>
+                                    <button className="w-20 h-20 rounded-full bg-white"></button>
+                                    <p className="text-xs ">Artista</p>
                                 </div>
                                 <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
                                     <p className="text-xs">Visitar</p>
                                     <FiEye />
                                 </Link>
                             </div>
-
                             {/* Artistas  */}
-                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4">
+                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
                                 <div className="flex flex-row items-center gap-4">
                                     <p>2</p>
-                                    <button className="w-20 h-20 border  rounded-full"></button>
-                                    <p className="text-xs">Artista</p>
+                                    <button className="w-20 h-20 rounded-full bg-white"></button>
+                                    <p className="text-xs ">Artista</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                                    <p className="text-xs">Visitar</p>
+                                    <FiEye />
+                                </Link>
+                            </div>
+                            {/* Artistas  */}
+                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>3</p>
+                                    <button className="w-20 h-20 rounded-full bg-white"></button>
+                                    <p className="text-xs ">Artista</p>
                                 </div>
                                 <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
                                     <p className="text-xs">Visitar</p>
@@ -91,18 +102,6 @@ export default function Profile() {
                                 </Link>
                             </div>
 
-                            {/* Artistas  */}
-                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4">
-                                <div className="flex flex-row items-center gap-4">
-                                    <p>3</p>
-                                    <button className="w-20 h-20 border  rounded-full"></button>
-                                    <p className="text-xs">Artista</p>
-                                </div>
-                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
-                                    <p className="text-xs">Visitar</p>
-                                    <FiEye />
-                                </Link>
-                            </div>
                         </div>
                     </div>
                 
@@ -117,43 +116,42 @@ export default function Profile() {
                             
                         <div className="w-full h-full flex flex-col items-center gap-2 p-10">
                             {/* Playlist  */}
-                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4">
-                                    <div className="flex flex-row items-center gap-4">
-                                        <p>1</p>
-                                        <button className="w-20 h-20 border"></button>
-                                        <p className="text-xs">Playlist Name</p>
-                                    </div>
-                                    <Link href='/library' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                             <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>1</p>
+                                    <button className="w-20 h-20  bg-white"></button>
+                                    <p className="text-xs ">Playlist</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                                    <p className="text-xs">Visitar</p>
+                                    <FiEye />
+                                </Link>
+                            </div>
+                            {/* Playlist  */}
+                             <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>2</p>
+                                    <button className="w-20 h-20  bg-white"></button>
+                                    <p className="text-xs ">Playlist</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
+                                    <p className="text-xs">Visitar</p>
+                                    <FiEye />
+                                </Link>
+                            </div>
+                            {/* Playlist  */}
+                             <div className="w-full h-24 border flex flex-row items-center justify-between p-4 bg-blue-800/40 text-white">
+                                <div className="flex flex-row items-center gap-4">
+                                    <p>3</p>
+                                    <button className="w-20 h-20  bg-white"></button>
+                                    <p className="text-xs ">Playlist</p>
+                                </div>
+                                <Link href='/profile/artist' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
                                     <p className="text-xs">Visitar</p>
                                     <FiEye />
                                 </Link>
                             </div>
 
-                            {/* Playlist  */}
-                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4">
-                                    <div className="flex flex-row items-center gap-4">
-                                        <p>2</p>
-                                        <button className="w-20 h-20 border"></button>
-                                        <p className="text-xs">Playlist Name</p>
-                                    </div>
-                                    <Link href='/library' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
-                                    <p className="text-xs">Visitar</p>
-                                    <FiEye />
-                                </Link>
-                            </div>
-
-                            {/* Playlist  */}
-                            <div className="w-full h-24 border flex flex-row items-center justify-between p-4">
-                                    <div className="flex flex-row items-center gap-4">
-                                        <p>3</p>
-                                        <button className="w-20 h-20 border"></button>
-                                        <p className="text-xs">Playlist Name</p>
-                                    </div>
-                                    <Link href='/library' className="flex flex-row gap-2 cursor-pointer transition-all duration-300 hover:text-blue-500">
-                                    <p className="text-xs">Visitar</p>
-                                    <FiEye />
-                                </Link>
-                            </div>
 
                         </div>
                     </div>
