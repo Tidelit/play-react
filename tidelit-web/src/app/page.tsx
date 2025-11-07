@@ -38,7 +38,7 @@ export default function Home() {
               </Carousel>
             </div>
 
-            <div className="w-full max-w-7xl h-full flex flex-col items-center gap-4">
+            <div className="w-full max-w-7xl h-full flex flex-col items-center gap-4 px-20">
                 
                 <span className="w-full h-24 flex flex-col justify-end  uppercase">
                   <p className="text-md ">Escucha</p>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FiEdit, FiUser, FiPlus, FiTrash2, FiShare2 } from "react-icons/fi";
 
 interface ArtistasProps {
@@ -10,7 +11,7 @@ export default function Artistas({ name, text }: ArtistasProps) {
         <>
               <div className="w-full flex flex-row justify-between">
                 <div className="w-full flex flex-row bg-gray-100 p-10">
-                    <button className={`w-48 h-40 rounded-full bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-white text-4xl`}></button>
+                    <Link href='/profile/artist' className={`w-48 h-40 rounded-full bg-blue-500 flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-blue-500/50 text-white text-4xl`}></Link>
                     
                     <div className="w-full flex flex-col justify-center items-center p-10 gap-4">
                         <div className="w-full h-auto">
@@ -28,13 +29,12 @@ export default function Artistas({ name, text }: ArtistasProps) {
                         <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
                             <FiEdit />
                         </button>
-                        <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                        <Link href='/profile/artist' className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer flex justify-center items-center">
                             <FiUser />
-                        </button>
-                        <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                        </Link>
+                        <Link href='/share' className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer flex justify-center items-center">
                             <FiShare2 />
-                        </button>
-                        
+                        </Link>
                         </div>
                     </div>
                 </div>

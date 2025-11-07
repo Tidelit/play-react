@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FiEdit, FiUser, FiPlus, FiTrash2, FiShare2 } from "react-icons/fi";
 
 interface PodcastProps {
@@ -31,10 +32,9 @@ export default function Podcast({ name, text }: PodcastProps) {
                         <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
                             <FiUser />
                         </button>
-                        <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                        <Link href='/share' className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer flex justify-center items-center">
                             <FiShare2 />
-                        </button>
-                        
+                        </Link>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { FiEdit, FiShare2, FiPlus, FiTrash2 } from "react-icons/fi";
 
@@ -111,9 +112,9 @@ export default function PlayListView() {
                                 <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
                                     <FiEdit />
                                 </button>
-                                <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
-                                    <FiShare2 />
-                                </button>
+                                <Link href='/share' className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer flex justify-center items-center">
+                                        <FiShare2 />
+                                    </Link>
                             </div>
                         </div>
                     </div>
@@ -132,9 +133,9 @@ export default function PlayListView() {
                                 <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
                                     <FiEdit />
                                 </button>
-                                <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
-                                    <FiShare2 />
-                                </button>
+                                <Link href='/share' className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer flex justify-center items-center">
+                                        <FiShare2 />
+                                    </Link>
                             </div>
                         </div>
                     </div>
@@ -169,9 +170,9 @@ export default function PlayListView() {
                                     <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
                                         <FiEdit />
                                     </button>
-                                    <button className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <Link href='/share' className="h-full text-xs  hover:text-blue-500 transition-colors duration-200 cursor-pointer flex justify-center items-center">
                                         <FiShare2 />
-                                    </button>
+                                    </Link>
                                     <button 
                                         className="h-full text-xs  hover:text-red-500 transition-colors duration-200 cursor-pointer"
                                         onClick={() => setPlaylists(playlists.filter(p => p.id !== playlist.id))}

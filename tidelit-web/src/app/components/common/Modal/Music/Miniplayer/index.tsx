@@ -5,7 +5,6 @@ import { FiSkipBack } from "react-icons/fi"
 import { FiSkipForward } from "react-icons/fi"
 import { FiRepeat } from "react-icons/fi"
 import { FiPlay, FiPause } from "react-icons/fi"
-import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiLinkedin } from "react-icons/fi"
 import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useMusicStore } from '@/app/store/useMusicStore'
@@ -13,7 +12,6 @@ import Link from "next/link"
 
 export const Miniplayer = () => {
     const [isVisible, setIsVisible] = useState(true)
-    const [showShareMenu, setShowShareMenu] = useState(false)
     const { 
       currentSong,
       isPlaying,
@@ -33,7 +31,6 @@ export const Miniplayer = () => {
     
     const progressBarRef = useRef<HTMLDivElement>(null)
     const volumeBarRef = useRef<HTMLDivElement>(null)
-    const shareMenuRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
       if (!audioElement) {
@@ -68,24 +65,6 @@ export const Miniplayer = () => {
         audioElement.removeEventListener('ended', handleEnded);
       };
     }, [audioElement, setProgress, setDuration, handleNext]);
-
-    // Cerrar menú de compartir al hacer clic fuera
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (shareMenuRef.current && !shareMenuRef.current.contains(event.target as Node)) {
-          setShowShareMenu(false);
-        }
-      };
-
-      if (showShareMenu) {
-        document.addEventListener('mousedown', handleClickOutside);
-      }
-
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [showShareMenu]);
-
 
     return (
       <>
@@ -184,49 +163,13 @@ export const Miniplayer = () => {
              </div>
 
             {/* controles de la cancion con botones de play, pause, next, previous */}
-            <div className='w-full h-auto flex flex-row gap-2 items-center justify-end relative' ref={shareMenuRef}>
-                        <button 
-                          className="hover:text-blue-500 transition-colors duration-500 cursor-pointer relative"
-                          onClick={() => setShowShareMenu(!showShareMenu)}
+            <div className='w-full h-auto flex flex-row gap-2 items-center justify-end relative'>
+                        <Link 
+                          href="/share"
+                          className="hover:text-blue-500 transition-colors duration-500 cursor-pointer"
                         >
-                        <FiShare2 className='w-4 h-4' />
-                        
-                        {/* Menú de redes sociales */}
-                        {showShareMenu && (
-                          <div className="absolute bottom-full right-0 mb-2 bg-white border border-gray-200 rounded-lg shadow-lg p-3 flex flex-row gap-3 z-50 animate-in slide-in-from-bottom-2 duration-200">
-                            <button 
-                              className="hover:text-blue-600 transition-colors duration-200 p-2 hover:bg-blue-50 rounded-full"
-                              title="Facebook"
-                            >
-                              <FiFacebook className='w-5 h-5 text-blue-600' />
-                            </button>
-                            <button 
-                              className="hover:text-blue-400 transition-colors duration-200 p-2 hover:bg-blue-50 rounded-full"
-                              title="Twitter"
-                            >
-                              <FiTwitter className='w-5 h-5 text-blue-400' />
-                            </button>
-                            <button 
-                              className="hover:text-pink-500 transition-colors duration-200 p-2 hover:bg-pink-50 rounded-full"
-                              title="Instagram"
-                            >
-                              <FiInstagram className='w-5 h-5 text-pink-500' />
-                            </button>
-                            <button 
-                              className="hover:text-red-600 transition-colors duration-200 p-2 hover:bg-red-50 rounded-full"
-                              title="YouTube"
-                            >
-                              <FiYoutube className='w-5 h-5 text-red-600' />
-                            </button>
-                            <button 
-                              className="hover:text-blue-700 transition-colors duration-200 p-2 hover:bg-blue-50 rounded-full"
-                              title="LinkedIn"
-                            >
-                              <FiLinkedin className='w-5 h-5 text-blue-700' />
-                            </button>
-                          </div>
-                        )}
-                        </button>
+                          <FiShare2 className='w-4 h-4' />
+                        </Link>
                         <button className="hover:text-blue-500 transition-colors duration-500 cursor-pointer">
                         <FiHeart className='w-4 h-4' />
                         </button>

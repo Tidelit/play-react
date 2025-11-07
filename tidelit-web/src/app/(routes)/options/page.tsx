@@ -8,21 +8,21 @@ function AccordionItem({ title }: { title: string }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="w-full border-2 border-white bg-white/50 shadow-md rounded-2xl overflow-hidden">
+        <div className="w-full border-0 border-b border-gray-200 overflow-hidden">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex flex-row items-center justify-between p-4 transition-colors duration-300"
+                className="w-full flex flex-row items-center justify-between py-4 transition-colors duration-300 hover:text-gray-900"
             >
-                <span className="text-xs uppercase">{title}</span>
+                <span className="text-sm text-gray-700 font-normal">{title}</span>
                 <FiChevronDown 
-                    className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'transform rotate-180' : ''}`}
+                    className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isOpen ? 'transform rotate-180' : ''}`}
                 />
             </button>
             {isOpen && (
-                <div className="p-4 border-t">
+                <div className="pb-4">
                     <Link 
                         href="/" 
-                        className="text-blue-500 hover:text-blue-600 text-sm flex items-center gap-2"
+                        className="text-sm text-gray-700 hover:text-gray-900 transition-colors font-normal underline"
                     >
                         Leer aquí
                     </Link>
@@ -39,28 +39,29 @@ function MembershipContent() {
             {/* Información del usuario */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Historial de Compras y Pedidos</h1>
-                <p className="text-sm">
-                    Actualmente tienes el Plan: <span className="text-blue-500 font-bold">Premium</span>
+                <p className="text-sm text-gray-600">
+                    Actualmente tienes el Plan: <span className="text-gray-900 font-medium">Premium</span>
                 </p>
             </div>
              
             {/* Tarjetas de planes */}
-            <div className="w-full h-full flex flex-row items-start justify-center gap-2 p-10">
+            <div className="w-full h-full flex flex-row items-start justify-center gap-6 p-10">
                 {/* Plan actual */}
-                <div className="w-full max-w-4xl h-96 border-2 border-white shadow-md rounded-2xl bg-gradient-to-r from-[#D80DE5] to-[#29B4CE] via-[#2D49D3]">
+                <div className="w-full max-w-4xl h-96 border-0 border-l-2 border-gray-900 bg-gray-50">
                     <div className="w-full h-full flex flex-col items-start justify-end p-10">
-                        <p className="text-xs font-bold text-white uppercase">Membresia Actual</p>
-                        <div className="w-full flex flex-row items-end justify-between text-white">
-                            <h1 className="text-6xl font-black uppercase">tidelit <br /> Premium</h1>
-                            <p className="text-xs">9/09/2024 - 9/09/2025</p>
+                        <p className="text-xs text-gray-500 uppercase mb-2">Membresia Actual</p>
+                        <div className="w-full flex flex-row items-end justify-between">
+                            <h1 className="text-5xl font-light text-gray-900">tidelit <br /> Premium</h1>
+                            <p className="text-sm text-gray-500">9/09/2024 - 9/09/2025</p>
                         </div>
                     </div>
                 </div>
                 
                 {/* Planes anteriores */}
-                <Link href="/" className="w-full max-w-md h-96 border-2 shadow-md rounded-2xl border-[#29B4CE] text-[#29B4CE] bg-white/50">
+                <Link href="/" className="w-full max-w-md h-96 border-0 border-l-2 border-gray-200 bg-gray-50 hover:border-gray-400 transition-colors">
                     <div className="w-full h-full flex flex-col items-center justify-center p-10">
-                    <FiShoppingCart className="w-40 h-40 " />               
+                        <FiShoppingCart className="w-20 h-20 text-gray-400" />               
+                        <p className="text-sm text-gray-600 mt-4">Ver historial</p>
                     </div>
                 </Link>
             </div>
@@ -92,8 +93,8 @@ function CreatorContent() {
             </div>
             
             {/* Información adicional */}
-            <div className="w-full flex flex-col gap-4 p-6 bg-gray-50 rounded-2xl border-2 border-gray-200">
-                <div className="flex flex-col gap-3">
+            <div className="w-full flex flex-col gap-0 p-0">
+                <div className="flex flex-col">
                     <AccordionItem title="¿Cuánto puedo ganar como creador?" />
                     <AccordionItem title="¿Cómo se calculan las regalías?" />
                     <AccordionItem title="¿Cuándo recibo los pagos?" />
@@ -108,79 +109,79 @@ function CreatorContent() {
             </div>
 
             {/* Formulario */}
-            <div className="w-full flex flex-col gap-2 p-10">
+            <div className="w-full flex flex-col gap-8 p-10">
                 {/* Nombre artístico/seudónimo/comercial */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Nombre artístico/seudónimo/comercial</label>
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-sm text-gray-700 font-normal">Nombre artístico/seudónimo/comercial</label>
                     <input
                         type="text"
                         value={formData.artisticName}
                         onChange={(e) => handleInputChange('artisticName', e.target.value)}
-                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
                         placeholder="Nombre artístico/seudónimo/comercial"
                     />
                 </div>
 
                 {/* Nombre de pila */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Nombre de pila</label>
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-sm text-gray-700 font-normal">Nombre de pila</label>
                     <input
                         type="text"
                         value={formData.firstName}
                         onChange={(e) => handleInputChange('firstName', e.target.value)}
-                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
                         placeholder="Nombre de pila"
                     />
                 </div>
 
                 {/* Correo electrónico */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Correo electrónico</label>
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-sm text-gray-700 font-normal">Correo electrónico</label>
                     <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
                         placeholder="Correo electrónico"
                     />
                 </div>
 
                 {/* Género musical y Subgénero musical (lado a lado) */}
-                <div className="flex flex-row gap-4">
-                    <div className="flex-1 flex flex-col gap-2">
-                        <label className="text-sm font-medium">Género musical</label>
+                <div className="flex flex-row gap-6">
+                    <div className="flex-1 flex flex-col gap-1.5">
+                        <label className="text-sm text-gray-700 font-normal">Género musical</label>
                         <input
                             type="text"
                             value={formData.musicGenre}
                             onChange={(e) => handleInputChange('musicGenre', e.target.value)}
-                            className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                            className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
                             placeholder="Género musical"
                         />
                     </div>
-                    <div className="flex-1 flex flex-col gap-2">
-                        <label className="text-sm font-medium">Subgénero musical</label>
+                    <div className="flex-1 flex flex-col gap-1.5">
+                        <label className="text-sm text-gray-700 font-normal">Subgénero musical</label>
                         <input
                             type="text"
                             value={formData.musicSubgenre}
                             onChange={(e) => handleInputChange('musicSubgenre', e.target.value)}
-                            className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                            className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
                             placeholder="Subgénero musical"
                         />
                     </div>
                 </div>
 
                 {/* Checkbox de términos y condiciones */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3 pt-2">
                     <input 
                         type="checkbox" 
                         id="acceptTerms" 
                         checked={acceptTerms}
                         onChange={(e) => setAcceptTerms(e.target.checked)}
-                        className="w-4 h-4"
+                        className="w-4 h-4 border-gray-300 rounded-sm text-gray-900 focus:ring-0"
                     />
-                    <label htmlFor="acceptTerms" className="text-sm text-gray-700 cursor-pointer">
+                    <label htmlFor="acceptTerms" className="text-sm text-gray-700 cursor-pointer font-normal">
                         Acepto{" "}
-                        <Link href="/" className="underline text-blue-500 hover:text-blue-600">
+                        <Link href="/" className="underline text-gray-900 hover:text-gray-700">
                             terminos y condiciones
                         </Link>
                     </label>
@@ -188,10 +189,10 @@ function CreatorContent() {
 
                 {/* Botón Continuar */}
                 <button 
-                    className={`w-full px-6 py-4 text-sm uppercase rounded-xl transition-colors font-medium ${
+                    className={`w-full px-8 py-3 text-sm transition-colors font-normal mt-4 ${
                         acceptTerms 
-                            ? 'bg-gray-300 text-gray-700 hover:bg-gray-400' 
-                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                            ? 'bg-blue-500 text-white hover:bg-blue-800' 
+                            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                     }`}
                     disabled={!acceptTerms}
                 >
@@ -218,16 +219,16 @@ function InformationContent() {
             {/* Información de contratos */}
             <div className="w-full flex flex-col">
                 <h1 className="text-xl">Tus Contratos y acuerdos comerciales</h1>
-                <p className="text-sm">
+                <p className="text-sm text-gray-600">
                     Actualmente tienes dos contratos y un acuerdo firmado con tidelit: 
-                    <Link href="/" className="underline"> Puedes leerlos aqui</Link>
+                    <Link href="/" className="text-gray-900 underline hover:text-gray-700"> Puedes leerlos aqui</Link>
                 </p>
             </div>
              
             {/* Lista de documentos legales */}
             <div className="w-full h-full flex flex-col items-start justify-start">
-                <h1 className="text-sm">Tambien, al registrarte, aceptaste:</h1>
-                <div className="w-full flex flex-col gap-2 p-4">
+                <h2 className="text-sm text-gray-700 font-normal mb-4">Tambien, al registrarte, aceptaste:</h2>
+                <div className="w-full flex flex-col">
                     {legalDocuments.map((document, index) => (
                         <AccordionItem key={index} title={document} />
                     ))}
@@ -252,56 +253,56 @@ function OptionsContent() {
             </div>
             
             {/* Formulario de contraseña */}
-            <div className="w-full flex flex-col gap-4 p-10">
-                <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase font-medium">Contraseña actual</label>
+            <div className="w-full flex flex-col gap-8 p-10">
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-sm text-gray-700 font-normal">Contraseña actual</label>
                     <input
                         type="password"
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
-                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900"
                     />
                 </div>
                 
-                <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase font-medium">Contraseña nueva</label>
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-sm text-gray-700 font-normal">Contraseña nueva</label>
                     <input
                         type="password"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900"
                     />
                 </div>
 
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 text-xs">
-                    <p className="font-bold mb-2">La contraseña debe tener al menos:</p>
-                    <ul className="list-disc list-inside space-y-1">
-                        <li>1 letra minúscula</li>
-                        <li>1 número o carácter especial (ejemplo: # ? ! &)</li>
-                        <li>10 caracteres</li>
+                <div className="bg-gray-50 border-0 border-l-2 border-gray-200 pl-4 py-3 text-sm text-gray-600">
+                    <p className="font-medium mb-2 text-gray-900">La contraseña debe tener al menos:</p>
+                    <ul className="space-y-1 text-gray-600">
+                        <li>• 1 letra minúscula</li>
+                        <li>• 1 número o carácter especial (ejemplo: # ? ! &)</li>
+                        <li>• 10 caracteres</li>
                     </ul>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <label className="text-xs uppercase font-medium">Repetir Contraseña</label>
+                <div className="flex flex-col gap-1.5">
+                    <label className="text-sm text-gray-700 font-normal">Repetir Contraseña</label>
                     <input
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 outline-none transition-colors"
+                        className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900"
                     />
                 </div>
 
-                <div className="flex items-center gap-2 text-xs">
-                    <input type="checkbox" id="forgot" className="w-4 h-4" />
-                    <label htmlFor="forgot" className="text-blue-500 cursor-pointer">¿Olvidaste tu contraseña?</label>
+                <div className="flex items-center gap-3 pt-2">
+                    <input type="checkbox" id="forgot" className="w-4 h-4 border-gray-300 rounded-sm" />
+                    <label htmlFor="forgot" className="text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition-colors font-normal">¿Olvidaste tu contraseña?</label>
                 </div>
 
-                <div className="w-full flex gap-2">
-                    <button className="flex-1 px-6 py-3 text-xs uppercase border-2 border-blue-500 text-blue-500 rounded-full hover:bg-blue-50 transition-colors">
+                <div className="w-full flex gap-4 pt-4">
+                    <button className="flex-1 px-8 py-2.5 text-sm text-gray-600 hover:text-gray-900 transition-colors font-normal">
                         Cancelar
                     </button>
-                    <button className="flex-1 px-6 py-3 text-xs uppercase bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors">
+                    <button className="flex-1 px-8 py-2.5 text-sm bg-blue-500 text-white hover:bg-blue-800 transition-colors font-normal">
                         Guardar
                     </button>
                 </div>
@@ -350,89 +351,86 @@ function AudioContent() {
             <div className="w-full h-full flex flex-col p-10 gap-20">
                 
                 {/* SECCIÓN: Audio */}
-                <div className="w-full flex flex-col gap-2">
+                <div className="w-full flex flex-col gap-6">
                     <span className="w-full flex flex-col">
-                        <h3 className="text-lg font-bold uppercase">Audios</h3>
-                        <h4 className="text-sm ">Calidad de audio</h4>
+                        <h3 className="text-lg font-normal text-gray-900">Audios</h3>
+                        <h4 className="text-sm text-gray-600">Calidad de audio</h4>
                     </span>
                     
-                    <div className="w-full flex flex-col p-4">
+                    <div className="w-full flex flex-col">
                         {/* Calidad de audio */}
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-6">
                             
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <span className={`text-xs ${settings.autoQuality ? 'text-blue-600' : 'text-gray-500'}`}>
+                            <div className="flex items-center justify-between py-2 border-0 border-b border-gray-200">
+                                <div className="flex items-center gap-3">
+                                    <span className={`text-sm font-normal ${settings.autoQuality ? 'text-gray-900' : 'text-gray-500'}`}>
                                         Automática
                                     </span>
                                     <button
                                         onClick={() => handleSettingChange('autoQuality', !settings.autoQuality)}
-                                        className={`w-12 h-6 rounded-full transition-colors ${
+                                        className={`w-11 h-6 rounded-full transition-colors ${
                                             settings.autoQuality ? 'bg-blue-500' : 'bg-gray-300'
                                         }`}
                                     >
                                         <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                            settings.autoQuality ? 'translate-x-6' : 'translate-x-0.5'
+                                            settings.autoQuality ? 'translate-x-5' : 'translate-x-0.5'
                                         }`} />
                                     </button>
                                 </div>
                                 
-                                <div className="relative">
-                                    <select 
-                                        value={settings.audioQuality}
-                                        onChange={(e) => handleSettingChange('audioQuality', e.target.value)}
-                                        className="p-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 text-sm"
-                                    >
-                                        <option value="Alta">Alta</option>
-                                        <option value="Media">Media</option>
-                                        <option value="Baja">Baja</option>
-                                    </select>
-                                    <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
-                                </div>
+                                <select 
+                                    value={settings.audioQuality}
+                                    onChange={(e) => handleSettingChange('audioQuality', e.target.value)}
+                                    className="px-0 py-2 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-sm text-gray-900 appearance-none cursor-pointer"
+                                >
+                                    <option value="Alta">Alta</option>
+                                    <option value="Media">Media</option>
+                                    <option value="Baja">Baja</option>
+                                </select>
                             </div>
                             
-                            <p className="text-xs text-gray-500">
+                            <p className="text-sm text-gray-500">
                                 Mejorará cuando estés conectado a una red Wi-Fi
                             </p>
                         </div>
 
                         {/* Ecualizador */}
-                        <div className="flex flex-col gap-4">
-                            <h4 className="text-sm font-medium">Ecualizador</h4>
+                        <div className="flex flex-col gap-6 pt-6">
+                            <h4 className="text-sm font-normal text-gray-900">Ecualizador</h4>
                             
                             {/* Barras del ecualizador */}
-                            <div className="flex items-end gap-2 h-16">
-                                <div className="flex flex-col items-center gap-1">
-                                    <div className="w-4 h-8 bg-gray-400 rounded"></div>
-                                    <span className="text-xs">Bass</span>
+                            <div className="flex items-end gap-3 h-16 py-4">
+                                <div className="flex flex-col items-center gap-2">
+                                    <div className="w-3 h-8 bg-gray-300"></div>
+                                    <span className="text-xs text-gray-600">Bass</span>
                                 </div>
-                                <div className="flex flex-col items-center gap-1">
-                                    <div className="w-4 h-12 bg-gray-400 rounded"></div>
-                                    <span className="text-xs">Mid</span>
+                                <div className="flex flex-col items-center gap-2">
+                                    <div className="w-3 h-12 bg-gray-400"></div>
+                                    <span className="text-xs text-gray-600">Mid</span>
                                 </div>
-                                <div className="flex flex-col items-center gap-1">
-                                    <div className="w-4 h-6 bg-gray-400 rounded"></div>
-                                    <span className="text-xs">High</span>
+                                <div className="flex flex-col items-center gap-2">
+                                    <div className="w-3 h-6 bg-gray-300"></div>
+                                    <span className="text-xs text-gray-600">High</span>
                                 </div>
                             </div>
                             
                             {/* Opciones del ecualizador */}
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-0 pt-4">
                                 {[
                                     { key: 'defaultEQ', label: 'EQ por defecto' },
                                     { key: 'explicitContent', label: 'Contenido explícito' },
                                     { key: 'volumeStabilization', label: 'Estabilizar e igualar volumen de las canciones' }
                                 ].map((option) => (
-                                    <div key={option.key} className="flex items-center justify-between">
-                                        <span className="text-xs">{option.label}</span>
+                                    <div key={option.key} className="flex items-center justify-between py-3 border-0 border-b border-gray-200">
+                                        <span className="text-sm text-gray-700 font-normal">{option.label}</span>
                                         <button
                                             onClick={() => handleSettingChange(option.key, !settings[option.key as keyof typeof settings])}
-                                            className={`w-12 h-6 rounded-full transition-colors ${
+                                            className={`w-11 h-6 rounded-full transition-colors ${
                                                 settings[option.key as keyof typeof settings] ? 'bg-blue-500' : 'bg-gray-300'
                                             }`}
                                         >
                                             <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                                settings[option.key as keyof typeof settings] ? 'translate-x-6' : 'translate-x-0.5'
+                                                settings[option.key as keyof typeof settings] ? 'translate-x-5' : 'translate-x-0.5'
                                             }`} />
                                         </button>
                                     </div>
@@ -441,30 +439,30 @@ function AudioContent() {
                         </div>
 
                         {/* Crossfade */}
-                        <div className="flex flex-col gap-4">
-                            <h4 className="text-sm font-medium">Crossfade</h4>
+                        <div className="flex flex-col gap-6 pt-6">
+                            <h4 className="text-sm font-normal text-gray-900">Crossfade</h4>
                             
-                            <div className="flex items-center justify-between">
-                                <span className={`text-xs ${settings.crossfadeEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
+                            <div className="flex items-center justify-between py-2 border-0 border-b border-gray-200">
+                                <span className={`text-sm font-normal ${settings.crossfadeEnabled ? 'text-gray-900' : 'text-gray-500'}`}>
                                     {settings.crossfadeEnabled ? 'Activo' : 'Inactivo'}
                                 </span>
                                 <button
                                     onClick={() => handleSettingChange('crossfadeEnabled', !settings.crossfadeEnabled)}
-                                    className={`w-12 h-6 rounded-full transition-colors ${
+                                    className={`w-11 h-6 rounded-full transition-colors ${
                                         settings.crossfadeEnabled ? 'bg-blue-500' : 'bg-gray-300'
                                     }`}
                                 >
                                     <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                        settings.crossfadeEnabled ? 'translate-x-6' : 'translate-x-0.5'
+                                        settings.crossfadeEnabled ? 'translate-x-5' : 'translate-x-0.5'
                                     }`} />
                                 </button>
                             </div>
                             
                          {/* Slider de duración */}
-                         <div className="flex flex-col gap-2">
+                         <div className="flex flex-col gap-3 pt-4">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-xs text-gray-500">Duración</span>
-                                    <span className="text-xs font-medium text-blue-600">
+                                    <span className="text-sm text-gray-600">Duración</span>
+                                    <span className="text-sm font-normal text-gray-900">
                                         {settings.crossfadeDuration === 0 ? 'Inactivo' : `${settings.crossfadeDuration} seg`}
                                     </span>
                                 </div>
@@ -476,14 +474,14 @@ function AudioContent() {
                                         value={settings.crossfadeDuration}
                                         onChange={(e) => handleSettingChange('crossfadeDuration', parseInt(e.target.value))}
                                         disabled={!settings.crossfadeEnabled}
-                                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full h-1 bg-blue-500 rounded-lg appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                         style={{
                                             background: settings.crossfadeEnabled 
-                                                ? `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${settings.crossfadeDuration * 10}%, #e5e7eb ${settings.crossfadeDuration * 10}%, #e5e7eb 100%)`
+                                                ? `linear-gradient(to right, #111827 0%, #111827 ${settings.crossfadeDuration * 10}%, #e5e7eb ${settings.crossfadeDuration * 10}%, #e5e7eb 100%)`
                                                 : '#e5e7eb'
                                         }}
                                     />
-                                    <div className="flex justify-between text-xs text-gray-400 mt-1">
+                                    <div className="flex justify-between text-xs text-gray-400 mt-2">
                                         <span>0</span>
                                         <span>3</span>
                                         <span>6</span>
@@ -497,153 +495,138 @@ function AudioContent() {
                 </div>
 
                 {/* SECCIÓN: Idioma y ubicación */}
-                <div className="flex flex-col gap-4 p-4">
+                <div className="flex flex-col gap-6">
                     
                     {/* Elije tu idioma */}
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium">Elije tu idioma</label>
-                        <div className="relative">
-                            <select 
-                                value={settings.language}
-                                onChange={(e) => handleSettingChange('language', e.target.value)}
-                                className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
-                            >
-                                <option value="Español">Español</option>
-                                <option value="English">English</option>
-                                <option value="Português">Português</option>
-                            </select>
-                            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                        </div>
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-sm text-gray-700 font-normal">Elije tu idioma</label>
+                        <select 
+                            value={settings.language}
+                            onChange={(e) => handleSettingChange('language', e.target.value)}
+                            className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                        >
+                            <option value="Español">Español</option>
+                            <option value="English">English</option>
+                            <option value="Português">Português</option>
+                        </select>
                     </div>
 
                     {/* GPS / Ubicación */}
-                    <div className="flex flex-col gap-2">
-                        <div className="flex items-center justify-between">
-                            <label className="text-sm font-medium">GPS / Ubicación</label>
-                            <div className="flex items-center gap-2">
-                                <span className={`text-xs ${settings.gpsEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
+                    <div className="flex flex-col gap-1.5">
+                        <div className="flex items-center justify-between py-2 border-0 border-b border-gray-200">
+                            <label className="text-sm text-gray-700 font-normal">GPS / Ubicación</label>
+                            <div className="flex items-center gap-3">
+                                <span className={`text-sm font-normal ${settings.gpsEnabled ? 'text-gray-900' : 'text-gray-500'}`}>
                                     {settings.gpsEnabled ? 'Activo' : 'Inactivo'}
                                 </span>
                                 <button
                                     onClick={() => handleSettingChange('gpsEnabled', !settings.gpsEnabled)}
-                                    className={`w-12 h-6 rounded-full transition-colors ${
+                                    className={`w-11 h-6 rounded-full transition-colors ${
                                         settings.gpsEnabled ? 'bg-blue-500' : 'bg-gray-300'
                                     }`}
                                 >
                                     <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                        settings.gpsEnabled ? 'translate-x-6' : 'translate-x-0.5'
+                                        settings.gpsEnabled ? 'translate-x-5' : 'translate-x-0.5'
                                     }`} />
                                 </button>
                             </div>
                         </div>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-sm text-gray-500">
                             Puedes activarla o desactivarla en el momento que desees
                         </p>
                     </div>
 
-                    <div className="w-full flex flex-row justify-between gap-2">
+                    <div className="w-full flex flex-row justify-between gap-6">
                         {/* País */}
-                        <div className="w-full flex flex-col gap-2">
-                            <label className="text-sm font-medium">País</label>
-                            <div className="relative">
-                                <select 
-                                    value={settings.country}
-                                    onChange={(e) => handleSettingChange('country', e.target.value)}
-                                    className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
-                                >
-                                    <option value="Colombia">Colombia</option>
-                                    <option value="México">México</option>
-                                    <option value="Perú">Perú</option>
-                                    <option value="Venezuela">Venezuela</option>
-                                </select>
-                                <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                            </div>
+                        <div className="flex-1 flex flex-col gap-1.5">
+                            <label className="text-sm text-gray-700 font-normal">País</label>
+                            <select 
+                                value={settings.country}
+                                onChange={(e) => handleSettingChange('country', e.target.value)}
+                                className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                            >
+                                <option value="Colombia">Colombia</option>
+                                <option value="México">México</option>
+                                <option value="Perú">Perú</option>
+                                <option value="Venezuela">Venezuela</option>
+                            </select>
                         </div>
 
                         {/* Ciudad */}
-                        <div className="w-full flex flex-col gap-2">
-                            <label className="text-sm font-medium">Ciudad</label>
-                            <div className="relative">
-                                <select 
-                                    value={settings.city}
-                                    onChange={(e) => handleSettingChange('city', e.target.value)}
-                                    className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
-                                >
-                                    <option value="Bogotá">Bogotá</option>
-                                    <option value="Medellín">Medellín</option>
-                                    <option value="Cali">Cali</option>
-                                    <option value="Barranquilla">Barranquilla</option>
-                                </select>
-                                <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                            </div>
+                        <div className="flex-1 flex flex-col gap-1.5">
+                            <label className="text-sm text-gray-700 font-normal">Ciudad</label>
+                            <select 
+                                value={settings.city}
+                                onChange={(e) => handleSettingChange('city', e.target.value)}
+                                className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                            >
+                                <option value="Bogotá">Bogotá</option>
+                                <option value="Medellín">Medellín</option>
+                                <option value="Cali">Cali</option>
+                                <option value="Barranquilla">Barranquilla</option>
+                            </select>
                         </div>
                     </div>
 
                     {/* Zona horaria */}
-                    <div className="flex flex-col gap-2">
-                        <label className="text-sm font-medium">Zona horaria</label>
-                        <div className="relative">
-                            <select 
-                                value={settings.timezone}
-                                onChange={(e) => handleSettingChange('timezone', e.target.value)}
-                                className="w-full p-3 border border-gray-300 rounded-lg appearance-none bg-white pr-8"
-                            >
-                                <option value="GTM-5">GTM-5</option>
-                                <option value="GTM-6">GTM-6</option>
-                                <option value="GTM-7">GTM-7</option>
-                                <option value="GTM-8">GTM-8</option>
-                            </select>
-                            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                        </div>
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-sm text-gray-700 font-normal">Zona horaria</label>
+                        <select 
+                            value={settings.timezone}
+                            onChange={(e) => handleSettingChange('timezone', e.target.value)}
+                            className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                        >
+                            <option value="GTM-5">GTM-5</option>
+                            <option value="GTM-6">GTM-6</option>
+                            <option value="GTM-7">GTM-7</option>
+                            <option value="GTM-8">GTM-8</option>
+                        </select>
                     </div>
                 </div>
 
                 {/* SECCIÓN: Dispositivos */}
-                <div className=" w-full h-screen flex flex-col justify-center gap-4">
-                    <span className="w-full  flex flex-col">
-                        <h3 className="text-md font-bold uppercase">Dispositivos</h3>
-                        <h4 className="text-sm ">Dispositivos móviles sincronizados</h4>
+                <div className="w-full flex flex-col gap-6">
+                    <span className="w-full flex flex-col">
+                        <h3 className="text-lg font-normal text-gray-900">Dispositivos</h3>
+                        <h4 className="text-sm text-gray-600">Dispositivos móviles sincronizados</h4>
                     </span>
                     
-                    <div className="w-full h-full flex flex-col gap-4 p-10">
+                    <div className="w-full flex flex-col gap-6">
                         
                         {/* Dispositivos móviles sincronizados */}                            
-                        <div className="flex items-center justify-between">      
-                            <div className="relative">
-                                    <select 
-                                        value={settings.activeDevice}
-                                        onChange={(e) => handleSettingChange('activeDevice', e.target.value)}
-                                        className="p-2 border border-gray-300 rounded-lg appearance-none bg-white pr-8 text-sm"
-                                    >
-                                        <option value="I Phone 13 Pro">I Phone 13 Pro</option>
-                                        <option value="Samsung Galaxy S21">Samsung Galaxy S21</option>
-                                        <option value="Google Pixel 6">Google Pixel 6</option>
-                                    </select>
-                                    <FiChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
-                            </div>
+                        <div className="flex items-center justify-between py-2 border-0 border-b border-gray-200">      
+                            <select 
+                                value={settings.activeDevice}
+                                onChange={(e) => handleSettingChange('activeDevice', e.target.value)}
+                                className="px-0 py-2 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-sm text-gray-900 appearance-none cursor-pointer"
+                            >
+                                <option value="I Phone 13 Pro">I Phone 13 Pro</option>
+                                <option value="Samsung Galaxy S21">Samsung Galaxy S21</option>
+                                <option value="Google Pixel 6">Google Pixel 6</option>
+                            </select>
 
-                            <div className="flex items-center gap-2">
-                                    <span className={`text-xs ${settings.mobileSyncEnabled ? 'text-blue-600' : 'text-gray-500'}`}>
-                                        Activo
-                                    </span>
-                                    <button
-                                        onClick={() => handleSettingChange('mobileSyncEnabled', !settings.mobileSyncEnabled)}
-                                        className={`w-12 h-6 rounded-full transition-colors ${
-                                            settings.mobileSyncEnabled ? 'bg-blue-500' : 'bg-gray-300'
-                                        }`}
-                                    >
-                                        <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
-                                            settings.mobileSyncEnabled ? 'translate-x-6' : 'translate-x-0.5'
-                                        }`} />
-                                    </button>
+                            <div className="flex items-center gap-3">
+                                <span className={`text-sm font-normal ${settings.mobileSyncEnabled ? 'text-gray-900' : 'text-gray-500'}`}>
+                                    Activo
+                                </span>
+                                <button
+                                    onClick={() => handleSettingChange('mobileSyncEnabled', !settings.mobileSyncEnabled)}
+                                    className={`w-11 h-6 rounded-full transition-colors ${
+                                        settings.mobileSyncEnabled ? 'bg-blue-500' : 'bg-gray-300'
+                                    }`}
+                                >
+                                    <div className={`w-5 h-5 bg-white rounded-full transition-transform ${
+                                        settings.mobileSyncEnabled ? 'translate-x-5' : 'translate-x-0.5'
+                                    }`} />
+                                </button>
                             </div>
                         </div>
                             
                         {/* Conecta un dispositivo */}
-                        <div className="h-full  flex flex-col">
+                        <div className="h-full flex flex-col gap-4">
                             <div className="w-full flex flex-col">
-                                <h4 className="text-sm font-medium">Conecta un dispositivo</h4>
-                                <p className="text-xs text-gray-500">
+                                <h4 className="text-sm font-normal text-gray-900">Conecta un dispositivo</h4>
+                                <p className="text-sm text-gray-600 mt-1">
                                     Sincroniza tu dispositivo con otros dispositivos y reproduce tu música con todos al mismo tiempo creando un efecto envolvente (surround)
                                 </p>
                             </div>
@@ -652,19 +635,19 @@ function AudioContent() {
                             <div className="w-full h-80 flex justify-center items-center">
                                 <div className="relative w-32 h-32">
                                     {/* Círculos concéntricos */}
-                                    <div className="absolute inset-0 rounded-full border-4 border-teal-200 animate-pulse"></div>
-                                    <div className="absolute inset-2 rounded-full border-4 border-teal-300 animate-pulse"></div>
-                                    <div className="absolute inset-4 rounded-full border-4 border-teal-400 animate-pulse"></div>
-                                    <div className="absolute inset-6 rounded-full border-4 border-teal-500 animate-pulse"></div>
+                                    <div className="absolute inset-0 rounded-full border-2 border-blue-200 animate-ping"></div>
+                                    <div className="absolute inset-2 rounded-full border-2 border-blue-300 animate-ping"></div>
+                                    <div className="absolute inset-4 rounded-full border-2 border-blue-400 animate-ping"></div>
+                                    <div className="absolute inset-6 rounded-full border-2 border-blue-500 animate-ping"></div>
                                     
                                     {/* Centro con waveform */}
                                     <div className="absolute inset-8 bg-white rounded-full flex items-center justify-center">
                                         <div className="flex items-center gap-1">
-                                            <div className="w-1 h-3 bg-purple-500"></div>
-                                            <div className="w-1 h-5 bg-blue-500"></div>
-                                            <div className="w-1 h-4 bg-teal-500 animate-pulse"></div>
-                                            <div className="w-1 h-6 bg-purple-500"></div>
-                                            <div className="w-1 h-3 bg-blue-500"></div>
+                                            <div className="w-1 h-3 bg-blue-400 animate-ping"></div>
+                                            <div className="w-1 h-5 bg-blue-500 animate-ping"></div>
+                                            <div className="w-1 h-4 bg-blue-600 animate-ping"></div>
+                                            <div className="w-1 h-6 bg-blue-500 animate-ping"></div>
+                                            <div className="w-1 h-3 bg-blue-400 animate-ping"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -675,11 +658,11 @@ function AudioContent() {
             </div>
 
             {/* Botones de acción */}
-            <div className="w-full flex justify-end gap-2 p-6 border-t border-gray-200">
-                <button className="px-6 py-2 text-xs uppercase border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-colors">
+            <div className="w-full flex justify-end gap-4 pt-8 mt-8 border-t border-gray-100">
+                <button className="px-8 py-2.5 text-sm text-gray-600 hover:text-blue-900 transition-colors font-normal">
                     Cancelar
                 </button>
-                <button className="px-6 py-2 text-xs uppercase bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
+                <button className="px-8 py-2.5 text-sm text-white bg-blue-500 hover:bg-blue-800 transition-colors font-normal">
                     Guardar
                 </button>
             </div>
@@ -690,15 +673,15 @@ function AudioContent() {
 // Componente para el contenido de Perfil
 function ProfileContent() {
     const [profileData, setProfileData] = useState({
-        name: 'Juan David Ramírez',
-        username: '@Soyjuanramirez',
-        email: 'juandaram98@gmail.com',
-        phone: '313 404 2374',
+        name: '',
+        username: '',
+        email: '',
+        phone: '',
         countryCode: '+57',
-        day: '15',
-        month: '03',
-        year: '1998',
-        biography: 'Me llamo Juan Ramírez, amo la música y lo que es capaz de hacerte sentir e imaginar. Soy fan de la vida y celebro el amor verdadero.'
+        day: '',
+        month: '',
+        year: '',
+        biography: ''
     });
 
     const handleInputChange = (key: string, value: string) => {
@@ -713,157 +696,173 @@ function ProfileContent() {
             </div>
 
             {/* Foto de perfil */}
-            <div className="w-full flex flex-col items-center gap-4 p-10">
-                <div className="relative">
-                    <div className="w-32 h-32 rounded-full bg-gradient-to-r from-purple-500 to-teal-500 flex items-center justify-center">
-                        <span className="text-6xl font-bold text-white">J</span>
+             <>
+                <div className="w-full flex flex-col">
+                    <div className="w-full h-80 bg-blue-800/50"></div>
+
+                    <div className="w-full h-auto bg-blue-800/40 flex flex-row justify-end items-end p-10">
+                        <div className="w-full flex flex-col justify-center items-start">
+                            <h1 className="text-xl text-white uppercase">Nombre de Usuario</h1>
+                            <span className="flex flex-row gap-2">
+                                <p className="text-sm text-white">Usuario</p>
+                                <p className="text-sm text-white">Membresia VIP</p>
+                            </span>
+                        </div>
+                        <div className="w-full flex flex-row justify-end items-end gap-4">
+                            <p className="text-sm text-white">12 seguidores</p>
+                            <p className="text-sm text-white">102 Seguidos</p>
+                        </div>
                     </div>
                 </div>
-                <button className="text-teal-500 text-sm font-medium hover:text-teal-600 transition-colors">
-                    Editar foto
-                </button>
-            </div>
+            </>
 
             {/* Formulario de información personal */}
-            <div className="w-full flex flex-col gap-6 p-10">
-                {/* Nombre */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Nombre</label>
-                    <input
-                        type="text"
-                        value={profileData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
-                    />
-                </div>
+            <>
+                <div className="w-full flex flex-col gap-8 p-10">
+                    
+                    <div className="w-full flex flex-row gap-6">
+                        {/* Nombre */}
+                        <div className="w-full flex flex-col gap-1.5">
+                            <label className="text-sm text-gray-700 font-normal">Nombre</label>
+                            <input
+                                type="text"
+                                value={profileData.name}
+                                onChange={(e) => handleInputChange('name', e.target.value)}
+                                className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
+                            />
+                        </div>
 
-                {/* Nombre de usuario */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Nombre de usuario</label>
-                    <input
-                        type="text"
-                        value={profileData.username}
-                        onChange={(e) => handleInputChange('username', e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
-                    />
-                </div>
+                        {/* Nombre de usuario */}
+                        <div className="w-full flex flex-col gap-1.5">
+                            <label className="text-sm text-gray-700 font-normal">Nombre de usuario</label>
+                            <input
+                                type="text"
+                                value={profileData.username}
+                                onChange={(e) => handleInputChange('username', e.target.value)}
+                                className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
+                            />
+                        </div>
+                    </div>
 
-                {/* Correo electrónico */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Correo electrónico</label>
-                    <input
-                        type="email"
-                        value={profileData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
-                    />
-                </div>
-
-                {/* Celular */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Celular</label>
-                    <div className="flex gap-2">
+                    {/* Correo electrónico */}
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-sm text-gray-700 font-normal">Correo electrónico</label>
                         <input
-                            type="text"
-                            value={profileData.countryCode}
-                            onChange={(e) => handleInputChange('countryCode', e.target.value)}
-                            className="w-20 p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors text-center"
-                        />
-                        <input
-                            type="text"
-                            value={profileData.phone}
-                            onChange={(e) => handleInputChange('phone', e.target.value)}
-                            className="flex-1 p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
+                            type="email"
+                            value={profileData.email}
+                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
                         />
                     </div>
-                </div>
 
-                {/* Fecha de nacimiento */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Fecha de nacimiento</label>
-                    <div className="flex gap-2">
-                        <div className="flex flex-col gap-1">
-                            <label className="text-xs text-gray-500">Día</label>
-                            <select
-                                value={profileData.day}
-                                onChange={(e) => handleInputChange('day', e.target.value)}
-                                className="p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
-                            >
-                                {Array.from({ length: 31 }, (_, i) => (
-                                    <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
-                                        {String(i + 1).padStart(2, '0')}
-                                    </option>
-                                ))}
-                            </select>
+                    <div className="w-full flex flex-row gap-6">
+                        {/* Celular */}
+                        <div className="flex-1 flex flex-col gap-1.5">
+                            <label className="text-sm text-gray-700 font-normal">Celular</label>
+                            <div className="flex gap-3">
+                                <input
+                                    type="text"
+                                    value={profileData.countryCode}
+                                    onChange={(e) => handleInputChange('countryCode', e.target.value)}
+                                    className="w-20 px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-center text-gray-900"
+                                />
+                                <input
+                                    type="text"
+                                    value={profileData.phone}
+                                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                                    className="flex-1 px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 placeholder:text-gray-400"
+                                />
+                            </div>
                         </div>
-                        <div className="flex flex-col gap-1">
-                            <label className="text-xs text-gray-500">Mes</label>
-                            <select
-                                value={profileData.month}
-                                onChange={(e) => handleInputChange('month', e.target.value)}
-                                className="p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
-                            >
-                                {Array.from({ length: 12 }, (_, i) => (
-                                    <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
-                                        {String(i + 1).padStart(2, '0')}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                            <label className="text-xs text-gray-500">Año</label>
-                            <select
-                                value={profileData.year}
-                                onChange={(e) => handleInputChange('year', e.target.value)}
-                                className="p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors"
-                            >
-                                {Array.from({ length: 100 }, (_, i) => {
-                                    const year = 2024 - i;
-                                    return (
-                                        <option key={year} value={year}>
-                                            {year}
-                                        </option>
-                                    );
-                                })}
-                            </select>
+
+                        {/* Fecha de nacimiento */}
+                        <div className="flex-1 flex flex-col gap-1.5">
+                            <label className="text-sm text-gray-700 font-normal">Fecha de nacimiento</label>
+                            <div className="flex gap-3">
+                                <div className="flex-1 flex flex-col gap-1">
+                                    <select
+                                        value={profileData.day}
+                                        onChange={(e) => handleInputChange('day', e.target.value)}
+                                        className="px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                                    >
+                                        <option value="">Día</option>
+                                        {Array.from({ length: 31 }, (_, i) => (
+                                            <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
+                                                {String(i + 1).padStart(2, '0')}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="flex-1 flex flex-col gap-1">
+                                    <select
+                                        value={profileData.month}
+                                        onChange={(e) => handleInputChange('month', e.target.value)}
+                                        className="px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                                    >
+                                        <option value="">Mes</option>
+                                        {Array.from({ length: 12 }, (_, i) => (
+                                            <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
+                                                {String(i + 1).padStart(2, '0')}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="flex-1 flex flex-col gap-1">
+                                    <select
+                                        value={profileData.year}
+                                        onChange={(e) => handleInputChange('year', e.target.value)}
+                                        className="px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors bg-transparent text-gray-900 appearance-none cursor-pointer"
+                                    >
+                                        <option value="">Año</option>
+                                        {Array.from({ length: 100 }, (_, i) => {
+                                            const year = 2024 - i;
+                                            return (
+                                                <option key={year} value={year}>
+                                                    {year}
+                                                </option>
+                                            );
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Biografía */}
-                <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium">Biografía</label>
-                    <div className="relative">
-                        <textarea
-                            value={profileData.biography}
-                            onChange={(e) => handleInputChange('biography', e.target.value)}
-                            maxLength={150}
-                            rows={4}
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:border-teal-500 outline-none transition-colors resize-none"
-                        />
-                        <div className="absolute bottom-2 right-2 text-xs text-gray-500">
-                            {profileData.biography.length}/150
+                    {/* Biografía */}
+                    <div className="flex flex-col gap-1.5">
+                        <label className="text-sm text-gray-700 font-normal">Biografía</label>
+                        <div className="relative">
+                            <textarea
+                                value={profileData.biography}
+                                onChange={(e) => handleInputChange('biography', e.target.value)}
+                                maxLength={150}
+                                rows={4}
+                                className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 outline-none transition-colors resize-none bg-transparent text-gray-900 placeholder:text-gray-400"
+                            />
+                            <div className="absolute bottom-3 right-0 text-xs text-gray-400">
+                                {profileData.biography.length}/150
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Solicitar verificación */}
-                <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs">✓</span>
+                    {/* Solicitar verificación */}
+                    <div className="flex items-center gap-3 pt-2">
+                        <div className="w-4 h-4 border border-gray-300 rounded-sm flex items-center justify-center">
+                            <span className="text-gray-600 text-xs">✓</span>
+                        </div>
+                        <button className="text-sm text-gray-700 hover:text-gray-900 transition-colors font-normal">
+                            Solicitar verificación
+                        </button>
                     </div>
-                    <button className="text-blue-500 text-sm font-medium hover:text-blue-600 transition-colors">
-                        Solicitar verificación
-                    </button>
                 </div>
-            </div>
+            </>
 
             {/* Botones de acción */}
-            <div className="w-full flex justify-end gap-2 p-10 border-t border-gray-200">
-                <button className="px-6 py-2 text-xs uppercase border border-teal-500 text-teal-500 rounded-lg hover:bg-teal-50 transition-colors">
+            <div className="w-full flex justify-end gap-4 pt-8 mt-8 border-t border-gray-100">
+                <button className="px-8 py-2.5 text-sm text-gray-600 hover:text-gray-900 transition-colors font-normal">
                     Cancelar
                 </button>
-                <button className="px-6 py-2 text-xs uppercase bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors">
+                <button className="px-8 py-2.5 text-sm text-white bg-blue-500 hover:bg-blue-800 transition-colors font-normal">
                     Guardar
                 </button>
             </div>
