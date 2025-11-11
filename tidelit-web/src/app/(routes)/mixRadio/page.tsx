@@ -6,22 +6,23 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
-import { TidelitCard } from "@/app/components/common/Card/Tidelit/TidelitCard";
 import { MixRadioBannerCountry } from "@/app/components/common/Card/MixRadio/MixRadioBannerCountry";
 import { MixRadioCountry } from "@/app/components/common/Card/MixRadio/MixRadioCountry";
 import Link from "next/link";
 import { FiEye } from "react-icons/fi";
+import { MixRadioCard } from "@/app/components/common/Card/MixRadio/MixRadioCard";
 
 interface CountryData {
   name: string;
   image: string;
+  abbreviation: string;
 }
 
 const countries: CountryData[] = [
-  { name: "Colombia", image: "/Pais/Colombia.webp" },
-  { name: "Venezuela", image: "/Pais/Venezuela.jpg" },
-  { name: "Peru", image: "/Pais/Peru.webp" },
-  { name: "Mexico", image: "/Pais/Mexico.webp" }
+  { name: "Colombia", image: "/Pais/Colombia.webp", abbreviation: "CO" },
+  { name: "Venezuela", image: "/Pais/Venezuela.jpg", abbreviation: "VE" },
+  { name: "Peru", image: "/Pais/Peru.webp", abbreviation: "PE" },
+  { name: "Mexico", image: "/Pais/Mexico.webp", abbreviation: "MX" }
 ];
 
 export default function MixRadio() {
@@ -48,6 +49,7 @@ export default function MixRadio() {
                                     key={country.name}
                                     country={country.name}
                                     image={country.image}
+                                    abbreviation={country.abbreviation}
                                     onSelect={setSelectedCountry}
                                     isSelected={selectedCountry === country.name}
                                   />
@@ -72,10 +74,10 @@ export default function MixRadio() {
                 {/* La idea es que hagas un map aca, donde repetiras CarouselItem tantas veces como quieras y dentro de CarouselItem, agregues de 3 en 3 TidelitCard*/}
                 {/* Los TidelitCard deben tener un array de objetos con las propiedades image, title, artist y position que consumiras del Backend */}
                 <CarouselItem className="w-full flex flex-row gap-2 justify-center items-center">
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
-                  <TidelitCard image="/Imagenes/Song/Song2.jpg" title="Tidelit Card" artist="Artista" position={2} />
-                  <TidelitCard image="/Imagenes/Song/Song3.jpg" title="Tidelit Card" artist="Artista" position={3} />
-                  <TidelitCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
+                  <MixRadioCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={1} />
+                  <MixRadioCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={2} />
+                  <MixRadioCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={3} />
+                  <MixRadioCard image="/Imagenes/Song/Song1.jpg" title="Tidelit Card" artist="Artista" position={4} />
                 </CarouselItem>
               </>
         

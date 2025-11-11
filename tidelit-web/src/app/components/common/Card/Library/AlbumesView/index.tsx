@@ -7,8 +7,8 @@ export default function AlbumesView() {
                 <div className="w-full h-full flex flex-col gap-10 px-20">
                     {/* Texto y titulo de las playlists */}
                     <div className="w-full h-auto  flex flex-col justify-center items-start">
-                        <p className="text-xs">Historial de Albumes agregados</p>
-                        <h1 className="text-2xl font-bold uppercase">Tus Albumes</h1>
+                        <p className="text-md">Historial de Albumes agregados</p>
+                        <h1 className="text-xl font-bold uppercase">Tus Albumes</h1>
                     </div>
 
                     {/* Grid  */}

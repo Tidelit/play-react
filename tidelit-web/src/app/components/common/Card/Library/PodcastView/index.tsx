@@ -10,8 +10,8 @@ export default function PodcastView() {
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Historial de Podcast agregados</p>
-                    <h1 className="text-2xl font-bold uppercase">Tus Podcast</h1>
+                    <p className="text-md">Historial de Podcast agregados</p>
+                    <h1 className="text-xl font-bold uppercase">Tus Podcast</h1>
                 </div>
                 
                 {/* Grid  */}

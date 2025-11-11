@@ -11,8 +11,8 @@ export default function CompartidosView() {
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Historial de Playlist compartidas</p>
-                    <h1 className="text-2xl font-bold uppercase">Playlist compartidas contigo</h1>
+                    <p className="text-md">Historial de Playlist compartidas</p>
+                    <h1 className="text-xl font-bold uppercase">Playlist compartidas contigo</h1>
                 </div>
                 
                 {/* Grid  */}
@@ -42,8 +42,8 @@ export default function CompartidosView() {
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Historial de canciones compartidas</p>
-                    <h1 className="text-2xl font-bold uppercase">Canciones compartidas contigo</h1>
+                    <p className="text-md">Historial de canciones compartidas</p>
+                    <h1 className="text-xl font-bold uppercase">Canciones compartidas contigo</h1>
                 </div>
 
                   {/* Grid  */}
@@ -73,8 +73,8 @@ export default function CompartidosView() {
               
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Historial de albumes compartidas</p>
-                    <h1 className="text-2xl font-bold uppercase">Albumes compartidas contigo</h1>
+                    <p className="text-md">Historial de albumes compartidas</p>
+                    <h1 className="text-xl font-bold uppercase">Albumes compartidas contigo</h1>
                 </div>
 
                  {/* Grid  */}

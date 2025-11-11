@@ -328,11 +328,18 @@ function AudioContent() {
         // Audio
         autoQuality: true,
         audioQuality: 'Alta',
-        defaultEQ: true,
+        defaultEQ: false,
         explicitContent: true,
         volumeStabilization: true,
         crossfadeEnabled: true,
-        crossfadeDuration: 3
+        crossfadeDuration: 3,
+        
+        // Ecualizador
+        bass: 80,
+        slider2: 30,
+        mid: 60,
+        high: 90,
+        slider5: 70
     });
 
     const handleSettingChange = (key: string, value: string | boolean | number) => {
@@ -395,33 +402,207 @@ function AudioContent() {
                         </div>
 
                         {/* Ecualizador */}
-                        <div className="flex flex-col gap-6 pt-6">
+                        <div className="w-full flex flex-row gap-12 pt-6">
+                            {/* Sección izquierda: Sliders del ecualizador */}
+                            <div className="flex flex-col gap-6">
                             <h4 className="text-sm font-normal text-gray-900">Ecualizador</h4>
                             
-                            {/* Barras del ecualizador */}
-                            <div className="flex items-end gap-3 h-16 py-4">
+                                {/* Sliders verticales del ecualizador */}
+                                <div className="flex items-end justify-start gap-4 h-48">
+                                    {/* Slider 1 - Bass */}
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="w-3 h-8 bg-gray-300"></div>
+                                        <div 
+                                            className="relative w-6 h-40 cursor-pointer select-none"
+                                            onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                const sliderElement = e.currentTarget as HTMLElement;
+                                                const updateValue = (clientY: number) => {
+                                                    const rect = sliderElement.getBoundingClientRect();
+                                                    const y = rect.bottom - clientY;
+                                                    const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100));
+                                                    handleSettingChange('bass', Math.round(percentage));
+                                                };
+                                                updateValue(e.clientY);
+                                                const handleMouseMove = (e: MouseEvent) => {
+                                                    e.preventDefault();
+                                                    updateValue(e.clientY);
+                                                };
+                                                const handleMouseUp = () => {
+                                                    document.removeEventListener('mousemove', handleMouseMove);
+                                                    document.removeEventListener('mouseup', handleMouseUp);
+                                                };
+                                                document.addEventListener('mousemove', handleMouseMove);
+                                                document.addEventListener('mouseup', handleMouseUp);
+                                            }}
+                                        >
+                                            {/* Track de fondo gris */}
+                                            <div className="absolute inset-0 w-full bg-gray-200 rounded-sm pointer-events-none"></div>
+                                            {/* Barra de valor azul claro */}
+                                            <div 
+                                                className="absolute bottom-0 w-full bg-blue-400 rounded-t-sm transition-all duration-200 pointer-events-none"
+                                                style={{ height: `${settings.bass}%` }}
+                                            ></div>
+                                            {/* Manejador circular */}
+                                            <div 
+                                                className="absolute w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-sm pointer-events-none z-20"
+                                                style={{ bottom: `calc(${settings.bass}% - 8px)`, left: '50%', transform: 'translateX(-50%)' }}
+                                            ></div>
+                                        </div>
                                     <span className="text-xs text-gray-600">Bass</span>
                                 </div>
+                                    
+                                    {/* Slider 2 */}
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="w-3 h-12 bg-gray-400"></div>
+                                        <div 
+                                            className="relative w-6 h-40 cursor-pointer select-none"
+                                            onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                const sliderElement = e.currentTarget as HTMLElement;
+                                                const updateValue = (clientY: number) => {
+                                                    const rect = sliderElement.getBoundingClientRect();
+                                                    const y = rect.bottom - clientY;
+                                                    const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100));
+                                                    handleSettingChange('slider2', Math.round(percentage));
+                                                };
+                                                updateValue(e.clientY);
+                                                const handleMouseMove = (e: MouseEvent) => {
+                                                    e.preventDefault();
+                                                    updateValue(e.clientY);
+                                                };
+                                                const handleMouseUp = () => {
+                                                    document.removeEventListener('mousemove', handleMouseMove);
+                                                    document.removeEventListener('mouseup', handleMouseUp);
+                                                };
+                                                document.addEventListener('mousemove', handleMouseMove);
+                                                document.addEventListener('mouseup', handleMouseUp);
+                                            }}
+                                        >
+                                            <div className="absolute inset-0 w-full bg-gray-200 rounded-sm pointer-events-none"></div>
+                                            <div 
+                                                className="absolute bottom-0 w-full bg-blue-400 rounded-t-sm transition-all duration-200 pointer-events-none"
+                                                style={{ height: `${settings.slider2}%` }}
+                                            ></div>
+                                            <div 
+                                                className="absolute w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-sm pointer-events-none z-20"
+                                                style={{ bottom: `calc(${settings.slider2}% - 8px)`, left: '50%', transform: 'translateX(-50%)' }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Slider 3 - Mid */}
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div 
+                                            className="relative w-6 h-40 cursor-pointer select-none"
+                                            onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                const sliderElement = e.currentTarget as HTMLElement;
+                                                const updateValue = (clientY: number) => {
+                                                    const rect = sliderElement.getBoundingClientRect();
+                                                    const y = rect.bottom - clientY;
+                                                    const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100));
+                                                    handleSettingChange('mid', Math.round(percentage));
+                                                };
+                                                updateValue(e.clientY);
+                                                const handleMouseMove = (e: MouseEvent) => {
+                                                    e.preventDefault();
+                                                    updateValue(e.clientY);
+                                                };
+                                                const handleMouseUp = () => {
+                                                    document.removeEventListener('mousemove', handleMouseMove);
+                                                    document.removeEventListener('mouseup', handleMouseUp);
+                                                };
+                                                document.addEventListener('mousemove', handleMouseMove);
+                                                document.addEventListener('mouseup', handleMouseUp);
+                                            }}
+                                        >
+                                            <div className="absolute inset-0 w-full bg-gray-200 rounded-sm pointer-events-none"></div>
+                                            <div 
+                                                className="absolute bottom-0 w-full bg-blue-600 rounded-t-sm transition-all duration-200 pointer-events-none"
+                                                style={{ height: `${settings.mid}%` }}
+                                            ></div>
+                                        </div>
                                     <span className="text-xs text-gray-600">Mid</span>
                                 </div>
+                                    
+                                    {/* Slider 4 - High */}
                                 <div className="flex flex-col items-center gap-2">
-                                    <div className="w-3 h-6 bg-gray-300"></div>
-                                    <span className="text-xs text-gray-600">High</span>
+                                        <div 
+                                            className="relative w-6 h-40 cursor-pointer select-none"
+                                            onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                const sliderElement = e.currentTarget as HTMLElement;
+                                                const updateValue = (clientY: number) => {
+                                                    const rect = sliderElement.getBoundingClientRect();
+                                                    const y = rect.bottom - clientY;
+                                                    const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100));
+                                                    handleSettingChange('high', Math.round(percentage));
+                                                };
+                                                updateValue(e.clientY);
+                                                const handleMouseMove = (e: MouseEvent) => {
+                                                    e.preventDefault();
+                                                    updateValue(e.clientY);
+                                                };
+                                                const handleMouseUp = () => {
+                                                    document.removeEventListener('mousemove', handleMouseMove);
+                                                    document.removeEventListener('mouseup', handleMouseUp);
+                                                };
+                                                document.addEventListener('mousemove', handleMouseMove);
+                                                document.addEventListener('mouseup', handleMouseUp);
+                                            }}
+                                        >
+                                            <div className="absolute inset-0 w-full bg-gray-200 rounded-sm pointer-events-none"></div>
+                                            <div 
+                                                className="absolute bottom-0 w-full bg-blue-600 rounded-t-sm transition-all duration-200 pointer-events-none"
+                                                style={{ height: `${settings.high}%` }}
+                                            ></div>
+                                </div>
+                                        <span className="text-xs text-gray-600">Hight</span>
+                            </div>
+                            
+                                    {/* Slider 5 */}
+                                    <div className="flex flex-col items-center gap-2">
+                                        <div 
+                                            className="relative w-6 h-40 cursor-pointer select-none"
+                                            onMouseDown={(e) => {
+                                                e.preventDefault();
+                                                const sliderElement = e.currentTarget as HTMLElement;
+                                                const updateValue = (clientY: number) => {
+                                                    const rect = sliderElement.getBoundingClientRect();
+                                                    const y = rect.bottom - clientY;
+                                                    const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100));
+                                                    handleSettingChange('slider5', Math.round(percentage));
+                                                };
+                                                updateValue(e.clientY);
+                                                const handleMouseMove = (e: MouseEvent) => {
+                                                    e.preventDefault();
+                                                    updateValue(e.clientY);
+                                                };
+                                                const handleMouseUp = () => {
+                                                    document.removeEventListener('mousemove', handleMouseMove);
+                                                    document.removeEventListener('mouseup', handleMouseUp);
+                                                };
+                                                document.addEventListener('mousemove', handleMouseMove);
+                                                document.addEventListener('mouseup', handleMouseUp);
+                                            }}
+                                        >
+                                            <div className="absolute inset-0 w-full bg-gray-200 rounded-sm pointer-events-none"></div>
+                                            <div 
+                                                className="absolute bottom-0 w-full bg-blue-600 rounded-t-sm transition-all duration-200 pointer-events-none"
+                                                style={{ height: `${settings.slider5}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
-                            {/* Opciones del ecualizador */}
-                            <div className="flex flex-col gap-0 pt-4">
+                            {/* Sección derecha: Opciones del ecualizador */}
+                            <div className="flex flex-col gap-0 pt-10">
                                 {[
                                     { key: 'defaultEQ', label: 'EQ por defecto' },
                                     { key: 'explicitContent', label: 'Contenido explícito' },
                                     { key: 'volumeStabilization', label: 'Estabilizar e igualar volumen de las canciones' }
                                 ].map((option) => (
-                                    <div key={option.key} className="flex items-center justify-between py-3 border-0 border-b border-gray-200">
+                                    <div key={option.key} className="flex items-center justify-between py-3 border-0 border-b border-gray-200 min-w-[350px]">
                                         <span className="text-sm text-gray-700 font-normal">{option.label}</span>
                                         <button
                                             onClick={() => handleSettingChange(option.key, !settings[option.key as keyof typeof settings])}

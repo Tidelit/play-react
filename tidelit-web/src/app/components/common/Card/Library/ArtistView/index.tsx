@@ -8,8 +8,8 @@ export default function ArtistView() {
                 
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                    <p className="text-xs">Historial de Artistas agregados</p>
-                    <h1 className="text-2xl font-bold uppercase">Tus Artistas</h1>
+                    <p className="text-md">Historial de Artistas agregados</p>
+                    <h1 className="text-xl font-bold uppercase">Tus Artistas</h1>
                 </div>
                 
                 {/* Grid  */}

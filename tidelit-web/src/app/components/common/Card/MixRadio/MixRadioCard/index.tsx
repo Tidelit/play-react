@@ -1,15 +1,15 @@
 import Image from "next/image"
-interface TidelitCardProps {
+interface MixRadioCardProps {
     image: string
     title: string
     artist: string
     position: number
 }
 
-export const TidelitCard = ({ image, title, artist, position }: TidelitCardProps) => {
+export const MixRadioCard = ({ image, title, artist, position }: MixRadioCardProps) => {
     return (
         <>
-          <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col">
            <button className="relative w-full max-w-80 h-80 rounded-2xl cursor-pointer overflow-hidden group">
                 {/* Imagen de fondo */}
                 <div className="absolute inset-0 w-full h-full">

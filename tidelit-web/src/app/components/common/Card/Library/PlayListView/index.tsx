@@ -92,8 +92,8 @@ export default function PlayListView() {
                     
                 {/* Texto y titulo de las playlists */}
                 <div className="w-full h-auto  flex flex-col justify-center items-start">
-                        <p className="text-xs">Tus Playlist Favoritas y tus Me gustas</p>
-                        <h1 className="text-2xl font-bold uppercase">Tus Playlist</h1>
+                        <p className="text-md">Tus Playlist Favoritas y tus Me gustas</p>
+                        <h1 className="text-xl font-bold uppercase">Tus Playlist</h1>
                 </div>
                     
                 {/* Grid con máximo 2 columnas */}
