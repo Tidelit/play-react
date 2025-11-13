@@ -10,7 +10,7 @@ import { FormEvent, useState } from "react";
 export default function Login() {
     const [correo, setCorreo] = useState("")
     const [contrasenia, setContrasenia] = useState("")
-    const { mutate: login, isPending, isError, error } = useLoginMutation()
+    const { mutate: login, isPending, isError } = useLoginMutation()
 
     const handleLogin = (e: FormEvent) => {
         e.preventDefault()

@@ -118,7 +118,7 @@ export default function Network() {
     };
 
     return (
-        <div className="w-full h-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+        <div className="w-full h-full min-h-screen">
             {/* Contenido principal */}
             <div className="w-full h-full flex flex-col">
                     
