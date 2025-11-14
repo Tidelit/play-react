@@ -99,14 +99,14 @@ export default function Tidelit() {
           <div className="w-full flex flex-col gap-4 p-10">
             {/* Texto */}
             <div className="w-full h-auto  flex flex-col justify-center items-start">
-                          <p className="text-xs">Las emisoras mas escuchadas del pais</p>
-                          <h1 className="text-2xl font-bold uppercase">Emisoras mas Escuchadas</h1>
+                          <p className="text-md">Las emisoras mas escuchadas del pais</p>
+                          <h1 className="text-xl font-bold uppercase">Emisoras mas Escuchadas</h1>
             </div>
             
             <div className="w-full h-full flex flex-col items-center gap-2 p-10">
                 
                               {/* Playlist  */}
-                              <div className="w-full h-24 border flex flex-row items-center justify-between bg-gray-200/50 backdrop-blur-xs flex flex-row  justify-between items-center p-10 gap-4 transition-all duration-300 hover:bg-blue-200 cursor-pointer hover:shadow-md border border-gray-100 hover:border hover:border-gray-100 rounded-2xl">
+                              <div className="w-full h-24 bg-gray-200/50 backdrop-blur-xs flex flex-row  justify-between items-center p-10 gap-4 transition-all duration-300 hover:bg-blue-200 cursor-pointer hover:shadow-md border border-gray-100 hover:border hover:border-gray-100 rounded-2xl">
                                   <div className="flex flex-row items-center gap-4">
                                       <p>1</p>
                                       <button className="w-14 h-14 border bg-white"></button>

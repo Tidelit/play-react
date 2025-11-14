@@ -3,107 +3,89 @@ import TusVentas from "../TusVentas";
 
 export default function TusventasView () {
     return (
-        <>
-            <div className="w-full h-full flex flex-col justify-center items-center p-10 gap-2">
-
-                {/* Texto */}
-                <div className="w-full h-auto  flex flex-col justify-center items-start p-10">
-                    <p className="text-xs">Conoce tu balance de ventas del mes</p>
-                    <h1 className="text-2xl font-bold uppercase">Tus ventas este mes</h1>
+        <div className="w-full min-h-screen">
+            <div className="max-w-6xl mx-auto p-10">
+                {/* Título */}
+                <div className="flex flex-col gap-4 mb-4">
+                    <div>
+                        <p className="text-2xl text-blue-500 uppercase">Tus ventas este mes</p>
+                        <h2 className="text-md font-light">Conoce tu balance de ventas del mes</h2>
+                    </div>
                 </div>
 
-                {/* Ventas de este mes */}
-                <div className="w-full h-full rounded-2xl flex flex-col gap-2">
-                    <div className="w-full flex flex-col gap-2">
-                        {/* Primera fila */}
-                        <div className="w-full flex flex-row gap-2">
-                            <div className="w-full bg-white border border-blue-200 rounded-2xl p-10">
-                                <p className="text-sm text-gray-600 uppercase">Acumulado por ventas de Albumes</p>
-                                <p className="text-xl font-bold text-gray-800">2.800 pts</p>
-                            </div>
-                            <div className="w-full bg-white border border-blue-200 rounded-2xl p-10">
-                                <p className="text-sm text-gray-600 uppercase">Ventas de Albumes Este mes</p>
-                                <p className="text-xl font-bold text-gray-800">2.800 pts</p>
-                            </div>
+                {/* Ventas de álbumes */}
+                <div className="flex flex-col gap-4 mb-20">
+                    <div className="w-full flex flex-row gap-4">
+                        <div className="w-full flex flex-col justify-center bg-gray-200/20 p-10 rounded-2xl border border-gray-200 hover:border-blue-500 transition-all duration-300">
+                            <p className="text-xs text-blue-500 uppercase">Acumulado</p>
+                            <p className="text-2xl font-light text-gray-900">2,800</p>
                         </div>
-                    </div>
-
-                    {/* Tarjetas grandes */}
-                    <div className="flex flex-row gap-2">
-                        <div className="w-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl p-10 text-white">
-                            <p className="text-sm uppercase">Puntos por ventas</p>
-                            <p className="text-3xl font-bold">10.000 pts</p>
+                        <div className="w-auto flex flex-col justify-center bg-gray-200/20 p-10 rounded-2xl border border-gray-200 hover:border-blue-500 transition-all duration-300">
+                            <p className="text-xs text-blue-500 uppercase">Este mes</p>
+                            <p className="text-3xl font-light text-gray-900">2,800</p>
+                        </div>
+                        <div className="w-auto flex flex-col justify-center bg-gray-200/20 p-10 rounded-2xl border border-gray-200 hover:border-blue-500 transition-all duration-300">
+                            <p className="text-xs text-blue-500 uppercase">Puntos por ventas</p>
+                            <p className="text-3xl font-light text-gray-900">10,000</p>
                         </div>
                     </div>
                 </div>
-               
-                {/* Ventas de este mes */}
-                <div className="w-full h-full rounded-2xl flex flex-col gap-2">
-                    {/* Tarjetas grandes */}
-                    <div className="flex flex-row gap-2">
-                        <div className="w-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl p-10 text-white">
-                            <p className="text-sm uppercase">Planes vendidos</p>
-                            
-                            <div className="w-full flex flex-row justify-between p-10">
-                             
-                                <p className="w-full flex flex-col justify-center items-center">
-                                    <span>30</span>
-                                    <span>Students</span>
-                                </p>
-                                <p className="w-full flex flex-col justify-center items-center">
-                                    <span>30</span>
-                                    <span>One</span>
-                                </p>
-                                <p className="w-full flex flex-col justify-center items-center">
-                                    <span>30</span>
-                                    <span>One Pro</span>
-                                </p>
-                                <p className="w-full flex flex-col justify-center items-center">
-                                    <span>30</span>
-                                    <span>Fandom</span>
-                                </p>
-                                <p className="w-full flex flex-col justify-center items-center">
-                                    <span>30</span>
-                                    <span>Albumes</span>
-                                </p>
+
+                {/* Planes vendidos */}
+                <div className="flex flex-col gap-4 mb-20">
+                    <h3 className="text-xl uppercase text-blue-500">Planes vendidos</h3>
+                    
+                    <div className="w-full flex flex-col justify-center bg-gray-200/20 p-10 rounded-2xl border border-gray-200 hover:border-blue-500 transition-all duration-300">
+                        <div className="w-full flex flex-row justify-between">
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <p className="text-3xl font-light text-gray-900">30</p>
+                                <p className="text-xs text-blue-500 uppercase">Students</p>
+                            </div>
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <p className="text-3xl font-light text-gray-900">30</p>
+                                <p className="text-xs text-blue-500 uppercase">One</p>
+                            </div>
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <p className="text-3xl font-light text-gray-900">30</p>
+                                <p className="text-xs text-blue-500 uppercase">One Pro</p>
+                            </div>
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <p className="text-3xl font-light text-gray-900">30</p>
+                                <p className="text-xs text-blue-500 uppercase">Fandom</p>
+                            </div>
+                            <div className="w-full flex flex-col justify-center items-center">
+                                <p className="text-3xl font-light text-gray-900">30</p>
+                                <p className="text-xs text-blue-500 uppercase">Álbumes</p>
                             </div>
                         </div>
                     </div>
-
-                    <div className="w-full flex flex-col gap-2">
-                        {/* Primera fila */}
-                        <div className="w-full flex flex-row gap-2">
-                            <div className="w-full bg-white border border-blue-200 rounded-2xl p-10">
-                                <p className="text-sm text-gray-600 uppercase">Acumulado por ventas <span className="uppercase font-bold text-blue-500">Studens</span></p>
-                                <p className="text-xl font-bold text-gray-800">2.800 pts</p>
-                            </div>
-                            <div className="w-full bg-white border border-blue-200 rounded-2xl p-10">
-                                <p className="text-sm text-gray-600 uppercase">Ventas plan <span className="uppercase font-bold text-blue-500">Studens</span> este mes</p>
-                                <p className="text-xl font-bold text-gray-800">2.800 pts</p>
-                            </div>
-                        </div>
-                        {/* Segunda fila */}
-                        <div className="w-full flex flex-row gap-2">
-                            <div className="w-full bg-white border border-blue-200 rounded-2xl p-10">
-                                <p className="text-sm text-gray-600 uppercase">Acumulado por ventas <span className="uppercase font-bold text-blue-500">One</span></p>
-                                <p className="text-xl font-bold text-gray-800">2.800 pts</p>
-                            </div>
-                            <div className="w-full bg-white border border-blue-200 rounded-2xl p-10">
-                                <p className="text-sm text-gray-600 uppercase">Ventas plna <span className="uppercase font-bold text-blue-500">One</span> este mes</p>
-                                <p className="text-xl font-bold text-gray-800">2.800 pts</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-
-                <div className="w-full flex flex-col gap-4 p-10">
-                    {/* Texto */}
-                    <div className="w-full h-auto  flex flex-col justify-center items-start">
-                        <p className="text-xs">Mira tus ventas</p>
-                        <h1 className="text-2xl font-bold uppercase">Tus ventas del albumes</h1>
+                {/* Métricas de planes */}
+                <div className="flex flex-row gap-4 mb-20">
+                    <div className="w-full flex flex-row">
+                        <div className="hover:bg-gray-200/50 backdrop-blur-xs flex flex-col justify-center p-10 transition-all duration-300 rounded-2xl">
+                            <p className="text-xs uppercase tracking-widest">Acumulado por ventas <span className="text-blue-500">Students</span></p>
+                            <p className="text-3xl font-light text-gray-900">2,800</p>
+                        </div>
+                        <div className="hover:bg-gray-200/50 backdrop-blur-xs flex flex-col justify-center p-10 transition-all duration-300 rounded-2xl">
+                            <p className="text-xs uppercase tracking-widest">Ventas plan <span className="text-blue-500">Students</span> este mes</p>
+                            <p className="text-3xl font-light text-gray-900">2,800</p>
+                        </div>
+                        <div className="hover:bg-gray-200/50 backdrop-blur-xs flex flex-col justify-center p-10 transition-all duration-300 rounded-2xl">
+                            <p className="text-xs uppercase tracking-widest">Acumulado por ventas <span className="text-blue-500">One</span></p>
+                            <p className="text-3xl font-light text-gray-900">2,800</p>
+                        </div>
+                        <div className="hover:bg-gray-200/50 backdrop-blur-xs flex flex-col justify-center p-10 transition-all duration-300 rounded-2xl">
+                            <p className="text-xs uppercase tracking-widest">Ventas plan <span className="text-blue-500">One</span> este mes</p>
+                            <p className="text-3xl font-light text-gray-900">2,800</p>
+                        </div>
                     </div>
+                </div>
+
+                {/* Lista de ventas */}
+                <div className="flex flex-col gap-4 mb-10">
+                    <h3 className="text-xl uppercase text-blue-500">Tus ventas de álbumes</h3>
                     <TusVentas/>
                     <TusVentas/>
                     <TusVentas/>
@@ -111,16 +93,23 @@ export default function TusventasView () {
                     <TusVentas/>
                 </div>
 
+                {/* Footer */}
+                <div className="flex flex-col gap-4">
+                    <div className="w-full flex flex-row justify-between p-4"> 
+                        <div className="text-xs flex flex-row gap-4 uppercase">
+                            <p>Nivel 1: Listener</p>
+                            <p>Desde: 05 de abril de 2025</p>
+                            <p>00:00 GTM-5</p>
+                        </div>
 
-                {/* Ver reporte completo */}
-                <div className="w-full h-auto flex justify-center items-center p-4">
-                    <button className="w-full max-w-2xl h-14 p-4 border rounded-full flex justify-center items-center text-sm">
-                        <p className="uppercase">Ver mas referidos</p>
-                    </button>
+                        <button className="text-xs uppercase hover:text-blue-500 transition-colors duration-300">
+                            <p>
+                                Ver más ventas →
+                            </p>
+                        </button>
+                    </div>
                 </div>
-
-
             </div>
-        </>
+        </div>
     )
 }

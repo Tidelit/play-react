@@ -12,7 +12,9 @@ import TuslogrosView from "@/app/components/common/Card/Network/TuslogrosView";
 function BalanceContent() {
     return (
      <>
-        <BalanceView />
+        <div className="w-full h-full flex flex-col gap-2">
+            <BalanceView />
+        </div>
      </>
     );
 }
