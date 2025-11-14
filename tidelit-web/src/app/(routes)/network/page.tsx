@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronLeft, FiTrendingUp, FiTarget, FiShoppingBag, FiAward, FiUsers } from "react-icons/fi";
 import Link from "next/link";
 import BalanceView from "@/app/components/common/Card/Network/BalanceView";
 import TusmetasView from "@/app/components/common/Card/Network/TusmetasView";
@@ -12,7 +12,7 @@ import TuslogrosView from "@/app/components/common/Card/Network/TuslogrosView";
 function BalanceContent() {
     return (
      <>
-        <div className="w-full h-full flex flex-col gap-2">
+        <div className="w-full h-full flex flex-col gap-2 p-10">
             <BalanceView />
         </div>
      </>
@@ -23,7 +23,9 @@ function TusMetasContent() {
 
     return (
     <>
-        <TusmetasView />
+        <div className="w-full h-full flex flex-col gap-2 p-10">
+            <TusmetasView />
+        </div>
     </>
     );
 }
@@ -31,7 +33,9 @@ function TusMetasContent() {
 function TusVentasContent() {
     return (
     <>
-        <TusventasView />
+        <div className="w-full h-full flex flex-col gap-2 p-10">
+            <TusventasView />
+        </div>
     </>
     );
 }
@@ -39,7 +43,9 @@ function TusVentasContent() {
 function TusLogrosContent() {
     return (
       <>
-        <TuslogrosView />
+        <div className="w-full h-full flex flex-col gap-2 p-10">
+            <TuslogrosView />
+        </div>
       </>
     );
 }
@@ -47,7 +53,9 @@ function TusLogrosContent() {
 function LigasContent() {
     return (
       <>
-        <LigasView />
+        <div className="w-full h-full flex flex-col gap-2 p-10">
+            <LigasView />
+        </div>
       </>
     );
 }
@@ -61,11 +69,11 @@ export default function Network() {
     
     // Configuración de las pestañas
     const tabs = [
-        { id: 0, title: "Balance"},
-        { id: 1, title: "Tus Metas" },
-        { id: 2, title: "Tus Ventas"},
-        { id: 3, title: "Tus Logros" },
-        { id: 4, title: "Ligas" },
+        { id: 0, title: "Balance", icon: FiTrendingUp },
+        { id: 1, title: "Tus Metas", icon: FiTarget },
+        { id: 2, title: "Tus Ventas", icon: FiShoppingBag },
+        { id: 3, title: "Tus Logros", icon: FiAward },
+        { id: 4, title: "Ligas", icon: FiUsers },
     ];
 
     // Función que determina qué contenido mostrar según la pestaña activa
@@ -92,53 +100,50 @@ export default function Network() {
     };
 
     // Función para renderizar un botón de pestaña
-    const renderTabButton = (tab: { id: number; title: string; }, showText = true) => {
+    const renderTabButton = (tab: { id: number; title: string; icon: React.ElementType }, showText = true) => {
+        const IconComponent = tab.icon;
         const isActive = activeTab === tab.id;
         
         return (
             <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`group relative px-6 py-3 flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-all duration-300 rounded-xl border-2 ${
-                    isActive 
-                        ? 'text-white bg-gradient-to-r from-blue-600 to-indigo-600 border-blue-600 shadow-lg shadow-blue-500/25 scale-105' 
-                        : 'text-gray-600 bg-white/70 border-gray-200 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 hover:shadow-md hover:scale-102'
+                className={`flex items-center gap-2 font-medium whitespace-nowrap transition-colors duration-500 ${
+                    isActive ? 'border-blue-500 text-blue-500' : 'border-transparent hover:text-blue-500'
                 }`}
             >
-                {showText && (
-                    <p className={`text-sm font-medium transition-colors duration-300 ${
-                        isActive ? 'text-white' : 'text-gray-700 group-hover:text-blue-600'
-                    }`}>
-                        {tab.title}
-                    </p>
-                )}
-                {isActive && (
-                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-white rounded-full animate-scaleIn"></div>
-                )}
+                <IconComponent className="w-4 h-4" />
+                {showText && <p className="text-[10px] uppercase font-bold">{tab.title}</p>}
             </button>
         );
     };
 
     return (
-        <div className="w-full h-full min-h-screen">
+        <div className="w-full h-screen flex flex-row">
             {/* Contenido principal */}
-            <div className="w-full h-full flex flex-col">
+            <div className="w-full h-full flex flex-col justify-center items-center">
+                <div className="w-full h-full flex flex-col justify-between items-center">
                     
                     {/* Barra superior con botón de volver y iconos */}
-                    <div className="w-full h-16 flex flex-row justify-start items-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-sm shadow-sm border-b border-gray-100">
-                        <Link href="/" className="group flex flex-row items-center gap-3 px-4 py-2 rounded-xl hover:bg-blue-50 transition-all duration-300 cursor-pointer">
-                            <FiChevronLeft className='w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300' />
-                            <p className="text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors duration-300">Volver atrás</p>
+                    <div className="w-full h-14 flex flex-row justify-start items-center gap-2 p-10">
+                        <Link href="/" className="w-full hover:text-blue-500 transition-colors duration-500 cursor-pointer flex flex-row items-center gap-2">
+                            <FiChevronLeft className='w-4 h-4' />
+                            <p className="text-xs">Volver atras</p>
                         </Link>
+                        
+                        {/* Iconos de pestañas (solo iconos) */}
+                        <div className="w-full flex flex-row justify-end items-center overflow-x-auto gap-2">
+                            {tabs.map(tab => renderTabButton(tab, false))}
+                        </div>
                     </div>
 
                     {/* Navegación de pestañas (con texto) */}
-                    <div className="w-full flex flex-row justify-start items-center gap-3 px-8 py-6 bg-white/60 backdrop-blur-sm">
+                    <div className="w-full flex flex-row justify-start items-center gap-4 px-10">
                         {tabs.map(tab => renderTabButton(tab, true))}
                     </div>
 
                     {/* Contenido de la pestaña activa */}
-                    <div className="flex-1 w-full overflow-y-auto bg-gradient-to-b from-transparent to-gray-50/30">
+                    <div className="flex-1 w-full overflow-y-auto">
                         <div className={`transition-all duration-500 ease-in-out transform ${
                             isTransitioning 
                                 ? 'opacity-50 scale-98' 
@@ -147,6 +152,7 @@ export default function Network() {
                             {getTabContent()}
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     );
